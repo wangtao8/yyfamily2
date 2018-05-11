@@ -5,6 +5,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
   data: {
+    index:['1','2','3','4','5'],
     tabs: ["热门", "发现", "圈子"],
     activeIndex: 0,
     sliderOffset: 0,

@@ -10,6 +10,9 @@ page,
 .weui-tab__content{
     text-align: center;
 }
+.weui-navbar{
+  background-color: #fff;
+}
 .searchbar-result{
     margin-top: 0;
     font-size: 14px;
@@ -45,6 +48,9 @@ swiper{
   height: 10px;
   background-color: #ccc;
 }
+.weui-tab__content{
+  overflow-x: hidden;
+}
 .user-image{
   width: 95%;
   height: 158px;
@@ -55,8 +61,8 @@ swiper{
   position: relative;
 }
 .user-heart{
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 16px;
   position: absolute;
   right: 20px;
   top: 10px;
@@ -76,6 +82,17 @@ swiper{
   left: 48px;
   bottom: 9px;
 }
+.user-share{
+  margin: 10px 0px;
+}
+.user-share::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 10px;
+  background: #ccc;
+  margin-top: 10px;
+}
 .user-say{
   font-size: 16px;
   color: #3b3b3b;
@@ -87,19 +104,21 @@ swiper{
   font-size: 16px;
   float: left;
   margin-left: 10px;
-  color: #ed8e6a;
+  color: #fe5431;
 }
 .user-interactive{
   /* background: red; */
-   width: 120px; 
+   width: 130px; 
   float: right;
   margin-right: 10px;
   font-size: 16px;
+  color: #949494;
 }
 .user-comment>image{
-  width: 24px;
-  height: 24px;
-  float: left;
+  width:20px;
+  height:20px;
+  float:left;
+  margin-top:4px;
 }
 .user-comment>span{
   width: 24px;
@@ -108,14 +127,30 @@ swiper{
   margin-left: 4px;
 }
 .user-laud>image{
-  width: 20px;
-  height: 20px;
-  float: left;
-  margin-left: 14px;
+  width:16px;
+  height:16px;
+  float:left;
+  margin-top:5px;
 }
 .user-laud>span{
   width: 24px;
   height: 24px;
   float: left;
   margin-left: 4px;
+}
+.botoom-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:44px;
+  line-height:44px;
+  color: #424242;
+  width:100%;
+  font-size:16px;
+  position:fixed;
+  bottom:0;
+  left:0;
+}
+.weui-tab__panel{
+  height: calc(100% - 44px)
 }
