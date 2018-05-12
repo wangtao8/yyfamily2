@@ -7,8 +7,11 @@ page,
 .page__bd{
     padding-bottom: 0;
 }
-.weui-tab__content{
+/* .weui-tab__content{
     text-align: center;
+} */
+.weui-tab__content:nth-child(3){
+  padding: 10px;
 }
 .weui-navbar{
   background-color: #fff;
@@ -50,6 +53,9 @@ swiper{
 }
 .weui-tab__content{
   overflow-x: hidden;
+}
+swiper{
+  text-align: center;
 }
 .user-image{
   width: 95%;
@@ -108,11 +114,24 @@ swiper{
 }
 .user-interactive{
   /* background: red; */
-   width: 130px; 
+   width: 140px; 
   float: right;
   margin-right: 10px;
   font-size: 16px;
   color: #949494;
+}
+.user-interactive>span{
+  width:0px;
+  height:24px;
+  display:inline-block;
+  margin-right:14px;
+  position: relative;
+  top: -5px;
+}
+.user-comment{
+  width:60px;
+  height:24px;
+  display: inline-block;
 }
 .user-comment>image{
   width:20px;
@@ -125,6 +144,12 @@ swiper{
   height: 24px;
   float: left;
   margin-left: 4px;
+  text-align: center;
+}
+.user-laud{
+  width:60px;
+  height:24px;
+  display: inline-block;
 }
 .user-laud>image{
   width:16px;
@@ -153,4 +178,83 @@ swiper{
 }
 .weui-tab__panel{
   height: calc(100% - 44px)
+}
+
+.all-circle{
+  height: calc(100% - 50px);
+}
+.my-circle{
+  color: #070707;
+  margin-bottom: 16px;
+}
+.circle{
+  font-size: 12px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.circle-img{
+  width: 88px;
+  height: 56px;
+  display: inline-block;
+}
+.circle-depict{
+  color: #999999;
+}
+.circle-info{
+  height: 56px;
+  position: absolute;
+  top: 0;
+  left: 98px;
+}
+.circle-updated{
+  position: absolute;
+  top: 0;
+  right: 0px;
+  height: 56px;
+  line-height: 56px;
+  color: #fe5431;
+}
+ .hot-scroll{
+  width: 100%;
+  margin-top: 10px;
+  overflow:hidden;
+  white-space:nowrap;
+} 
+.hot-info{
+  width: 88px;
+  display: inline-block;  
+  font-size: 12px;
+  margin-right: 15px;
+}
+.hot-title{
+  text-align: center;
+}
+.hot-img{
+  width: 88px;
+  height: 88px;
+}
+.hot-join{
+  width: 50px;
+  height: 20px;
+  box-sizing: border-box;
+  padding: 0px 4px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 25px;
+  border: 1px solid #fe5431;
+  color: #fe5431;
+  margin-left: 19px;
+}
+.botoom-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:44px;
+  line-height:44px;
+  color: #424242;
+  width:100%;
+  font-size:16px;
+  position:fixed;
+  bottom:0;
+  left:0;
 }

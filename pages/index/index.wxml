@@ -60,7 +60,7 @@
                 </swiper-item>
               </block>
             </swiper>
-             <view class='blank20'></view> 
+            <view class='blank20'></view>
             <view class='user-share' wx:for="{{index}}">
               <view class='user-image'>
                 <image src='../../images/heart0{{curIndex}}.png' class='user-heart' bindtap='checkHeart' />
@@ -73,12 +73,12 @@
               <view style="width: 100%;height: 24px;">
                 <view class='use-label'>#get新玩法#</view>
                 <view class='user-interactive'>
-                  <view class='user-comment'>
+                  <view class='user-comment' bindtap='openMessageInfo'>
                     <image src='../../images/message.png' />
                     <span>255</span>
-                    <span>|</span>
                   </view>
-                  <view class='user-laud'>
+                  <span>|</span>
+                  <view class='user-laud' bindtap='laudOrCancel'>
                     <image src='../../images/laud00.png' />
                     <span>255</span>
                   </view>
@@ -88,13 +88,37 @@
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <scroll-view scroll-y class='all-circle'>
+            <view>
+              <view class='my-circle'>我的圈子</view>
+              <view class='circle' wx:for="{{index}}">
+                <image src='../../images/1.jpg' class='circle-img'></image>
+                <view class='circle-info'>
+                  <view class='circle-title'>全友家居</view>
+                  <view class='circle-depict'>这个圈子是干啥的？</view>
+                </view>
+                <view class='circle-updated'>3条最近更新</view>
+              </view>
+            </view>
+            <view style="height:170px;">
+              <view class='hot-circle'>热门圈子</view>
+              <scroll-view scroll-x class='hot-scroll'>
+                <view class='hot-info' wx:for="{{index}}">
+                  <image src='../../images/2.jpg' class='hot-img'></image>
+                  <view class='hot-title'>火爆圈子</view>
+                  <text class='hot-join'>+ 加入</text>
+                </view>
+              </scroll-view>
+            </view>
+          </scroll-view>
+        </view>
       </view>
       <view class='botoom-nav'>
-          <view>友友之家</view>
-          <view>创意中心</view>
-          <view>商城</view>
-          <view>我的</view>
+        <view>友友之家</view>
+        <view>创意中心</view>
+        <view>商城</view>
+        <view>我的</view>
       </view>
     </view>
   </view>

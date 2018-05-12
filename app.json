@@ -1,11 +1,13 @@
 {
   "pages":[
-    "pages/index/index"
+    "pages/index/index",
+    "pages/circle/index",
+    "pages/reply/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "友友之家",
     "navigationBarTextStyle":"black"
   }
 }

@@ -68,5 +68,13 @@ Page({
     } else {
       _this.setData({ curIndex: 0 })
     }
+  },
+  openMessageInfo: function () {
+    wx.navigateTo({
+      url: '/pages/reply/index?id=1'
+    })
+  },
+  laudOrCancel: function () {
+    console.log('234')
   }
 });
