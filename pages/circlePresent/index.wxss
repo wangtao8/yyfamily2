@@ -1,0 +1,122 @@
+/* pages/circlePresent/index.wxss */
+page{
+  padding: 30rpx 20rpx 0rpx 20rpx;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 24rpx;
+}
+.head-info{
+  position: relative;
+  height: 150rpx;
+}
+.head-img{
+  width: 180rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+.circle-info{
+  display: inline-block;
+  position: absolute;
+  left: 200rpx;
+  top: 0;
+  /* height: 60px; */
+  /* border-bottom: 1px solid #ccc; */
+}
+.head-info::after{
+  content: '';
+  display: block;
+  width: calc(100% + 40rpx);
+  height: 2rpx;
+  background: #ccc;
+  position: absolute;
+  left: -20rpx;
+  bottom: 0;
+}
+.circle-name{
+  color: #2b2b2b;
+  font-size: 36rpx;
+}
+.circle-num{
+  color: #929292;
+  font-size: 28rpx;
+}
+.jion-cirlce{
+  float: right;
+  width: 120rpx;
+  border-radius: 30rpx;
+  color: #fd8b0f;
+  border: 2rpx solid #fd8b0f;
+  padding: 4rpx 12rpx;
+  position: relative;
+  top: 20rpx;
+}
+.essay-title{
+  font-size: 36rpx;
+  margin-top:10rpx;
+}
+.essay-all{
+  margin-top: 20rpx;
+}
+.essay-content{
+  font-size: 28rpx;
+  color: #999999;
+}
+.essay-content::after{
+  content: '';
+  display: inline-block;
+  height: 32rpx;
+  width: calc(100% + 40rpx);
+  background: #f4f5f9;
+  margin: 40rpx 0rpx 0rpx -20rpx;
+}
+.topic-img{
+  width: 176rpx;
+  height: 120rpx;
+}
+.topic-info{
+  display:inline-block;
+  width:calc(100% - 196rpx);
+  float:right;
+  position: relative;
+  top: -10rpx;
+}
+.user-info{
+  width:300rpx;
+  height:60rpx;
+  line-height:60rpx;
+  margin-top:16rpx;
+}
+.business-titlle{
+  font-size: 32rpx;
+}
+.business-time{
+  width: calc(100% - 320rpx);
+  height: 110rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 6rpx;
+  text-align:right;
+}
+.business-time>view:nth-child(1){
+  color: #fc3a3a;
+}
+.user-img{
+  width:60rpx;
+  height:60rpx;
+  border-radius:30rpx;
+  vertical-align:middle;
+  margin-right:20rpx;
+  float:left;
+}
+.user-message{
+  width: 36rpx;
+  height: 32rpx;
+  vertical-align: middle; 
+  margin-right:10rpx;
+}
+.business-time>view:nth-child(2){
+  position: absolute;
+  right: 0rpx;
+  bottom: 0rpx;
+  color: #999999;
+}

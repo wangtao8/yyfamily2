@@ -1,0 +1,31 @@
+<!--pages/circlePresent/index.wxml-->
+<view class='head-info'>
+  <image class='head-img' src='../../images/5.jpg'></image>
+  <view class='circle-info'>
+    <view class='circle-name'>全友家居</view>
+    <view class='circle-num'>1500+成员</view>
+  </view>
+  <text class='jion-cirlce' bindtap="openToast" style='text-align: center;'>{{isJion}}</text>
+</view>
+<view>
+  <view class='essay-title'>简介</view>
+  <view class='essay-content'>我是圈子的详细介绍，看我就等于看到了圈子的未来，我可以给大家带来实惠，不信就算了，反正我说了就会做到，而且内幕雄厚，便宜到没朋友，只允许有钱人家人，加入前自爆家底，非富误入！！！</view>
+  <view class='essay-title'>话题</view>
+  <view class='essay-all'>
+    <image src='../../images/3.jpg' class='topic-img'></image>
+    <view class='topic-info'>
+      <view class='business-titlle'>全友家居</view>
+      <view class='user-info'>
+        <image src='../../images/2.jpg' class='user-img'></image>
+        <text>王涛</text>
+      </view>
+      <view class='business-time'>
+        <view>一个小时前更新</view>
+        <view>
+          <image src='../../images/message.png' class='user-message'></image>
+          <text>10</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
