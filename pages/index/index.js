@@ -76,5 +76,10 @@ Page({
   },
   laudOrCancel: function () {
     console.log('234')
+  },
+  toInfo: function () {
+    wx.navigateTo({
+      url: '/pages/circleInfo/index?id=1'
+    })
   }
 });

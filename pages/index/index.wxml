@@ -92,7 +92,7 @@
           <scroll-view scroll-y class='all-circle'>
             <view>
               <view class='my-circle'>我的圈子</view>
-              <view class='circle' wx:for="{{index}}">
+              <view class='circle' wx:for="{{index}}" bindtap='toInfo'>
                 <image src='../../images/1.jpg' class='circle-img'></image>
                 <view class='circle-info'>
                   <view class='circle-title'>全友家居</view>

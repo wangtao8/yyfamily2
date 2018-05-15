@@ -1,0 +1,185 @@
+/* pages/circleInfo/index.wxss */
+page{
+  padding: 30rpx 20rpx 0rpx 20rpx;
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 24rpx;
+}
+.head-info{
+  position: relative;
+  height: 150rpx;
+}
+.head-img{
+  width: 180rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+.circle-info{
+  display: inline-block;
+  position: absolute;
+  left: 200rpx;
+  top: 0;
+  /* height: 60px; */
+  /* border-bottom: 1px solid #ccc; */
+}
+.head-info::after{
+  content: '';
+  display: block;
+  width: calc(100% + 40rpx);
+  height: 2rpx;
+  background: #ccc;
+  position: absolute;
+  left: -20rpx;
+  bottom: 0;
+}
+.circle-name{
+  color: #2b2b2b;
+  font-size: 36rpx;
+}
+.circle-num{
+  color: #929292;
+  font-size: 28rpx;
+}
+.article-title{
+  font-size: 36rpx;
+}
+.article-info{
+  margin-top: 12rpx;
+  position: relative;
+}
+.article-auth{
+  font-size: 24rpx;
+  margin-top: 4rpx;
+  line-height:76rpx;
+}
+.article-auth>image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  vertical-align: middle;
+}
+.write-auth{
+  margin-left: 14rpx;
+  color: #929292;
+  font-size: 24rpx;
+}
+.write-time{
+  float: right;
+  color: #929292;
+}
+.article-content{
+  font-size: 32rpx;
+  margin-top: 30rpx;
+  color: #3c3c3c;
+  padding-bottom: 60rpx;
+}
+.article-content::after{
+  content: '';
+  display: block;
+  height: 2rpx;
+  background: #ccc;
+  width: calc(100% + 40rpx);
+  position: absolute;
+  left: -20rpx;
+  bottom: 0;
+}
+.comment-info{
+  margin-top: 12rpx;
+}
+.comment-icon{
+  font-size: 36rpx;
+}
+.comment-icon::before{
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 36rpx;
+  border-radius: 36rpx;
+  background-color: #149244;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.comment-left-img{
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 37rpx;
+}
+.comment-right-info{
+  float: right;
+  width: calc(100% - 94rpx);
+  font-size: 32rpx;
+}
+.comment-name{
+  color: #929292;
+  font-size: 24rpx;
+}
+.comment-all{
+  margin-top: 20rpx;
+}
+.comment-reply{
+  width: 100%;
+  background-color: #f2f2f2;
+  color: #929292;
+  padding: 10rpx 18rpx;
+}
+.other-user{
+  color: #11aaf2;
+}
+.more{
+  color: #11aaf2;
+}
+.comment-infos{
+  float: right;
+}
+.leave_message{
+  width: 36rpx;
+  height: 32rpx;
+  margin-right: 24rpx;
+  position: relative;
+  top: 4rpx;
+}
+.luads{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 4rpx;
+}
+.comment-user-info{
+  margin-top: 12rpx;
+  color: #929292;
+  border-bottom: 2rpx solid #ccc;
+  padding-bottom: 12rpx;
+  font-size: 24rpx;
+}
+.clear::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.write-comment{
+  height: 90rpx;
+  width: calc(100% + 40rpx);
+  position: fixed;
+  left: -20rpx;
+  bottom: 0;
+  background-color: #fff;
+}
+.top-info{
+  height: calc(100% - 90rpx);
+  margin-bottom: 20rpx;
+}
+.write-comment>input{
+  /* width: 82%; */
+  height: 48rpx;
+  border-radius: 24rpx;
+  border: 2rpx solid #ccc;
+  /* margin: 22rpx auto 0rpx; */
+  padding-left: 20rpx;
+  font-size: 24rpx;
+}
+.submitBtn{
+  font-size: 32rpx;
+  color: #098d3b;
+  position: absolute;
+  right: 60rpx;
+  bottom: 20rpx;
+}

@@ -1,91 +1,97 @@
 /* pages/reply/index.wxss */
 page{
-  padding: 0px 15px 0px 12px;
+  padding: 0rpx 30rpx 0rpx 24rpx;
   box-sizing: border-box;
   height: 100%;
 }
 .comment-top{
   width: 100%;
-  height: 38px;
-  margin-top: 10px;
-  font-size: 12px;
+  height: 76rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
 }
 .comment-top>view{
   display: inline-block;
-  width: calc(100% - 50px);
-  height: 44px;
-  margin-left: 12px;
+  width: calc(100% - 116rpx);
+  height: 88rpx;
+  margin-left: 24rpx;
   position: relative;
-  top: -4px;
+  top: -16rpx;
 }
 .other-user{
-  padding-bottom: 16px;
+  padding-bottom: 32rpx;
   background-color: #f7f7f7;
 }
 .user-time{
   color: #b7b7b7;
 }
 .reply>image{
-  width: 18px;
-  height: 16px;
+  width: 36rpx;
+  height: 32rpx;
   float: right;
   position: relative;
-  top: -18px;
+  top: -36rpx;
 }
 .avatar-main{
-  width: 38px;
-  height: 38px;
-  border-radius: 19px;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
 }
 .get-info{
   /* float: right; */
   display: inline-block;
-  height: 16px;
+  height: 32rpx;
   position: relative;
-  top: -10px;
+  top: -20rpx;
 }
 .user-info{
   display: inline-block;
-  width: calc(100% - 70px);
+  width: calc(100% - 140rpx);
 }
 .get-laud{
   position: relative;
-  width: 70px;
+  width: 140rpx;
   /* top: -25px; */
 }
-.get-laud>image{
-  width: 16px;
-  height: 16px;
+.get-laud2{
+  position: relative;
+  width: 80rpx;
+  left:50rpx;
 }
-.get-laud>span{
-  margin-left: 8px;
+.get-laud>image, .get-laud2>image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.get-laud>span,.get-laud2>span{
+  margin-left: 16rpx;
   color: #b7b7b7;
 }
 .reply-comment{
   box-sizing: border-box;
-  padding: 11px 0px 0px 5px;
+  padding: 22rpx 0rpx 0rpx 10rpx;
 }
 .commnent-bot{
-  font-size: 14px;
-  padding-left: 50px;
-  margin-bottom: 16px;
+  font-size: 28rpx;
+  padding-left: 116rpx;
+  margin-bottom: 32rpx;
+  margin-top: 20rpx;
 }
 .commnent-bot2{
-  font-size:14px;
-  margin-bottom:16px;
-  border-bottom:1px solid #ccc;
-  width:calc(100% - 60px);
-  margin-left:50px;
-  padding-bottom:6px;
+  font-size:28rpx;
+  margin-bottom:32rpx;
+  border-bottom:2rpx solid #ccc;
+  width:calc(100% - 120rpx);
+  margin-left: 100rpx;
+  padding-bottom: 12rpx;
 }
 .avatar-img{
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 37rpx;
 }
 .avatar-user{
   display: inline-block;
-  width: calc(100% - 50px);
-  font-size: 12px;
-  margin-left: 15px;
+  width: calc(100% - 110rpx);
+  font-size: 24rpx;
+  margin-left: 30rpx;
 }

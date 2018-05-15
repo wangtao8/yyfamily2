@@ -1,11 +1,14 @@
-// pages/circle/index.js
+// pages/circleInfo/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    index: ['1', '2', '3', '4', '5']
+    elWidth: '82%',
+    elMargin: '22rpx auto 0rpx;',
+    isDisplay: 'none',
+    elValue: ''
   },
 
   /**
@@ -63,9 +66,12 @@ Page({
   onShareAppMessage: function () {
   
   },
-  toInfo: function () {
-    wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1'
-    })
+  getFocus: function (e) {
+    var _this = this
+    this.setData({ elWidth: '70%', elMargin: '22rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
+  },
+  getBlur: function () {
+    var _this = this
+    this.setData({ elWidth: '82%', elMargin: '22rpx auto 0rpx;', isDisplay: 'none', elValue: ''})
   }
 })

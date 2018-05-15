@@ -11,44 +11,44 @@ page,
     text-align: center;
 } */
 .weui-tab__content:nth-child(3){
-  padding: 10px;
+  padding: 20rpx;
 }
 .weui-navbar{
   background-color: #fff;
 }
 .searchbar-result{
     margin-top: 0;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 .searchbar-result:before{
     display: none;
 }
 .weui-cell{
-    padding: 12px 15px 12px 35px;
+    padding: 24rpx 30rpx 24rpx 70rpx;
 }
 .weui-search-bar__box{
-  padding-left: 10px;
+  padding-left: 40rpx;
 }
 .weui-search-bar{
   background-color: #fff;
 }
 .weui-search-bar__form, .weui-search-bar__label{
-  border-radius: 14px;
+  border-radius: 28rpx;
 }
 .weui-search-bar{
   border-bottom: inherit;
 }
 .slide-image{
-  border-radius: 8px;
+  border-radius: 16rpx;
   height: 100%;
   width: 95%;
 }
 swiper{
-  margin-bottom: 10px;
-  height: 138px;
+  margin-bottom: 20rpx;
+  height: 276rpx;
 }
 .blank20{
-  height: 10px;
+  height: 20rpx;
   background-color: #ccc;
 }
 .weui-tab__content{
@@ -59,202 +59,214 @@ swiper{
 }
 .user-image{
   width: 95%;
-  height: 158px;
-  border-radius: 8px;
+  height: 318rpx;
+  border-radius: 16rpx;
   background-image: url('http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg');
   background-repeat: round;
-  margin: 10px auto;
+  margin: 20rpx auto;
   position: relative;
 }
 .user-heart{
-  width: 18px;
-  height: 16px;
+  width: 36rpx;
+  height: 32rpx;
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 40rpx;
+  top: 20rpx;
 }
 .user-watch>image{
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   position: absolute;
-  left: 20px;
-  bottom: 10px;
+  left: 40rpx;
+  bottom: 20rpx;
 }
 .user-watch>span{
-  font-size: 14px;
-  width: 24px;
-  height: 24px;
+  font-size: 28rpx;
+  width: 48rpx;
+  height: 48rpx;
   position: absolute;
-  left: 48px;
-  bottom: 9px;
+  left: 96rpx;
+  bottom: 18rpx;
 }
 .user-share{
-  margin: 10px 0px;
+  margin: 20rpx 0rpx;
 }
 .user-share::after{
   content: '';
   display: block;
   width: 100%;
-  height: 10px;
+  height: 20rpx;
   background: #ccc;
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 .user-say{
-  font-size: 16px;
+  font-size: 32rpx;
   color: #3b3b3b;
   width: 100%;
   text-align: left;
-  margin-left: 10px;
+  margin-left: 20rpx;
 }
 .use-label{
-  font-size: 16px;
+  font-size: 32rpx;
   float: left;
-  margin-left: 10px;
+  margin-left: 20rpx;
   color: #fe5431;
 }
 .user-interactive{
   /* background: red; */
-   width: 140px; 
+   width: 280rpx; 
   float: right;
-  margin-right: 10px;
-  font-size: 16px;
+  margin-right: 20rpx;
+  font-size: 32rpx;
   color: #949494;
 }
 .user-interactive>span{
-  width:0px;
-  height:24px;
+  width:0rpx;
+  height:48rpx;
   display:inline-block;
-  margin-right:14px;
+  margin-right:28rpx;
   position: relative;
-  top: -5px;
+  top: -10rpx;
 }
 .user-comment{
-  width:60px;
-  height:24px;
+  width:120rpx;
+  height:48rpx;
   display: inline-block;
 }
 .user-comment>image{
-  width:20px;
-  height:20px;
+  width:40rpx;
+  height:40rpx;
   float:left;
-  margin-top:4px;
+  margin-top:8rpx;
 }
 .user-comment>span{
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   float: left;
-  margin-left: 4px;
+  margin-left:8rpx;
   text-align: center;
 }
 .user-laud{
-  width:60px;
-  height:24px;
+  width:120rpx;
+  height:48rpx;
   display: inline-block;
 }
 .user-laud>image{
-  width:16px;
-  height:16px;
+  width:32rpx;
+  height:32rpx;
   float:left;
-  margin-top:5px;
+  margin-top:10rpx;
 }
 .user-laud>span{
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   float: left;
-  margin-left: 4px;
+  margin-left: 8rpx;
 }
 .botoom-nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height:44px;
-  line-height:44px;
+  height:88rpx;
+  line-height:88rpx;
   color: #424242;
   width:100%;
-  font-size:16px;
+  font-size:32rpx;
   position:fixed;
   bottom:0;
   left:0;
 }
 .weui-tab__panel{
-  height: calc(100% - 44px)
+  height: calc(100% - 88rpx)
 }
 
 .all-circle{
-  height: calc(100% - 50px);
+  height: calc(100% - 100rpx);
 }
 .my-circle{
   color: #070707;
-  margin-bottom: 16px;
+  margin-bottom: 32rpx;
+  font-size: 36rpx;
+}
+.hot-circle{
+  font-size: 36rpx;
+}
+.circle-title{
+  font-size: 32rpx;
 }
 .circle{
-  font-size: 12px;
+  font-size: 24rpx;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 .circle-img{
-  width: 88px;
-  height: 56px;
+  width: 176rpx;
+  height: 112rpx;
   display: inline-block;
 }
 .circle-depict{
   color: #999999;
+  font-size: 28rpx;
 }
 .circle-info{
-  height: 56px;
+  height: 112rpx;
   position: absolute;
   top: 0;
-  left: 98px;
+  left: 196rpx;
 }
 .circle-updated{
   position: absolute;
   top: 0;
-  right: 0px;
-  height: 56px;
-  line-height: 56px;
+  right: 0rpx;
+  height: 112rpx;
+  line-height: 112rpx;
   color: #fe5431;
 }
  .hot-scroll{
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20rpx;
   overflow:hidden;
   white-space:nowrap;
 } 
 .hot-info{
-  width: 88px;
+  width: 176rpx;
   display: inline-block;  
-  font-size: 12px;
-  margin-right: 15px;
+  font-size: 24rpx;
+  margin-right: 30rpx;
 }
 .hot-title{
   text-align: center;
+  font-size: 28rpx;
 }
 .hot-img{
-  width: 88px;
-  height: 88px;
+  width: 176rpx;
+  height: 176rpx;
 }
 .hot-join{
-  width: 50px;
-  height: 20px;
+  width: 100rpx;
+  height: 40rpx;
   box-sizing: border-box;
-  padding: 0px 4px;
+  padding: 0rpx 8rpx;
   text-align: center;
-  line-height: 20px;
-  border-radius: 25px;
-  border: 1px solid #fe5431;
+  line-height: 40rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #fe5431;
   color: #fe5431;
-  margin-left: 19px;
+  margin-left: 38rpx;
 }
 .botoom-nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height:44px;
-  line-height:44px;
+  height:88rpx;
+  line-height:88rpx;
   color: #424242;
   width:100%;
-  font-size:16px;
+  font-size:32rpx;
   position:fixed;
   bottom:0;
   left:0;
+}
+.weui-navbar__slider{
+  width:6em;
 }

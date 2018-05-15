@@ -31,7 +31,7 @@
             <view class='user-time'>08-08 18:18</view>
           </view>
           <view class='get-info'>
-            <view class='get-laud'>
+            <view class='get-laud2'>
               <image src='../../images/laud00.png'></image>
               <span>86</span>
             </view>

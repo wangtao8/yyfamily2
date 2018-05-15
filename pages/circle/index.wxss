@@ -1,85 +1,94 @@
 /* pages/circle/index.wxss */
 page{
-  font-size: 16px;
-  padding: 10px;
+  font-size: 32rpx;
+  padding: 20rpx;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
 .all-circle{
-  height: calc(100% - 50px);
+  height: calc(100% - 100rpx);
 }
 .my-circle{
   color: #070707;
-  margin-bottom: 16px;
+  margin-bottom: 32rpx;
+  font-size: 36rpx;
+}
+.circle-title{
+  font-size: 32rpx;
+}
+.hot-circle{
+  font-size: 36rpx;
 }
 .circle{
-  font-size: 12px;
+  font-size: 24rpx;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 .circle-img{
-  width: 88px;
-  height: 56px;
+  width: 176rpx;
+  height: 112rpx;
   display: inline-block;
 }
 .circle-depict{
   color: #999999;
+  font-size: 28rpx;
 }
 .circle-info{
-  height: 56px;
+  height: 112rpx;
   position: absolute;
   top: 0;
-  left: 98px;
+  left: 196rpx;
 }
 .circle-updated{
   position: absolute;
   top: 0;
-  right: 0px;
-  height: 56px;
-  line-height: 56px;
+  right: 0rpx;
+  height: 112rpx;
+  line-height: 112rpx;
   color: #fe5431;
 }
  .hot-scroll{
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20rpx;
   overflow:hidden;
   white-space:nowrap;
 } 
 .hot-info{
-  width: 88px;
+  width: 176rpx;
   display: inline-block;  
-  font-size: 12px;
-  margin-right: 15px;
+  font-size: 24rpx;
+  margin-right: 30rpx;
 }
 .hot-title{
   text-align: center;
+  font-size: 28rpx;
 }
 .hot-img{
-  width: 88px;
-  height: 88px;
+  width: 176rpx;
+  height: 176rpx;
 }
 .hot-join{
-  width: 50px;
-  height: 20px;
+  width: 100rpx;
+  height: 40rpx;
   box-sizing: border-box;
-  padding: 0px 4px;
+  padding: 0rpx 8rpx;
   text-align: center;
-  line-height: 20px;
-  border-radius: 25px;
-  border: 1px solid #fe5431;
+  line-height: 40rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #fe5431;
   color: #fe5431;
-  margin-left: 19px;
+  margin-left: 38rpx;
 }
 .botoom-nav{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height:44px;
-  line-height:44px;
+  height:88rpx;
+  line-height:88rpx;
   color: #424242;
   width:100%;
-  font-size:16px;
+  font-size:32rpx;
   position:fixed;
   bottom:0;
   left:0;
