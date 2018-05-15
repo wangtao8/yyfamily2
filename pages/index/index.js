@@ -21,7 +21,8 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    curIndex: 0
+    curIndex: 0,
+    isJion: '+ 加入'
   },
   onLoad: function () {
     var that = this;
@@ -81,5 +82,18 @@ Page({
     wx.navigateTo({
       url: '/pages/circleInfo/index?id=1'
     })
+  },
+  goInfo: function () {
+    wx.navigateTo({
+      url: '/pages/circlePresent/index'
+    })
+  },
+  jion: function () {
+    this.setData({ isJion: '已加入' })
+    wx.showToast({
+      title: '已加入该圈子',
+      icon: 'success',
+      duration: 2000
+    });
   }
 });

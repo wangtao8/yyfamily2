@@ -18,7 +18,7 @@
         <view class='hot-info' wx:for="{{index}}">
           <image src='../../images/2.jpg' class='hot-img'></image>
           <view class='hot-title'>火爆圈子</view>
-          <text class='hot-join'>+ 加入</text>
+          <text class='hot-join' bindtap='goInfo'>+ 加入</text>
         </view>
       </scroll-view>
     </view>

@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/circlePresent/index",
     "pages/circleInfo/index",
     "pages/reply/index"
   ],

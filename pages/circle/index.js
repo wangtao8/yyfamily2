@@ -67,5 +67,10 @@ Page({
     wx.navigateTo({
       url: '/pages/circleInfo/index?id=1'
     })
+  },
+  goInfo: function () {
+    wx.navigateTo({
+      url: '/pages/circlePresent/index'
+    })
   }
 })

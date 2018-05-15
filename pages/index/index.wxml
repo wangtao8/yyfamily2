@@ -104,10 +104,10 @@
             <view style="height:170px;">
               <view class='hot-circle'>热门圈子</view>
               <scroll-view scroll-x class='hot-scroll'>
-                <view class='hot-info' wx:for="{{index}}">
+                <view class='hot-info' wx:for="{{index}}" bindtap='goInfo'>
                   <image src='../../images/2.jpg' class='hot-img'></image>
                   <view class='hot-title'>火爆圈子</view>
-                  <text class='hot-join'>+ 加入</text>
+                  <text class='hot-join' catchtap='jion'>{{isJion}}</text>
                 </view>
               </scroll-view>
             </view>
