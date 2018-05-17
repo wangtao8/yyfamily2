@@ -200,8 +200,8 @@ swiper{
   margin-bottom: 20rpx;
 }
 .circle-img{
-  width: 176rpx;
-  height: 112rpx;
+  width: 196rpx;
+  height: 132rpx;
   display: inline-block;
 }
 .circle-depict{
@@ -212,7 +212,7 @@ swiper{
   height: 112rpx;
   position: absolute;
   top: 0;
-  left: 196rpx;
+  left: 216rpx;
 }
 .circle-updated{
   position: absolute;
@@ -269,4 +269,7 @@ swiper{
 }
 .weui-navbar__slider{
   width:6em;
+}
+.weui-search-bar__input{
+  padding-left: 20rpx;
 }

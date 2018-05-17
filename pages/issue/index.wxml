@@ -1,0 +1,15 @@
+<!--pages/issue/index.wxml-->
+<view class='issue-title clear'>
+    <text>标题</text><input type='text'/>
+</view>
+<view class='issue-content clear'>
+<text>内容</text><textarea maxlength='2000' bindinput='getChange' style='padding-bottom:60rpx;height:{{elHeight}}' bindfocus='getFocus' bindblur='getBlur'></textarea>
+<text class='lave'>{{writed}}/{{2000 - writed}}</text>
+</view>
+<view class='issue-add clear'>
+<view bindtap='chooseImg'>+</view>
+ <view wx:for='{{urls}}'>
+    <image src='{{item}}' catchtap='seeImg' data-id='{{index}}'></image> 
+ </view>
+</view>
+<view class='issue'>发布</view>

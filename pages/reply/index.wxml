@@ -45,4 +45,8 @@
       <!-- <view></view> -->
     </view>
   </view>
+  <view class='write-comment'>
+    <input type='text' placeholder='评论' bindfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' value='{{elValue}}' />
+    <text style='display:{{isDisplay}}' class='submitBtn' bindtap='getBlur'>发表</text>
+  </view>
 </page>

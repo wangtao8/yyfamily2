@@ -1,22 +1,18 @@
-// pages/reply/index.js
+// pages/articleDetails/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    index: ['1','2','3'],
-    elWidth: '82%',
-    elMargin: '22rpx auto 0rpx;',
-    isDisplay: 'none',
-    elValue: ''
+      index: ['1','1','1','1']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('xxo:',options)
+  
   },
 
   /**
@@ -66,13 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  getFocus: function (e) {
-    var _this = this
-    this.setData({ elWidth: '70%', elMargin: '22rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
-  },
-  getBlur: function () {
-    var _this = this
-    this.setData({ elWidth: '82%', elMargin: '22rpx auto 0rpx;', isDisplay: 'none', elValue: '' })
   }
 })

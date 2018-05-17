@@ -4,7 +4,7 @@
     <view class="weui-tab">
       <view class="weui-navbar">
         <block wx:for="{{tabs}}" wx:key="*this">
-          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" catchtap="tabClick">
             <view class="weui-navbar__title">{{item}}</view>
           </view>
         </block>
@@ -20,16 +20,16 @@
                 <view class="weui-search-bar__box">
                   <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
                   <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-                  <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
                     <icon type="clear" size="14"></icon>
                   </view>
                 </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" catchtap="showInput">
                   <icon class="weui-icon-search" type="search" size="14"></icon>
                   <view class="weui-search-bar__text">搜索</view>
                 </label>
               </view>
-              <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+              <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
             </view>
             <!-- <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
             <navigator url="" class="weui-cell" hover-class="weui-cell_active">
@@ -61,9 +61,9 @@
               </block>
             </swiper>
             <view class='blank20'></view>
-            <view class='user-share' wx:for="{{index}}">
+            <view class='user-share' wx:for="{{index}}" catchtap='articleInfo'>
               <view class='user-image'>
-                <image src='../../images/heart0{{curIndex}}.png' class='user-heart' bindtap='checkHeart' />
+                <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' />
                 <view class='user-watch'>
                   <image src='../../images/eye.png' />
                   <span>123</span>
@@ -73,12 +73,12 @@
               <view style="width: 100%;height: 24px;">
                 <view class='use-label'>#get新玩法#</view>
                 <view class='user-interactive'>
-                  <view class='user-comment' bindtap='openMessageInfo'>
+                  <view class='user-comment' catchtap='openMessageInfo'>
                     <image src='../../images/message.png' />
                     <span>255</span>
                   </view>
                   <span>|</span>
-                  <view class='user-laud' bindtap='laudOrCancel'>
+                  <view class='user-laud' catchtap='laudOrCancel'>
                     <image src='../../images/laud00.png' />
                     <span>255</span>
                   </view>
@@ -92,7 +92,7 @@
           <scroll-view scroll-y class='all-circle'>
             <view>
               <view class='my-circle'>我的圈子</view>
-              <view class='circle' wx:for="{{index}}" bindtap='toInfo'>
+              <view class='circle' wx:for="{{index}}" catchtap='toInfo'>
                 <image src='../../images/1.jpg' class='circle-img'></image>
                 <view class='circle-info'>
                   <view class='circle-title'>全友家居</view>
@@ -104,7 +104,7 @@
             <view style="height:170px;">
               <view class='hot-circle'>热门圈子</view>
               <scroll-view scroll-x class='hot-scroll'>
-                <view class='hot-info' wx:for="{{index}}" bindtap='goInfo'>
+                <view class='hot-info' wx:for="{{index}}" catchtap='goInfo'>
                   <image src='../../images/2.jpg' class='hot-img'></image>
                   <view class='hot-title'>火爆圈子</view>
                   <text class='hot-join' catchtap='jion'>{{isJion}}</text>

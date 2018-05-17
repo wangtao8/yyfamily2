@@ -95,5 +95,10 @@ Page({
       icon: 'success',
       duration: 2000
     });
+  },
+  articleInfo: function(){
+    wx.navigateTo({
+      url: '/pages/articleDetails/index'
+    })
   }
 });
