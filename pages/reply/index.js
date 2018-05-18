@@ -7,7 +7,7 @@ Page({
   data: {
     index: ['1', '2', '3'],
     elWidth: '670rpx',
-    elMargin: '8px 0px 0px 15px',
+    elMargin: '16rpx 0rpx 0rpx 30rpx',
     isDisplay: 'none',
     elValue: '',
     placeholders: '发表你的评论吧',
@@ -77,7 +77,7 @@ Page({
   },
   getBlur: function () {
     var _this = this
-    this.setData({ elWidth: '670rpx', elMargin: '8px 0px 0px 15px', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧', content: '发表' })
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧', content: '发表' })
   },
   getFocuss: function (e) {
     var placeholders = '回复：' + e.currentTarget.dataset.name
