@@ -1,52 +1,50 @@
 <!--pages/reply/index.wxml-->
-<page>
-  <view class='comment'>
-    <view class='comment-top'>
-      <image class='avatar-main' src='../../images/3.jpg'></image>
-      <view>
+<view class='comment'>
+  <view class='comment-top'>
+    <image class='avatar-main' src='../../images/3.jpg'></image>
+    <view>
+      <view class='user-info'>
+        <view class='user-name'>帅得很</view>
+        <view class='user-time'>08-08 11:11</view>
+      </view>
+      <view class='get-info'>
+        <view class='get-laud'>
+          <image src='../../images/laud00.png'></image>
+          <span>26</span>
+        </view>
+        <view class='reply'>
+          <image src='../../images/message.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='commnent-bot'>我发表了一个很有意义的发言，蛀牙是这样写的，哈哈哈哈，呵呵呵呵，嘿嘿嘿，额，完了！</view>
+</view>
+<view class='other-user'>
+  <view class='reply-comment' wx:for='{{index}}' wx:key='{{index}}'>
+    <view class='avatar-vice'>
+      <image src='../../images/4.jpg' class='avatar-img'></image>
+      <view class='avatar-user'>
         <view class='user-info'>
-          <view class='user-name'>帅得很</view>
-          <view class='user-time'>08-08 11:11</view>
+          <view class='user-name'>真的帅</view>
+          <view class='user-time'>08-08 18:18</view>
         </view>
         <view class='get-info'>
-          <view class='get-laud'>
+          <view class='get-laud2' catchtap='addNums'>
             <image src='../../images/laud00.png'></image>
-            <span>26</span>
+            <span>{{nums}}</span>
           </view>
-          <view class='reply'>
-            <image src='../../images/message.png'></image>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='commnent-bot'>我发表了一个很有意义的发言，蛀牙是这样写的，哈哈哈哈，呵呵呵呵，嘿嘿嘿，额，完了！</view>
-  </view>
-  <view class='other-user'>
-    <view class='reply-comment' wx:for='{{index}}'>
-      <view class='avatar-vice'>
-        <image src='../../images/4.jpg' class='avatar-img'></image>
-        <view class='avatar-user'>
-          <view class='user-info'>
-            <view class='user-name'>真的帅</view>
-            <view class='user-time'>08-08 18:18</view>
-          </view>
-          <view class='get-info'>
-            <view class='get-laud2'>
-              <image src='../../images/laud00.png'></image>
-              <span>86</span>
-            </view>
-            <!-- <view class='reply'>
+          <!-- <view class='reply'>
             <image src='../../images/message.png'></image>
           </view> -->
-          </view>
         </view>
       </view>
-      <view class='commnent-bot2'>帅惨了！帅惨了！真的帅惨了！！！</view>
-      <!-- <view></view> -->
     </view>
+    <view class='commnent-bot2' catchtap='getFocuss' data-name='真的帅'>帅惨了！帅惨了！真的帅惨了！！！</view>
+    <!-- <view></view> -->
   </view>
-  <view class='write-comment'>
-    <input type='text' placeholder='评论' bindfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' value='{{elValue}}' />
-    <text style='display:{{isDisplay}}' class='submitBtn' bindtap='getBlur'>发表</text>
-  </view>
-</page>
+</view>
+<view class='write-comment'>
+  <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' cursor-spacing='8' value='{{elValue}}' focus='{{isfocus}}' />
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur'>{{content}}</text>
+</view>

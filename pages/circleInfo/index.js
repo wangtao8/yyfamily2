@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    elWidth: '82%',
-    elMargin: '22rpx auto 0rpx;',
+    elWidth: '670rpx',
+    elMargin: '16rpx 0rpx 0rpx 30rpx',
     isDisplay: 'none',
     elValue: ''
   },
@@ -68,10 +68,10 @@ Page({
   },
   getFocus: function (e) {
     var _this = this
-    this.setData({ elWidth: '70%', elMargin: '22rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
+    this.setData({ elWidth: '70%', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
   },
   getBlur: function () {
     var _this = this
-    this.setData({ elWidth: '82%', elMargin: '22rpx auto 0rpx;', isDisplay: 'none', elValue: ''})
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: ''})
   }
 })

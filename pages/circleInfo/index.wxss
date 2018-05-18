@@ -159,20 +159,19 @@ page{
   height: 90rpx;
   width: calc(100% + 40rpx);
   position: fixed;
-  left: -20rpx;
-  bottom: 0;
+  left: 0rpx;
+  bottom: 0rpx;
   background-color: #fff;
+  border-top:2rpx solid #ccc;
 }
 .top-info{
   height: calc(100% - 90rpx);
   margin-bottom: 20rpx;
 }
 .write-comment>input{
-  /* width: 82%; */
   height: 48rpx;
   border-radius: 24rpx;
   border: 2rpx solid #ccc;
-  /* margin: 22rpx auto 0rpx; */
   padding-left: 20rpx;
   font-size: 24rpx;
 }
@@ -180,6 +179,6 @@ page{
   font-size: 32rpx;
   color: #098d3b;
   position: absolute;
-  right: 60rpx;
-  bottom: 20rpx;
+  right: 80rpx;
+  bottom: 24rpx;
 }

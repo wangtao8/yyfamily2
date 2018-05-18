@@ -1,16 +1,19 @@
 /* pages/reply/index.wxss */
-page{
+
+page {
   padding: 0rpx 30rpx 0rpx 24rpx;
   box-sizing: border-box;
   height: 100%;
 }
-.comment-top{
+
+.comment-top {
   width: 100%;
   height: 76rpx;
   margin-top: 20rpx;
   font-size: 24rpx;
 }
-.comment-top>view{
+
+.comment-top>view {
   display: inline-block;
   width: calc(100% - 116rpx);
   height: 88rpx;
@@ -18,99 +21,113 @@ page{
   position: relative;
   top: -16rpx;
 }
-.other-user{
+
+.other-user {
   padding-bottom: 32rpx;
   background-color: #f7f7f7;
 }
-.user-time{
+
+.user-time {
   color: #b7b7b7;
 }
-.reply>image{
+
+.reply>image {
   width: 36rpx;
   height: 32rpx;
   float: right;
   position: relative;
   top: -36rpx;
 }
-.avatar-main{
+
+.avatar-main {
   width: 90rpx;
   height: 90rpx;
   border-radius: 45rpx;
 }
-.get-info{
+
+.get-info {
   /* float: right; */
   display: inline-block;
   height: 32rpx;
   position: relative;
   top: -20rpx;
 }
-.user-info{
+
+.user-info {
   display: inline-block;
   width: calc(100% - 140rpx);
 }
-.get-laud{
+
+.get-laud {
   position: relative;
   width: 140rpx;
   /* top: -25px; */
 }
-.get-laud2{
-  position: relative;
-  width: 80rpx;
-  left:50rpx;
+
+.get-laud2 {
+  /* position: relative; *//* width: 80rpx; *//* left:50rpx; */
 }
-.get-laud>image, .get-laud2>image{
+
+.get-laud>image, .get-laud2>image {
   width: 32rpx;
   height: 32rpx;
 }
-.get-laud>span,.get-laud2>span{
-  margin-left: 16rpx;
+
+.get-laud>span, .get-laud2>span {
+  margin-left: 8rpx;
   color: #b7b7b7;
 }
-.reply-comment{
+
+.reply-comment {
   box-sizing: border-box;
   padding: 22rpx 0rpx 0rpx 10rpx;
 }
-.commnent-bot{
+
+.commnent-bot {
   font-size: 28rpx;
   padding-left: 116rpx;
   margin-bottom: 32rpx;
   margin-top: 20rpx;
 }
-.commnent-bot2{
-  font-size:28rpx;
-  margin-bottom:32rpx;
-  border-bottom:2rpx solid #ccc;
-  width:calc(100% - 120rpx);
+
+.commnent-bot2 {
+  font-size: 28rpx;
+  margin-bottom: 32rpx;
+  border-bottom: 2rpx solid #ccc;
+  width: calc(100% - 120rpx);
   margin-left: 100rpx;
   padding-bottom: 12rpx;
 }
-.avatar-img{
+
+.avatar-img {
   width: 74rpx;
   height: 74rpx;
   border-radius: 37rpx;
 }
-.avatar-user{
+
+.avatar-user {
   display: inline-block;
   width: calc(100% - 110rpx);
   font-size: 24rpx;
   margin-left: 30rpx;
 }
-.write-comment{
+
+.write-comment {
   height: 90rpx;
   width: calc(100% + 40rpx);
   position: fixed;
   left: 0rpx;
-  bottom: 12rpx;
+  bottom: 0rpx;
   background-color: #fff;
-  border-top:2rpx solid #ccc;
-  /* box-sizing: border-box; */
-  padding-bottom: 10rpx;
+  border-top: 2rpx solid #ccc;
 }
-.top-info{
+
+.top-info {
   height: calc(100% - 90rpx);
   margin-bottom: 20rpx;
 }
-.write-comment>input{
+
+.write-comment>input {
   /* width: 82%; */
   height: 48rpx;
   border-radius: 24rpx;
@@ -119,10 +136,11 @@ page{
   padding-left: 20rpx;
   font-size: 24rpx;
 }
-.submitBtn{
+
+.submitBtn {
   font-size: 32rpx;
   color: #098d3b;
   position: absolute;
-  right: 60rpx;
-  bottom: 20rpx;
+  right: 80rpx;
+  bottom: 28rpx;
 }

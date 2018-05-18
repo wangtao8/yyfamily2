@@ -64,5 +64,5 @@
   </view>
 </scroll-view>
 <view class='write-comment'>
-  <input type='text' placeholder='评论' bindfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' value='{{elValue}}'/><text style='display:{{isDisplay}}' class='submitBtn' bindtap='getBlur'>发表</text>
+  <input type='text' placeholder='评论' bindfocus='getFocus'  cursor-spacing='8' style='width:{{elWidth}}; margin:{{elMargin}}' value='{{elValue}}'/><text style='display:{{isDisplay}}' class='submitBtn' bindtap='getBlur'>发表</text>
 </view>

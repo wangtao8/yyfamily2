@@ -43,7 +43,7 @@
       <image src='../../images/icon_like.png'></image>
       <text>8</text>
     </view>
-    <view>
+    <view catchtap='openMessageInfo'>
       <image src='../../images/icon_comment.png'></image>
       <text>828</text>
     </view>

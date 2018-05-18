@@ -87,14 +87,6 @@
 .commodity-info{
   font-size: 32rpx;
 }
-.bottom-nav{
-  width: 100%;
-  height: 88rpx;
-  position: fixed;
-  bottom: 0rpx;
-  left: 0rpx;
-  background: #fff;
-}
 .description{
   font-size: 28rpx;
   height: 78rpx;
@@ -114,11 +106,17 @@
   white-space: nowrap;
 }
 .bottom-nav{
+  width: 100%;
+  height: 88rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  background: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   box-sizing: border-box;
-  padding-top: 22rpx;
+  padding-top: 12rpx;
 }
 .bottom-nav>view{
   width: 44rpx;

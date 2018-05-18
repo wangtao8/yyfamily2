@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  openMessageInfo: function () {
+    wx.navigateTo({
+      url: '/pages/reply/index?id=1'
+    })
   }
 })
