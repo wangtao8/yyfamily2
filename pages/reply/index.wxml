@@ -45,6 +45,8 @@
   </view>
 </view>
 <view class='write-comment'>
-  <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' cursor-spacing='8' value='{{elValue}}' focus='{{isfocus}}' />
-  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur'>{{content}}</text>
+  <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' cursor-spacing='8' value='{{elValue}}' focus='{{isfocus}}' bindinput='changeValue'/>
+  <icon type="clear" size="14" catchtap="clearInput" wx:if='{{elValue.length>0}}'></icon>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur' wx:if='{{elValue.length>0}}'>{{content}}</text>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0}}'>取消</text>
 </view>

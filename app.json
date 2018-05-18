@@ -1,16 +1,16 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/articleDetails/index",
     "pages/issue/index",
-    "pages/circlePresent/index",
+    "pages/reply/index",
+    "pages/index/index",
     "pages/circleInfo/index",
-    "pages/reply/index"
+    "pages/circlePresent/index",
+    "pages/articleDetails/index"    
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#11aaf2",
     "navigationBarTitleText": "友友之家",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "#fff"
   }
 }

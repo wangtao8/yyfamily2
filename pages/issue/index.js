@@ -85,6 +85,7 @@ Page({
         var tempFilePaths = res.tempFilePaths
         var urls = []
         for (var i = 0; i < tempFilePaths.length; i++) {
+          console.log(tempFilePaths[i])
           urls.push(tempFilePaths[i]).reverse
         }
         _this.setData({ urls: urls})

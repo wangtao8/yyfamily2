@@ -121,7 +121,11 @@ page {
   background-color: #fff;
   border-top: 2rpx solid #ccc;
 }
-
+icon{
+  position: absolute;
+  right: 200rpx;
+  top: 30rpx;
+}
 .top-info {
   height: calc(100% - 90rpx);
   margin-bottom: 20rpx;

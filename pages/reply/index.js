@@ -86,5 +86,15 @@ Page({
   addNums: function () {
     var nums = this.data.nums + 1
     this.setData({ nums: nums })
+  },
+  changeValue: function(e) {
+    this.setData({ elValue: e.detail.value })
+  },
+  clearInput: function (){
+    this.setData({ elValue: '' })
+  },
+  cancel: function () {
+    var _this = this
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
   }
 })
