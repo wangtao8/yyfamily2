@@ -7,7 +7,7 @@
 </view>
 <view class='issue-add clear'>
 <view bindtap='chooseImg'>+</view>
- <view wx:for='{{urls}}'>
+ <view wx:for='{{urls}}' wx:key='*this'>
     <image src='{{item}}' catchtap='seeImg' data-id='{{index}}'></image> 
  </view>
 </view>

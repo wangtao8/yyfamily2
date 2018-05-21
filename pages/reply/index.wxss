@@ -121,17 +121,22 @@ page {
   background-color: #fff;
   border-top: 2rpx solid #ccc;
 }
-icon{
+.clearContent{
+  width: 48rpx;
+  height: 48rpx;
   position: absolute;
-  right: 200rpx;
-  top: 30rpx;
+  right:180rpx;
+  bottom:22rpx;
+  box-sizing: border-box;
+  padding-left: 10rpx;
+  padding-bottom: 10rpx;
 }
 .top-info {
   height: calc(100% - 90rpx);
   margin-bottom: 20rpx;
 }
 
-.write-comment>input {
+.submitInput{
   /* width: 82%; */
   height: 48rpx;
   border-radius: 24rpx;
@@ -139,6 +144,10 @@ icon{
   /* margin: 22rpx auto 0rpx; */
   padding-left: 20rpx;
   font-size: 24rpx;
+}
+.submitInput>input{
+  width: 90%;
+  float: left;
 }
 
 .submitBtn {

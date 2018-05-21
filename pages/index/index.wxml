@@ -3,7 +3,7 @@
   <view class="page__bd">
     <view class="weui-tab">
       <view class="weui-navbar">
-        <block wx:for="{{tabs}}" wx:key="*this">
+        <block wx:for="{{tabs}}" wx:key='*this'>
           <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" catchtap="tabClick">
             <view class="weui-navbar__title">{{item}}</view>
           </view>
@@ -54,16 +54,16 @@
             </navigator>
         </view> -->
             <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
-              <block wx:for="{{imgUrls}}">
+              <block wx:for="{{imgUrls}}" wx:key='*this'>
                 <swiper-item>
                   <image src="{{item}}" class="slide-image" width="355" height="150" />
                 </swiper-item>
               </block>
             </swiper>
             <view class='blank20'></view>
-            <view class='user-share' wx:for="{{index}}" catchtap='articleInfo'>
+            <view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
               <view class='user-image'>
-                <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' />
+                <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}"/>
                 <view class='user-watch'>
                   <image src='../../images/eye.png' />
                   <span>123</span>
@@ -92,7 +92,7 @@
           <scroll-view scroll-y class='all-circle'>
             <view>
               <view class='my-circle'>我的圈子</view>
-              <view class='circle' wx:for="{{index}}" catchtap='toInfo'>
+              <view class='circle' wx:for="{{indexs}}" catchtap='toInfo' wx:key='*this'>
                 <image src='../../images/1.jpg' class='circle-img'></image>
                 <view class='circle-info'>
                   <view class='circle-title'>全友家居</view>
@@ -104,7 +104,7 @@
             <view style="height:170px;">
               <view class='hot-circle'>热门圈子</view>
               <scroll-view scroll-x class='hot-scroll'>
-                <view class='hot-info' wx:for="{{index}}" catchtap='goInfo'>
+                <view class='hot-info' wx:for="{{indexs}}" wx:key='*this' catchtap='goInfo'>
                   <image src='../../images/2.jpg' class='hot-img'></image>
                   <view class='hot-title'>火爆圈子</view>
                   <text class='hot-join' catchtap='jion'>{{isJion}}</text>

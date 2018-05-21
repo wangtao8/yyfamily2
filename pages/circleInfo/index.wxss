@@ -19,8 +19,6 @@ page{
   position: absolute;
   left: 200rpx;
   top: 0;
-  /* height: 60px; */
-  /* border-bottom: 1px solid #ccc; */
 }
 .head-info::after{
   content: '';
@@ -132,11 +130,11 @@ page{
   float: right;
 }
 .leave_message{
-  width: 36rpx;
-  height: 32rpx;
-  margin-right: 24rpx;
-  position: relative;
-  top: 4rpx;
+  width:30rpx;
+  height:24rpx;
+  margin-right:24rpx;
+  position:relative;
+  top:2rpx;
 }
 .luads{
   width: 28rpx;
@@ -168,12 +166,26 @@ page{
   height: calc(100% - 90rpx);
   margin-bottom: 20rpx;
 }
-.write-comment>input{
+.clearContent{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  right:180rpx;
+  bottom:22rpx;
+  box-sizing: border-box;
+  padding-left: 10rpx;
+  padding-bottom: 10rpx;
+}
+.submitInput{
   height: 48rpx;
   border-radius: 24rpx;
   border: 2rpx solid #ccc;
   padding-left: 20rpx;
   font-size: 24rpx;
+}
+.submitInput>input{
+  width: 90%;
+  float: left;
 }
 .submitBtn{
   font-size: 32rpx;

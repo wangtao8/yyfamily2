@@ -21,7 +21,7 @@
   <view class='commnent-bot'>我发表了一个很有意义的发言，蛀牙是这样写的，哈哈哈哈，呵呵呵呵，嘿嘿嘿，额，完了！</view>
 </view>
 <view class='other-user'>
-  <view class='reply-comment' wx:for='{{index}}' wx:key='{{index}}'>
+  <view class='reply-comment' wx:for='{{index}}' wx:key='*this'>
     <view class='avatar-vice'>
       <image src='../../images/4.jpg' class='avatar-img'></image>
       <view class='avatar-user'>
@@ -45,8 +45,12 @@
   </view>
 </view>
 <view class='write-comment'>
-  <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' style='width:{{elWidth}}; margin:{{elMargin}}' cursor-spacing='8' value='{{elValue}}' focus='{{isfocus}}' bindinput='changeValue'/>
-  <icon type="clear" size="14" catchtap="clearInput" wx:if='{{elValue.length>0}}'></icon>
+  <view style='width:{{elWidth}}; margin:{{elMargin}}' class='submitInput'>
+    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue'/>
+  <view catchtap="clearInput" class='clearContent'>
+    <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+  </view>
+  </view>
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur' wx:if='{{elValue.length>0}}'>{{content}}</text>
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0}}'>取消</text>
 </view>

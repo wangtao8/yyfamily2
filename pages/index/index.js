@@ -5,7 +5,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
   data: {
-    index:['1','2','3','4','5'],
+    indexs:['1','2','3','4','5'],
     tabs: ["热门", "发现", "圈子"],
     activeIndex: 0,
     sliderOffset: 0,
@@ -53,6 +53,7 @@ Page({
     });
   },
   clearInput: function () {
+    console.log(1)
     this.setData({
       inputVal: ""
     });
@@ -62,12 +63,22 @@ Page({
       inputVal: e.detail.value
     });
   },
-  checkHeart: function () {
+  checkHeart: function (e) {
     var _this = this
     if (_this.data.curIndex == 0){
       _this.setData({ curIndex: 1 })
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'success',
+        duration: 1000
+      })
     } else {
       _this.setData({ curIndex: 0 })
+      wx.showToast({
+        title: '取消收藏',
+        icon: 'success',
+        duration: 1000
+      })
     }
   },
   openMessageInfo: function () {

@@ -64,5 +64,12 @@
   </view>
 </scroll-view>
 <view class='write-comment'>
-  <input type='text' placeholder='评论' bindfocus='getFocus'  cursor-spacing='8' style='width:{{elWidth}}; margin:{{elMargin}}' value='{{elValue}}'/><text style='display:{{isDisplay}}' class='submitBtn' bindtap='getBlur'>发表</text>
+  <view style='width:{{elWidth}}; margin:{{elMargin}}' class='submitInput'>
+    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue'/>
+  <view catchtap="clearInput" class='clearContent'>
+    <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+  </view>
+  </view>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur' wx:if='{{elValue.length>0}}'>{{content}}</text>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0}}'>取消</text>
 </view>

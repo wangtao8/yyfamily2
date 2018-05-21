@@ -90,7 +90,7 @@ Page({
   changeValue: function(e) {
     this.setData({ elValue: e.detail.value })
   },
-  clearInput: function (){
+  clearInput: function (e){
     this.setData({ elValue: '' })
   },
   cancel: function () {

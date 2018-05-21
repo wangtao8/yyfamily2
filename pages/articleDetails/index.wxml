@@ -9,7 +9,7 @@
 <view class='article-recommend'>
   <view class='article-title'>相关文章</view>
   <scroll-view scroll-x class='content-scorll'>
-    <view class='content' wx:for='{{index}}'>
+    <view class='content' wx:for='{{index}}' wx:key='*this'>
       <view class='content-img'>
         <image src='../../images/5.jpg'></image>
       </view>
@@ -20,7 +20,7 @@
 <view class='commodity-recommend' style="padding-bottom: 40rpx;">
     <view class='commodity-title'>相关商品</view>
     <scroll-view scroll-x class='commodity-scorll'>
-        <view class='commodity-content' wx:for='{{index}}'>
+        <view class='commodity-content' wx:for='{{index}}' wx:key='*this'>
             <view class='commodity-image'>
                 <image src='../../images/3.jpg'></image>
             </view>

@@ -8,7 +8,11 @@ Page({
     elWidth: '670rpx',
     elMargin: '16rpx 0rpx 0rpx 30rpx',
     isDisplay: 'none',
-    elValue: ''
+    elValue: '',
+    placeholders: '发表你的评论吧',
+    isfocus: false,
+    content: '发表',
+    nums: 0
   },
 
   /**
@@ -68,10 +72,29 @@ Page({
   },
   getFocus: function (e) {
     var _this = this
-    this.setData({ elWidth: '70%', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
+    this.setData({ elWidth: '70%', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
   },
   getBlur: function () {
     var _this = this
-    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: ''})
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧', content: '发表' })
+  },
+  getFocuss: function (e) {
+    var placeholders = '回复：' + e.currentTarget.dataset.name
+    this.setData({ placeholders: placeholders, isfocus: true, content: '回复' })
+  },
+  addNums: function () {
+    var nums = this.data.nums + 1
+    this.setData({ nums: nums })
+  },
+  changeValue: function (e) {
+    this.setData({ elValue: e.detail.value })
+  },
+  clearInput: function (e) {
+    console.log(2)
+    this.setData({ elValue: '' })
+  },
+  cancel: function () {
+    var _this = this
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
   }
 })
