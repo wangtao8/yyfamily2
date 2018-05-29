@@ -1,0 +1,131 @@
+
+<view class="page" style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%；overflow-y:scroll;overflow-x:hidden; '>
+    <view class="page__bd">
+    <view class='top_box'>
+    <view class='top_name'>
+      <text>5000</text>
+      <view class='top_title' bindtap="showDialogBtn">积分阅换规则 ></view>
+    </view>
+    </view>
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view style='height:30rpx;'></view>
+            <view class="weui-tab__panel">
+                <view  class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                <!-- 积分兑换 -->
+                <view class='box_list' wx:for='{{conmment}}'>
+                <view  class='left_img'></view>
+                <view style='width: 100rpx;float: left;margin-left: 60rpx;margin-top:20rpx;'>
+                <view style='font-size:32rpx;'>{{item.name}}</view>
+                <view style='font-size:24rpx;color:#7E7E7E;margin-bottom:20rpx;'>{{item.content}}</view>
+                </view>
+                <!-- <view class='jfdh'>
+                <text class='jfbz'>积分不足</text>
+                </view> -->
+                 <view class='jfdh'>
+                 <text wx:if='{{item.data=="积分不足"}}' class='jfbz'>{{item.data}}</text>
+                 <text wx:else='{{item.data=="立即兑换"}}' class='ljdh' bindtap='showDialogBtns'>{{item.data}}</text>
+                </view>
+                <view style='clear:both;'></view>
+                
+                </view>
+                </view>
+                <!-- 兑换记录 -->
+                <view  class="weui-tab__content " hidden="{{activeIndex != 1}}">  
+                <!-- <view >
+                <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+                  <view class="content">{{item.content}}
+                   <view class='right_date'>{{item.date}}</view>
+                  </view>
+                  
+                  <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+                </view>
+              </view>-->
+               <view class='box_list' wx:for='{{items}}'>
+                <view style='width: 200rpx;float: left;margin-left: 60rpx;margin-top:20rpx;'>
+                <view style='font-size:32rpx;'>{{item.name}}</view>
+                <view style='font-size:24rpx;color:#7E7E7E;'>{{item.content}}</view>
+                </view>
+                <view style='width: 350rpx;height: 80rpx;float: right;margin-top:40rpx;margin-right: 30rpx;color:#7E7E7E;'>
+                <text>兑换时间：</text>
+                <text>{{item.date}}</text>
+                </view>
+                <view style='clear:both;'></view>
+                 
+                </view>
+                <view style='height:40rpx;'></view>
+            </view> 
+            </view>
+        </view>
+    </view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+ <view class='modal_del' bindtap="onCancel" data-status="cancel">
+ <image style='width:34rpx;height:34rpx; margin-top:10rpx;' src='../../images/del.png' />
+ </view>
+  <view class="modal-title">积分阅换规则</view>
+  <view class="modal-content">
+  </view>
+</view>
+
+<!--弹窗-->
+ <view class="modal-mask" bindtap="hideModals" catchtouchmove="preventTouchMoves" wx:if="{{showModals}}"></view>
+<view class="modal-dialog" wx:if="{{showModals}}">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+<view class="home_list">
+ <view class='list_texts'> 文字说明</view> 
+</view>
+<view style='clear:both;'></view>
+<view class='list_line'></view>
+<view class="home_listbottom">
+
+ <view class='list_textaction' > 
+ <text class='text'>积分：</text>
+ <view class='text_input'>
+    <input placeholder-class="input-holder"  name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入积分"></input>
+ </view>
+
+ </view>
+  <view class='list_textaction' > 
+ <text class='text'>姓名：</text>
+ <view class='text_input'>
+    <input placeholder-class="input-holder" name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入姓名"></input>
+ </view>
+
+ </view>
+
+<view class='list_textaction' > 
+ <text class='text'>手机：</text>
+ <view class='text_input'>
+    <input placeholder-class="input-holder" type="number" name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入手机"></input>
+ </view>
+
+ </view>
+
+ <view class='list_textaction' > 
+ <text class='text'>地址：</text>
+ <view class='text_input' >
+    <input placeholder-class="input-holder"  name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入地址"></input>
+ </view>
+ </view>
+<view class='list_line' style='margin-bottom:25rpx;margin-top: 80rpx;'></view>
+ <view class="modal-footer">
+ 
+    <button style='border-color: #00be8e;' class="btn-cancel" bindtap="onCancels" data-status="cancel">取消</button>
+    <button class="btn-confirm" formType="submit" bindtap="onConfirm" data-status="confirm">确定</button>
+ </view>
+  
+</view>
+
+</form>
+</view> 
+</view>

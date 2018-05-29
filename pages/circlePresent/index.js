@@ -5,14 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isJion: '+加入圈子'
+    trueOrfalse: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options)
+    this.setData({ trueOrfalse: options.isJion })
   },
 
   /**
@@ -63,12 +64,33 @@ Page({
   onShareAppMessage: function () {
   
   },
-  openToast: function () {
-    this.setData({ isJion: '已加入'})
-    wx.showToast({
-      title: '已加入该圈子',
-      icon: 'success',
-      duration: 2000
-    });
+  openToast: function (e) {
+    var id = e.target.dataset.id
+    console.log(id)
+    if (id == 0) {
+      this.setData({ trueOrfalse: 1 })
+      wx.showToast({
+        title: '已加入该圈子',
+        icon: 'success',
+        duration: 2000
+      });
+    } else {
+      this.setData({ trueOrfalse: 0 })
+      wx.showToast({
+        title: '已退出该圈子',
+        icon: 'success',
+        duration: 2000
+      });
+    }
+  },
+  toInfo: function () {
+    wx.navigateTo({
+      url: '/pages/circleInfo/index?id=1'
+    })
+  },
+  goIssue: function () {
+    wx.navigateTo({
+      url: '/pages/issue/index'
+    })
   }
 })

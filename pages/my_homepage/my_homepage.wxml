@@ -1,0 +1,66 @@
+<view style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%； '>
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class="home_list" bindtap="changeAvatar">
+ <view class='list_text'> 头像</view>
+  <view class="infotext" >
+        <image wx:if="{{imgUrl!=null}}" class="userinfo-avatar" src="{{imgUrl}}" background-size="cover"></image>
+        <image wx:else class="userinfo-avatar" src="{{userImg}}" background-size="cover"></image>
+         <!-- <image class="userinfo-avatar" src="../../images/photos.jpg"></image>  -->
+      </view>
+</view>
+<view class='list_line'></view>
+<view class="home_list">
+ <view class='list_text'> 昵称</view>
+   <input name="input" class='list_img'  bindinput="bindKeyInput" placeholder="请输入你的昵称"/>
+</view>
+<view style='clear:both;'></view>
+<view class='list_line'></view>
+<view class="home_listbottom">
+ <view class='list_textaction' > 
+ <text style='width:120rpx;padding-top: 10rpx;;padding-bottom: 20rpx;height:60rpx;padding-left:20rpx; float:left;'>简介</text>
+ <view style='width:450rpx;text-align: left;font-size: 32rpx;float:right;' >
+    <textarea fixed="true" name='textarea' bindblur="bindTextAreaBlur" auto-height placeholder="请输入你的简介" style='margin-top:20rpx;' />  
+    <!-- <input name="input" class='list_img'  bindinput="bindKeyInput" placeholder="请输入你的昵称"/>  -->
+ </view>
+
+<view style='clear:both;'></view>
+ <view class='list_line' style='z-index:100;width:200%;padding-left:0rpx;'></view>
+ <view class='list_bottom' name='photo'>
+ <!-- <text style='padding-left:20rpx;'>城市</text> -->
+ <view class="section">
+  <!-- <view class="section__title">省市区选择器</view> -->
+  <picker name='picker' mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker" style='padding-left:20rpx;'>
+     <text style='width:100rpx;padding-right:40rpx;float:left;padding-top:30rpx;'>城市</text> 
+     <view style='width:440rpx;height:60rpx;padding-top:30rpx;padding-bottom:20rpx;float:right;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'> 
+     {{region[0]}}，{{region[1]}}，{{region[2]}}</view>
+    </view>
+  </picker>
+</view>
+<view style='clear:both;'></view>
+ <view class='list_line' style='z-index:100;width:200%;padding-left:0rpx;'></view>
+ </view>
+ <view style='clear:both;'></view>
+  <view class='list_bottom'>
+ 
+ <view class="section">
+
+   <picker name='pickerdate' mode="date" value="{{date}}" start="1990-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="picker" style='padding-left:20rpx;'>
+     <text style='width:100rpx;padding-right:40rpx;float:left;padding-top:30rpx;'>生日</text> 
+     <view style='width:440rpx;height:60rpx;padding-top:30rpx;padding-bottom:20rpx;float:right;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'> 
+     {{date}}</view>
+    </view>
+  </picker>
+</view>
+<view style='clear:both;'></view>
+ <view class='list_line' style='z-index:100;width:200%;padding-left:0rpx;'></view>
+ </view>
+ </view>
+ <view style='clear:both;'></view>
+<!-- <view class='save'>保存</view> -->
+<button class='save' formType="submit" bindtap='save'>保 存</button>
+</view>
+</form>
+</view>
+

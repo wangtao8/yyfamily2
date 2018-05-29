@@ -1,0 +1,7 @@
+<view style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%；overflow-y:scroll;overflow-x:hidden; '>
+<view class='logo'><image style='width: 238rpx;height: 53rpx;' src='../../images/logo.png' /></view>
+<view class='img'><image style='width: 316rpx;height: 282rpx;' src='../../images/pand.png' /></view>
+<view class='title'>欢迎来到YOYO实验室</view>
+<view class='content'>功能介绍:其中在框架层里面有一个很重要的概念就是导航设计，作者对导航设计的定义是：元素的组合，允许用户在信息架构中穿行。</view>
+
+</view>

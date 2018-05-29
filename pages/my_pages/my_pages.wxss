@@ -1,0 +1,125 @@
+.logo{
+  width: 238rpx;
+  height: 53rpx;
+  margin-top: 40rpx;
+  margin-left: 60rpx;
+  margin-bottom: 180rpx;
+}
+.img{
+  width: 316rpx;
+  height: 282rpx;
+  margin: 0 auto;
+  font-size: 36rpx;
+}
+.title{
+  width: 50%;
+  height: 140rpx;
+  line-height: 140rpx;
+  font-size: 36rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+.content{
+  margin: 0rpx 30rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+/* 弹窗 */
+
+.show-btn {
+  margin-top: 100rpx;
+  color: #22cc22;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+
+.home_list{
+  width: 100%;
+  height: 110rpx; 
+}
+.home_listbottom{
+  width: 100%;
+  height: 100%;
+  
+}
+.list_text{
+  padding-top: 30rpx;
+  font-size: 32rpx;
+  width: 130rpx;
+  height: 60rpx;
+  float: left;
+  padding-left: 20rpx;
+}
+.list_textaction{
+  padding-top: 20rpx;
+  font-size: 32rpx;
+  width: 600rpx;
+  height: 60rpx;
+  /* float: left; */
+  
+  
+}
+.list_line{
+  width: 100%;
+  height: 2rpx;
+  background-color: #d6d6d6;
+}

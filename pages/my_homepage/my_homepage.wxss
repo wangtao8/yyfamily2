@@ -1,0 +1,76 @@
+@import "../lib/weui.wxss";
+.picker{
+    background-color: #FFFFFF;
+    font-size: 32rpx;
+}
+.home_list{
+  width: 100%;
+   height: 110rpx; 
+   
+   
+
+}.home_listbottom{
+  width: 100%;
+  height: 100%;
+  
+}
+.list_text{
+  padding-top: 30rpx;
+  font-size: 32rpx;
+  width: 130rpx;
+  height: 60rpx;
+  float: left;
+  padding-left: 20rpx;
+}
+.list_textaction{
+  padding-top: 20rpx;
+  font-size: 32rpx;
+  width: 600rpx;
+  height: 60rpx;
+  /* float: left; */
+  
+  
+}
+.list_img{
+  float: left;
+  /* padding-left: 20rpx;   */
+  margin-top: 30rpx;
+  width: 400rpx;
+  height: 60rpx;
+  font-size: 32rpx;
+}
+.image{
+  width:20rpx;
+  height:40rpx;
+  padding-top:30rpx;
+}
+.list_line{
+  width: 100%;
+  height: 2rpx;
+  background-color: #d6d6d6;
+}
+.list_bottom{
+  width:100%;
+  height:100%;
+}
+.infotext{
+    display: flex;
+    align-items: center;
+}
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 20rpx;
+  margin-top: 5rpx;
+  border-radius: 50%;
+}
+.save{
+  width: 60%;
+  height: 80rpx;
+  background-color: #00bf8e;
+  color: #ffffff;
+  margin: 0 auto;
+  margin-top: 180rpx;
+  text-align: center;
+  line-height: 80rpx;
+}

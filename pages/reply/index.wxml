@@ -1,4 +1,5 @@
 <!--pages/reply/index.wxml-->
+<view class='content' style='margin-bottom:{{marBot}}'>
 <view class='comment'>
   <view class='comment-top'>
     <image class='avatar-main' src='../../images/3.jpg'></image>
@@ -13,7 +14,7 @@
           <span>26</span>
         </view>
         <view class='reply'>
-          <image src='../../images/message.png'></image>
+          <image src='../../images/message.png' class='clear'></image>
         </view>
       </view>
     </view>
@@ -44,13 +45,21 @@
     <!-- <view></view> -->
   </view>
 </view>
+</view>
 <view class='write-comment'>
+  <view class='chooseImage' wx:if='{{urls.length > 0}}' style='width:{{scrollWidth}}'>
+    <view wx:for='{{urls}}' wx:key='{{index}}' catchtap='previewImage' data-id='{{index}}'>
+      <image src='../../images/redDele.png' class='redDele' catchtap='redDele' data-id='{{index}}'></image>
+      <image src='{{item}}' class='isImage'></image>
+    </view>
+  </view>
   <view style='width:{{elWidth}}; margin:{{elMargin}}' class='submitInput'>
-    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue'/>
-  <view catchtap="clearInput" class='clearContent'>
-    <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue' />
+    <view catchtap="clearInput" class='clearContent'>
+      <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+    </view>
   </view>
-  </view>
-  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur' wx:if='{{elValue.length>0}}'>{{content}}</text>
-  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0}}'>取消</text>
+  <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0 && urls.length == 0}}' data-id='0'>取消</text>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:else data-id='1'>发表</text>
 </view>

@@ -10,14 +10,14 @@ page{
   height: 150rpx;
 }
 .head-img{
-  width: 180rpx;
-  height: 120rpx;
+  width: 150rpx;
+  height: 140rpx;
   border-radius: 8rpx;
 }
 .circle-info{
   display: inline-block;
   position: absolute;
-  left: 200rpx;
+  left: 178rpx;
   top: 0;
 }
 .head-info::after{
@@ -25,21 +25,26 @@ page{
   display: block;
   width: calc(100% + 40rpx);
   height: 2rpx;
-  background: #ccc;
+  background: #dcdcdc;
   position: absolute;
   left: -20rpx;
-  bottom: 0;
+  bottom: -24rpx;
 }
 .circle-name{
   color: #2b2b2b;
-  font-size: 36rpx;
+  font-size: 32rpx;
 }
 .circle-num{
   color: #929292;
   font-size: 28rpx;
+  margin-top: 15rpx;
 }
 .article-title{
-  font-size: 36rpx;
+  font-size: 38rpx;
+   /* margin-top: 10prx;  */
+   position: absolute;
+   left: 0rpx;
+   top:100rpx;
 }
 .article-info{
   margin-top: 12rpx;
@@ -47,42 +52,69 @@ page{
 }
 .article-auth{
   font-size: 24rpx;
-  margin-top: 4rpx;
-  line-height:76rpx;
+  margin-top: 60rpx;
+  /* line-height:76rpx; */
+  position: relative;
 }
 .article-auth>image{
-  width: 90rpx;
-  height: 90rpx;
-  border-radius: 45rpx;
-  vertical-align: middle;
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 41rpx;
+  /* vertical-align: middle; */
+  display: inline-block;
+}
+.auth-info{
+  width: 400rpx;
+  position: absolute;
+  left: 100rpx;
+  top: 0rpx;
 }
 .write-auth{
-  margin-left: 14rpx;
+  /* margin-left: 14rpx; */
   color: #929292;
-  font-size: 24rpx;
+  font-size: 32rpx;
+  position: absolute;
+  left: 0rpx;
 }
 .write-time{
-  float: right;
+  /* float: right; */
   color: #929292;
+  position: absolute;
+  top: 40rpx;
+  left: 0rpx;
+  font-size: 24rpx;
+}
+.attention-auth{
+  position: absolute;
+  right: 0rpx;
+  top: 14rpx;
+  width: 138rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  color: #eb5837;
+  border: 2rpx solid #eb5837;
+  text-align: center;
+  line-height: 48rpx;
 }
 .article-content{
-  font-size: 32rpx;
-  margin-top: 30rpx;
+  font-size: 30rpx;
+  margin-top: 78rpx;
   color: #3c3c3c;
   padding-bottom: 60rpx;
 }
 .article-content::after{
   content: '';
   display: block;
-  height: 2rpx;
-  background: #ccc;
+  height: 18rpx;
+  background: #f3f5f9;
   width: calc(100% + 40rpx);
   position: absolute;
   left: -20rpx;
   bottom: 0;
 }
 .comment-info{
-  margin-top: 12rpx;
+  margin-top: 24rpx;
 }
 .comment-icon{
   font-size: 36rpx;
@@ -98,27 +130,32 @@ page{
   vertical-align: middle;
 }
 .comment-left-img{
-  width: 74rpx;
-  height: 74rpx;
-  border-radius: 37rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
 }
 .comment-right-info{
   float: right;
-  width: calc(100% - 94rpx);
-  font-size: 32rpx;
+  width: calc(100% - 74rpx);
+  font-size: 30rpx;
 }
 .comment-name{
   color: #929292;
-  font-size: 24rpx;
+  font-size: 30rpx;
+}
+.comment-content{
+  margin-top: 10rpx;
 }
 .comment-all{
-  margin-top: 20rpx;
+  margin-top: 24rpx;
 }
 .comment-reply{
   width: 100%;
   background-color: #f2f2f2;
   color: #929292;
   padding: 10rpx 18rpx;
+  font-size: 28rpx;
+  margin-top: 8rpx;
 }
 .other-user{
   color: #11aaf2;
@@ -142,11 +179,11 @@ page{
   margin-right: 4rpx;
 }
 .comment-user-info{
-  margin-top: 12rpx;
+  margin-top: 15rpx;
   color: #929292;
   border-bottom: 2rpx solid #ccc;
   padding-bottom: 12rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
 }
 .clear::after{
   content: '';
@@ -164,13 +201,12 @@ page{
 }
 .top-info{
   height: calc(100% - 90rpx);
-  margin-bottom: 20rpx;
 }
 .clearContent{
   width: 48rpx;
   height: 48rpx;
   position: absolute;
-  right:180rpx;
+  right:228rpx;
   bottom:22rpx;
   box-sizing: border-box;
   padding-left: 10rpx;
@@ -193,4 +229,43 @@ page{
   position: absolute;
   right: 80rpx;
   bottom: 24rpx;
+}
+.post-image{
+  width: 36rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 164rpx;
+  top: 30rpx;
+}
+.chooseImage{
+  width: 96%;
+  height: 155rpx;
+  /* background: red; */
+  position: absolute;
+  top: -155rpx;
+  left: 0rpx;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space:nowrap;
+  background-color: #eeeeee;
+  box-sizing: border-box;
+  padding: 10rpx 10rpx;
+}
+.chooseImage>view{
+  width: 135rpx;
+  height: 135rpx;
+  display: inline-block;
+  margin-right: 14rpx;
+  position: relative;
+}
+.isImage{
+  width: 135rpx;
+  height: 135rpx;
+}
+.redDele{
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
 }

@@ -1,0 +1,24 @@
+<view style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%；overflow-y:scroll;overflow-x:hidden; '>
+<view class='box'>
+<text class='left_hx'></text>
+<text class='left_text' style='margin-top:10px;'>我关注的好友</text>
+</view>
+<view class='list_line'></view>
+<view wx:if='{{content}}'>
+<view  wx:for='{{list}}' wx:for-index='index'>
+<view class='list_box'>
+<text class='list_yuan' bindtap='others' data-message='{{item.photo}},{{item.name}},{{item.text}}'>{{item.photo}}</text>
+<text class='left_text'>{{item.name}}</text>
+<text wx:if='{{item.guanz=="已关注"}}' class='right_text' data-index="{{index}}" bindtap='attention' data-id='{{item.id}}' data-text="{{item.guanz}}" data>{{item.guanz}}</text>
+<text wx:if='{{item.guanz=="互相关注"}}' class='right_text' bindtap='attention' data-id='{{index}}' data-text="{{item.guanz}}">{{item.guanz}}</text>
+</view>
+<view style='clear:both;'></view>
+<view class='list_line'></view>
+</view>
+</view>
+ <view wx:else class='hint_content'>
+ <view class='hint_img'></view>
+ <view>亲，去关注喜欢的达人吧，看看他们的新鲜事</view>
+ </view>
+</view>
+

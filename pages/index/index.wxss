@@ -7,9 +7,9 @@ page,
 .page__bd{
     padding-bottom: 0;
 }
-/* .weui-tab__content{
+ /* .weui-tab__content{
     text-align: center;
-} */
+}  */
 .weui-tab__content:nth-child(3){
   padding: 20rpx;
 }
@@ -39,9 +39,9 @@ page,
   border-bottom: inherit;
 }
 .slide-image{
-  /* border-radius: 16rpx; */
+   border-radius: 16rpx; 
   height: 100%;
-  width: 100%;
+  width: 96%;
 }
 swiper{
   margin-bottom: 20rpx;
@@ -53,14 +53,15 @@ swiper{
 }
 .weui-tab__content{
   overflow-x: hidden;
+  height: 100%;
 }
 swiper{
   text-align: center;
 }
 .user-image{
-  width: 100%;
+  width: 96%;
   height: 318rpx;
-  /* border-radius: 16rpx; */
+   border-radius: 16rpx; 
   background-image: url('http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg');
   background-repeat: round;
   margin: 20rpx auto;
@@ -81,7 +82,7 @@ swiper{
   bottom:34rpx;
 }
 .user-watch>span{
-  font-size: 28rpx;
+  font-size: 24rpx;
   width: 48rpx;
   height: 48rpx;
   position: absolute;
@@ -108,37 +109,37 @@ swiper{
   margin-left: 20rpx;
 }
 .use-label{
-  font-size: 32rpx;
+  font-size: 28rpx;
   float: left;
   margin-left: 20rpx;
   color: #fe5431;
 }
 .user-interactive{
   /* background: red; */
-   width: 280rpx; 
+   width: 240rpx; 
   float: right;
-  margin-right: 20rpx;
-  font-size: 32rpx;
+  margin-right: -10rpx;
+  font-size: 26rpx;
   color: #949494;
 }
 .user-interactive>span{
   width:0rpx;
   height:48rpx;
   display:inline-block;
-  margin-right:28rpx;
+  margin-right:20rpx;
   position: relative;
-  top: -10rpx;
+  top: -15rpx;
 }
 .user-comment{
-  width:120rpx;
+  width:100rpx;
   height:48rpx;
   display: inline-block;
 }
 .user-comment>image{
-  width:34rpx;
+  width:32rpx;
   height:30rpx;
   float:left;
-  margin-top:14rpx;
+  margin-top:12rpx;
 }
 .user-comment>span{
   width: 48rpx;
@@ -154,7 +155,7 @@ swiper{
 }
 .user-laud>image{
   width:32rpx;
-  height:32rpx;
+  height:30rpx;
   float:left;
   margin-top:10rpx;
 }
@@ -176,21 +177,61 @@ swiper{
   position:fixed;
   bottom:0;
   left:0;
+  border-top: 1rpx solid #ccc;
+}
+.botoom-nav>view{
+  position: relative;
+   width: 128rpx; 
+  height: 100rpx;
+  text-align: center;
+  top: -8rpx;
+}
+.botoom-nav view>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.home{
+  color: #00bf8e;
+}
+.shop{
+  
+}
+.self{
+  
+}
+.botoom-nav>view>view{
+  position: absolute;
+  bottom: -18rpx;
+  left: 0rpx;
+  width: 128rpx;
+  text-align: center;
+  font-size: 20rpx;
 }
 .weui-tab__panel{
-  height: calc(100% - 88rpx)
+  height: calc(100% - 90rpx)
 }
 
 .all-circle{
-  height: calc(100% - 100rpx);
+  height: 100%;
 }
 .my-circle{
   color: #070707;
   margin-bottom: 32rpx;
-  font-size: 36rpx;
+  font-size: 34rpx;
+}
+.my-circle::before, .hot-circle::before{
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 32rpx;
+  border-radius: 15rpx;
+  background-color: #00bf8e;
+  position: relative;
+  top: 4rpx;
+  margin-right: 10rpx;
 }
 .hot-circle{
-  font-size: 36rpx;
+  font-size: 34rpx;
 }
 .circle-title{
   font-size: 32rpx;
@@ -198,11 +239,21 @@ swiper{
 .circle{
   font-size: 24rpx;
   position: relative;
-  margin-bottom: 20rpx;
+  margin-bottom: 34rpx;
+}
+.circle::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1rpx;
+  background: #ccc;
+  position: relative;
+  top: 17rpx;
 }
 .circle-img{
-  width: 196rpx;
-  height: 132rpx;
+  width: 150rpx;
+  height: 140rpx;
+  border-radius: 5rpx;
   display: inline-block;
 }
 .circle-depict{
@@ -213,15 +264,24 @@ swiper{
   height: 112rpx;
   position: absolute;
   top: 0;
-  left: 216rpx;
+  left: 178rpx;
+  width: 300rpx;
 }
 .circle-updated{
   position: absolute;
-  top: 0;
-  right: 0rpx;
+  bottom: -60rpx;
+  left: 0rpx;
   height: 112rpx;
   line-height: 112rpx;
   color: #fe5431;
+  font-size: 30rpx;
+}
+.circle-updated>image{
+  width: 26rpx;
+  height: 26rpx;
+  position: relative;
+  top: 2rpx;
+  left: 10rpx;
 }
  .hot-scroll{
   width: 100%;
@@ -230,47 +290,69 @@ swiper{
   white-space:nowrap;
 } 
 .hot-info{
-  width: 176rpx;
-  display: inline-block;  
+  /* width: 176rpx; */
+  /* display: inline-block;   */
   font-size: 24rpx;
   margin-right: 30rpx;
+  position: relative;
+  margin-bottom: 34rpx;
+}
+.hot-info::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1rpx;
+  background-color: #ccc;
+  position: relative;
+  top: 17rpx;
+}
+.hot-cont-info{
+  height: 100%;
+  position: absolute;
+  left: 178rpx;
+  top: 0rpx;
 }
 .hot-title{
   text-align: center;
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 .hot-img{
-  width: 176rpx;
-  height: 176rpx;
+  width: 150rpx;
+  height: 140rpx;
+  border-radius: 6rpx;
 }
 .hot-join{
-  width: 100rpx;
-  height: 40rpx;
+  width: 138rpx;
+  height: 48rpx;
   box-sizing: border-box;
   padding: 0rpx 8rpx;
   text-align: center;
   line-height: 40rpx;
-  border-radius: 50rpx;
+  border-radius: 69rpx;
   border: 2rpx solid #fe5431;
   color: #fe5431;
-  margin-left: 38rpx;
+  position: absolute;
+  bottom: 12rpx;
+  font-size: 28rpx;
 }
-.botoom-nav{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height:88rpx;
-  line-height:88rpx;
-  color: #424242;
-  width:100%;
-  font-size:32rpx;
-  position:fixed;
-  bottom:0;
-  left:0;
-}
+
 .weui-navbar__slider{
   width:6em;
 }
 .weui-search-bar__input{
   padding-left: 20rpx;
+}
+.more{
+  width: calc(100% - 30rpx);
+  height: 52rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  line-height:72rpx;
+}
+.more>text:nth-child(1){
+  float: left;
+}
+.more>text:nth-child(2){
+  float: right;
+  color: #999;
 }

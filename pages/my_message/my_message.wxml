@@ -1,0 +1,44 @@
+
+<view class="page" style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%；overflow-y:scroll;overflow-x:hidden; '>
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view style='height:30rpx;'></view>
+            <view class="weui-tab__panel">
+                <view  class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                <!-- 赞和评论 -->
+                <view style='width:90%;margin-top:30rpx;paading-rigth:20rpx;' wx:for='{{conmment}}'>
+                <view style=' width: 90rpx;height: 90rpx;border-radius: 60rpx;background-color: #00bf8e;float: left; margin-left: 40rpx;'>{{item.photo}}</view>
+                <view style='width: 400rpx;float: left;margin-left: 20rpx;'>
+                <view style='font-size:32rpx;'>{{item.name}}</view>
+                <view style='font-size:32rpx;width:400rpx;'>{{item.content}}</view>
+                <view style='font-size:24rpx;color:#7E7E7E;'>{{item.date}}</view>
+                </view>
+                <view style='width: 100rpx;height: 100rpx;background-color: #00bf8e;float: right;margin-right: 20rpx;'></view>
+                <view style='clear:both;'></view>
+                  <view class='list_line' style='margin-left:150rpx;margin-top:40rpx;'></view>
+                </view>
+                </view>
+                <!-- 系统消息 -->
+                <view  class="weui-tab__content " hidden="{{activeIndex != 1}}">  
+                <view >
+                <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+                  <view class="content">{{item.content}}
+                   <view class='right_date'>{{item.date}}</view>
+                  </view>
+                  
+                  <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+                </view>
+              </view>
+            </view>
+            </view>
+        </view>
+    </view>
+</view>

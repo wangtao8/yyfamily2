@@ -11,8 +11,10 @@ Page({
     elValue: '',
     placeholders: '发表你的评论吧',
     isfocus: false,
-    content: '发表',
-    nums: 0
+    nums: 0,
+    message: '关注',
+    urls: [],
+    marBot: '120rpx'
   },
 
   /**
@@ -72,11 +74,11 @@ Page({
   },
   getFocus: function (e) {
     var _this = this
-    this.setData({ elWidth: '70%', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
+    this.setData({ elWidth: '500rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
   },
   getBlur: function () {
     var _this = this
-    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧', content: '发表' })
+    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧'})
   },
   getFocuss: function (e) {
     var placeholders = '回复：' + e.currentTarget.dataset.name
@@ -93,8 +95,77 @@ Page({
     console.log(2)
     this.setData({ elValue: '' })
   },
-  cancel: function () {
+  cancel: function (e) {// 点击确定或者取消操作
+    console.log(e.currentTarget.dataset.id)
     var _this = this
+    var id = e.currentTarget.dataset.id
+    _this.setData({ urls: [], elValue: '', marBot: '120rpx'})
+    if (id == 0) {// 暂没有操作
+
+    } else {
+
+    }
     this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
+  },
+  goReply: function () {
+    wx.navigateTo({
+      url: '/pages/reply/index?id=1'
+    })
+  },
+  attention: function () {
+    if ( this.data.message == '关注' ) {
+      this.setData({ message: '已关注' })
+      wx.showToast({
+        title: '已关注',
+        icon: 'success',
+        duration: 2000
+      });
+    } else {
+      this.setData({ message: '关注' })
+      wx.showToast({
+        title: '取消关注',
+        icon: 'success',
+        duration: 2000
+      });
+    }
+  },
+  uploadImage: function () {
+    var currentIndex = this.data.urls.length
+    wx.chooseImage({
+      count: 6 - currentIndex, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: res=> {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var _this = this
+        var tempFilePaths = res.tempFilePaths
+        if (_this.data.urls.length == 0) {
+          var urls = []
+        } else {
+          var urls = _this.data.urls
+        }
+        for (var i = 0; i < tempFilePaths.length; i++) {
+          urls.push(tempFilePaths[i])
+        }
+        _this.setData({ urls: urls, marBot: '250rpx'})
+      }
+    })
+  },
+  previewImage: function (e) {
+    var id = e.currentTarget.dataset.id
+    var ulrs = this.data.urls
+    wx.previewImage({
+      current: id, // 当前显示图片的http链接
+      urls: ulrs // 需要预览的图片http链接列表
+    })
+  },
+  redDele: function (e) {
+    var _this = this
+    var id = e.currentTarget.dataset.id
+      _this.data.urls.splice(id, 1)
+      _this.setData({ urls: _this.data.urls })
+      if (_this.data.urls.length == 0) {
+        _this.setData({ marBot: '120rpx'})
+      }
   }
 })

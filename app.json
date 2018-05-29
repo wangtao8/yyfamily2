@@ -1,16 +1,28 @@
 {
-  "pages": [
+  "pages":[
+    "pages/my_profile/my_profile",
+	  "pages/reply/index",
     "pages/index/index",
-    "pages/issue/index",
-    "pages/reply/index",
     "pages/circleInfo/index",
+    "pages/issue/index",
     "pages/circlePresent/index",
-    "pages/articleDetails/index"    
+    "pages/articleDetails/index" ,
+    "pages/my_pages/my_pages",
+    "pages/my_points/my_points",
+    "pages/my_favorite/my_favorite",
+    "pages/my_others/my_others",
+    "pages/my_personal/my_personal",
+    "pages/my_circle/my_circle",
+    "pages/my_homepage/my_homepage",
+    "pages/my_fans/my_fans",
+    "pages/my_drafts/my_drafts",
+    "pages/my_focus/my_focus",
+    "pages/my_message/my_message"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#000",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "友友之家",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "black"
   }
 }

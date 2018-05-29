@@ -5,7 +5,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
   data: {
-    indexs:['1','2','3','4','5'],
+    indexs:['1','2'],
     tabs: ["热门", "发现", "圈子"],
     activeIndex: 0,
     sliderOffset: 0,
@@ -83,7 +83,7 @@ Page({
   },
   openMessageInfo: function () {
     wx.navigateTo({
-      url: '/pages/reply/index?id=1'
+      url: '/pages/circleInfo/index?id=1'
     })
   },
   laudOrCancel: function () {
@@ -91,12 +91,12 @@ Page({
   },
   toInfo: function () {
     wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1'
+      url: '/pages/circlePresent/index?isJion=1'
     })
   },
   goInfo: function () {
     wx.navigateTo({
-      url: '/pages/circlePresent/index'
+      url: '/pages/circlePresent/index?isJion=0'
     })
   },
   jion: function () {

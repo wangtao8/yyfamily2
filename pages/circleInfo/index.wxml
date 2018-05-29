@@ -1,5 +1,5 @@
 <!--pages/circleInfo/index.wxml-->
-<scroll-view class='top-info' scroll-y style="">
+<scroll-view class='top-info' scroll-y style="margin-bottom: {{marBot}}">
   <view class='head-info'>
     <image class='head-img' src='../../images/5.jpg'></image>
     <view class='circle-info'>
@@ -8,11 +8,14 @@
     </view>
   </view>
   <view class='article-info'>
-    <view class='article-title'>我是一段标题</view>
     <view class='article-auth'>
       <image src='../../images/5.jpg'></image>
-      <text class='write-auth'>作者：王涛</text>
-      <text class='write-time'>2018-5-13 11:11</text>
+      <view class='auth-info'>
+        <text class='write-auth'>王涛</text>
+        <text class='write-time'>5-13 11:11</text>
+      </view>
+      <view class='attention-auth' catchtap='attention'>{{message}}</view>
+      <view class='article-title'>我是一段标题</view>
     </view>
     <view class='article-content'>于是我就在下面打了很多字，很多字，很多字，，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字。。。</view>
   </view>
@@ -25,8 +28,8 @@
         <view class='comment-content'>我发表了一条评论，内容是这样的，哈哈哈哈哈...等等还没换行，再笑一次~哈哈哈哈哈哈~~~</view>
         <view class='comment-reply'>
           <text class='other-user'>另一个王涛</text>:
-          <text>你笑啥？笑啥？</text>
-          <text class='more'>共十条回复 ></text>
+          <text>等人 </text>
+          <text class='more' catchtap='goReply'>共100条回复 ></text>
         </view>
         <view class='comment-user-info'>
           <text>5-13 13:43</text>
@@ -64,12 +67,19 @@
   </view>
 </scroll-view>
 <view class='write-comment'>
+  <view class='chooseImage' wx:if='{{urls.length > 0}}'>
+    <view wx:for='{{urls}}' wx:key='{{index}}' catchtap='previewImage' data-id='{{index}}'>
+      <image src='../../images/redDele.png' class='redDele' catchtap='redDele' data-id='{{index}}'></image>
+      <image src='{{item}}' class='isImage'></image>
+    </view>
+  </view>
   <view style='width:{{elWidth}}; margin:{{elMargin}}' class='submitInput'>
-    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue'/>
-  <view catchtap="clearInput" class='clearContent'>
-    <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+    <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue' />
+    <view catchtap="clearInput" class='clearContent'>
+      <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
+    </view>
   </view>
-  </view>
-  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='getBlur' wx:if='{{elValue.length>0}}'>{{content}}</text>
-  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0}}'>取消</text>
+  <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0 && urls.length == 0}}' data-id='0'>取消</text>
+  <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:else data-id='1'>发表</text>
 </view>

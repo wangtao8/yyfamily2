@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<view style='position: fixed;top: 0rpx;bottom:0;width: 100%;height:100%；overflow-y:scroll;overflow-x:hidden; '>
+<view class='top_img'>
+<view class='left_img' bindtap='personal'>
+<image class='photo_img' src='../../images/001.jpg'/>
+</view>
+<view class='right_name'>
+<view class='top_name'>
+<text style='floa:left;'>{{name}}</text>
+<view style='font-size:30rpx;padding-top:10rpx;width:240rpx;display: inline-block;float:right;'>
+<image style='width:35rpx;height:26rpx;padding-top:10rpx;' src='../../images/jf.png'/>
+<text style='padding-left:8rpx;'>500</text>
+</view> 
+</view> 
+<view class='top_zl'>
+<view class='guanz_left' bindtap='focus'>
+<view>123</view>
+<view> 
+<view>关注</view>
+</view>
+</view>
+<view class='guanz_right' bindtap='fans'>
+<view>456</view>
+<view>
+<view>粉丝</view>
+</view>
+</view> 
+<view class='guanz_right'>
+<!-- <view>456</view> -->
+<view class='points'>
+<navigator url="/pages/my_points/my_points" hover-class="navigator-hover">积分兑换 > </navigator>
+</view>
+</view> 
+</view>
+</view>
+</view>
+<view class="home_list" bindtap='click_message'>
+ <view class='list_text' > 我的消息</view>
+ <view class='xiaoxi'>{{xiaoxi}}</view>
+</view>
+<view class='list_line'></view>
+<view class="home_list"  bindtap='click_circle'>
+ <view class='list_text'> 我的圈子</view>
+ <view class='list_img'>
+  <image class='image' src="../../images/tz.jpg"/>
+ </view>
+</view>
+<view class='list_line'></view>
+<view class="home_list" bindtap='click_favorite'>
+ <view class='list_text'> 我的收藏</view>
+ <view class='list_img'>
+  <image class='image' src="../../images/tz.jpg"/>
+ </view>
+</view>
+<view class='list_line'></view>
+<view class="home_list" bindtap='click_pages'>
+ <view class='list_text'> 实验室</view>
+ <view class='list_img'>
+  <image class='image' src="../../images/tz.jpg"/>
+ </view>
+</view>
+<view class='list_line'></view>
+<view class='bottom_tex' bindtap='click_editor'>编辑个人资料</view>
+</view>
