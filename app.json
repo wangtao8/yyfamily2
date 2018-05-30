@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/my_points/my_points",
+    "pages/my_giftdetails/my_giftdetails",
     "pages/my_profile/my_profile",
 	  "pages/reply/index",
     "pages/index/index",
@@ -8,7 +10,6 @@
     "pages/circlePresent/index",
     "pages/articleDetails/index" ,
     "pages/my_pages/my_pages",
-    "pages/my_points/my_points",
     "pages/my_favorite/my_favorite",
     "pages/my_others/my_others",
     "pages/my_personal/my_personal",

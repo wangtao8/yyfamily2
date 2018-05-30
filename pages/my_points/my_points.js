@@ -18,13 +18,13 @@ Page({
 
     conmment: [{
       photo: '',
-      name: '+100',
-      content: '文字说明',
+      name: '100',
+      content: '标题标题标题',
       data: '积分不足'
     }, {
         photo: '',
-        name: '+200',
-        content: '文字说明',
+        name: '200',
+        content: '标题标题标题标题标题标题标题标题标题',
         data: '立即兑换'
     }],
     activeIndex: 0,
@@ -56,6 +56,12 @@ Page({
       items: this.data.items
     })
 
+  },
+  gifdetails:function(message){
+  var data_text=message;
+  wx.navigateTo({
+    url: '../../pages/my_giftdetails/my_giftdetails?data=' + JSON.stringify(data_text)
+  })
   },
   formSubmit: function (e) {
 
