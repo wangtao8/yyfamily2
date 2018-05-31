@@ -1,5 +1,21 @@
 <!--pages/circlePresent/index.wxml-->
-<scroll-view scroll-y class='content'>
+<scroll-view scroll-y class='content' bindscroll='watchScroll'>
+<view class="weui-search-bar" style='opacity:{{opacitys}}' wx:if='{{opacitys != 0}}'>
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索话题" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" catchtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索话题</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
+</view>
   <view class='head-info'>
     <image class='head-img' src='../../images/5.jpg'></image>
     <view class='circle-info'>
@@ -12,59 +28,13 @@
     <view class='essay-title'>简介</view>
     <view class='essay-content'>我是圈子的详细介绍，看我就等于看到了圈子的未来，我可以给大家带来实惠，不信就算了，反正我说了就会做到，而且内幕雄厚，便宜到没朋友，只允许有钱人家人，加入前自爆家底，非富误入！！！</view>
     <view class='essay-title2'>话题</view>
-    <view class='essay-all' catchtap='toInfo'>
+    <view class='essay-all' catchtap='toInfo' wx:for='{{indexs}}' wx:key='{{index}}'>
       <view class='all-images'>
-          <image src='../../images/3.jpg' class='topic-img'></image>
-          <view class='images-info'>
-              <image src='../../images/laud012.png'></image>
-              <text>3</text>
-          </view>
-      </view>
-      <view class='topic-info'>
-        <view class='business-titlle'>全友家居</view>
-        <view class='user-info'>
-          <image src='../../images/2.jpg' class='user-img'></image>
-          <text>王涛</text>
+        <image src='../../images/3.jpg' class='topic-img'></image>
+        <view class='images-info'>
+          <image src='../../images/looknum.png'></image>
+          <text>3</text>
         </view>
-        <view class='business-time'>
-          <view>2018-5-26 13:22</view>
-          <view>
-            <image src='../../images/message.png' class='user-message'></image>
-            <text>10</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='essay-all' catchtap='toInfo'>
-      <view class='all-images'>
-          <image src='../../images/3.jpg' class='topic-img'></image>
-          <view class='images-info'>
-              <image src='../../images/laud012.png'></image>
-              <text>3</text>
-          </view>
-      </view>
-      <view class='topic-info'>
-        <view class='business-titlle'>全友家居</view>
-        <view class='user-info'>
-          <image src='../../images/2.jpg' class='user-img'></image>
-          <text>王涛</text>
-        </view>
-        <view class='business-time'>
-          <view>2018-5-26 13:22</view>
-          <view>
-            <image src='../../images/message.png' class='user-message'></image>
-            <text>10</text>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='essay-all' catchtap='toInfo'>
-      <view class='all-images'>
-          <image src='../../images/3.jpg' class='topic-img'></image>
-          <view class='images-info'>
-              <image src='../../images/laud012.png'></image>
-              <text>3</text>
-          </view>
       </view>
       <view class='topic-info'>
         <view class='business-titlle'>全友家居</view>

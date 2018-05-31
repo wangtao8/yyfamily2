@@ -5,23 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    elWidth: '670rpx',
-    elMargin: '16rpx 0rpx 0rpx 30rpx',
-    isDisplay: 'none',
-    elValue: '',
-    placeholders: '发表你的评论吧',
-    isfocus: false,
-    nums: 0,
-    message: '关注',
-    urls: [],
-    marBot: '120rpx'
+    elWidth: '670rpx',// 样式
+    elMargin: '16rpx 0rpx 0rpx 30rpx',// 样式
+    isDisplay: 'none',// 发表按钮 取消按钮 上传图片的控制
+    elValue: '',// 输入框值
+    placeholders: '发表你的评论吧',// 输入框提示文字
+    isfocus: false,// 输入框是否获得焦点
+    // nums: 0,
+    message: '关注',//关注 或者 已关注
+    urls: [],//图片预览后展示图片的url
+    marBot: '120rpx',// 一个样式
+    showUrls: [], //模拟用户评论时发表图片的url 
+    ids: 1 //是否显示圈子信息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+      this.setData({ ids: options.id }) // 页面加载时接收其他页面带来的参数 为0不显示圈子信息
   },
 
   /**
@@ -72,26 +74,22 @@ Page({
   onShareAppMessage: function () {
   
   },
-  getFocus: function (e) {
+  getFocus: function (e) {// 获得焦点的事件
     var _this = this
     this.setData({ elWidth: '500rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
   },
-  getBlur: function () {
+  getBlur: function () {// 失去焦点的事件
     var _this = this
     this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧'})
   },
-  getFocuss: function (e) {
-    var placeholders = '回复：' + e.currentTarget.dataset.name
-    this.setData({ placeholders: placeholders, isfocus: true, content: '回复' })
-  },
-  addNums: function () {
-    var nums = this.data.nums + 1
-    this.setData({ nums: nums })
-  },
-  changeValue: function (e) {
+  // addNums: function () {
+  //   var nums = this.data.nums + 1
+  //   this.setData({ nums: nums })
+  // },
+  changeValue: function (e) {// 输入框值改变时
     this.setData({ elValue: e.detail.value })
   },
-  clearInput: function (e) {
+  clearInput: function (e) {// 清除输入框值 
     console.log(2)
     this.setData({ elValue: '' })
   },
@@ -99,7 +97,8 @@ Page({
     console.log(e.currentTarget.dataset.id)
     var _this = this
     var id = e.currentTarget.dataset.id
-    _this.setData({ urls: [], elValue: '', marBot: '120rpx'})
+    var urls = _this.data.urls
+    _this.setData({ showUrls: urls, urls: [], elValue: '', marBot: '120rpx'})
     if (id == 0) {// 暂没有操作
 
     } else {
@@ -107,12 +106,12 @@ Page({
     }
     this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
   },
-  goReply: function () {
+  goReply: function () {// 评论详情页面
     wx.navigateTo({
       url: '/pages/reply/index?id=1'
     })
   },
-  attention: function () {
+  attention: function () {// 切换关注状态
     if ( this.data.message == '关注' ) {
       this.setData({ message: '已关注' })
       wx.showToast({
@@ -129,7 +128,7 @@ Page({
       });
     }
   },
-  uploadImage: function () {
+  uploadImage: function () {// 上传评论图片
     var currentIndex = this.data.urls.length
     wx.chooseImage({
       count: 6 - currentIndex, // 默认9
@@ -148,10 +147,13 @@ Page({
           urls.push(tempFilePaths[i])
         }
         _this.setData({ urls: urls, marBot: '250rpx'})
+        if (_this.data.urls.length > 5) {
+          _this.setData({ scrollWidth: '96%' })
+        }
       }
     })
   },
-  previewImage: function (e) {
+  previewImage: function (e) {// 预览评论图片
     var id = e.currentTarget.dataset.id
     var ulrs = this.data.urls
     wx.previewImage({
@@ -159,13 +161,20 @@ Page({
       urls: ulrs // 需要预览的图片http链接列表
     })
   },
-  redDele: function (e) {
+  redDele: function (e) {// 删除预览图片
     var _this = this
     var id = e.currentTarget.dataset.id
       _this.data.urls.splice(id, 1)
       _this.setData({ urls: _this.data.urls })
       if (_this.data.urls.length == 0) {
         _this.setData({ marBot: '120rpx'})
+      } else if (_this.data.urls.length <= 5) {
+        _this.setData({ scrollWidth: '' })
       }
+  },
+  goOther: function () {// 跳转到他人个人页面
+    wx.navigateTo({
+      url: '/pages/my_others/my_others?id=1'
+    })
   }
 })

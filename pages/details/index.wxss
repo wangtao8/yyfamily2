@@ -1,0 +1,114 @@
+.weui-tab__content{
+  overflow-x: hidden;
+  height: 100%;
+}
+swiper{
+  text-align: center;
+}
+.user-image{
+  width: 96%;
+  height: 318rpx;
+   border-radius: 16rpx; 
+  background-image: url('http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg');
+  background-repeat: round;
+  margin: 20rpx auto;
+  position: relative;
+}
+.user-heart{
+  width: 36rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 20rpx;
+}
+.user-watch>image{
+  width:38rpx;
+  height:22rpx;
+  position:absolute;
+  left:40rpx;
+  bottom:34rpx;
+}
+.user-watch>span{
+  font-size: 24rpx;
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  left: 90rpx;
+  bottom: 14rpx;
+  color: #fff;
+}
+.user-share{
+  margin: 20rpx 0rpx;
+}
+.user-share::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 20rpx;
+  background: #ccc;
+  margin-top: 20rpx;
+}
+.user-say{
+  font-size: 32rpx;
+  color: #3b3b3b;
+  width: 100%;
+  text-align: left;
+  margin-left: 20rpx;
+}
+.use-label{
+  font-size: 28rpx;
+  float: left;
+  margin-left: 20rpx;
+  color: #fe5431;
+}
+.user-interactive{
+  /* background: red; */
+   width: 240rpx; 
+  float: right;
+  margin-right: -10rpx;
+  font-size: 26rpx;
+  color: #949494;
+}
+.user-interactive>span{
+  width:0rpx;
+  height:48rpx;
+  display:inline-block;
+  margin-right:20rpx;
+  position: relative;
+  top: -16rpx;
+}
+.user-comment{
+  width:100rpx;
+  height:48rpx;
+  display: inline-block;
+}
+.user-comment>image{
+  width:32rpx;
+  height:30rpx;
+  float:left;
+  margin-top:10rpx;
+}
+.user-comment>span{
+  width: 48rpx;
+  height: 48rpx;
+  float: left;
+  margin-left:8rpx;
+  text-align: center;
+}
+.user-laud{
+  width:120rpx;
+  height:48rpx;
+  display: inline-block;
+}
+.user-laud>image{
+  width:32rpx;
+  height:30rpx;
+  float:left;
+  margin-top:6rpx;
+}
+.user-laud>span{
+  width: 48rpx;
+  height: 48rpx;
+  float: left;
+  margin-left: 8rpx;
+}

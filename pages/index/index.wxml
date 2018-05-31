@@ -15,7 +15,7 @@
           <view class="page__hd">
           </view>
           <view class="page__bd">
-            <view class="weui-search-bar">
+            <!-- <view class="weui-search-bar">
               <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
                   <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -30,7 +30,7 @@
                 </label>
               </view>
               <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
-            </view>
+            </view> -->
             <!-- <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
             <navigator url="" class="weui-cell" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">
@@ -53,13 +53,13 @@
                 </view>
             </navigator>
         </view> -->
-            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+            <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
               <block wx:for="{{imgUrls}}" wx:key='*this'>
                 <swiper-item>
                   <image src="{{item}}" class="slide-image" width="355" height="150" />
                 </swiper-item>
               </block>
-            </swiper>
+            </swiper> -->
             <view class='blank20'></view>
             <view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
               <view class='user-image'>
@@ -85,60 +85,91 @@
                 </view>
               </view>
             </view>
+            <view class='hot-topic'>
+              <view class='essay-title2'>热门话题</view>
+              <view class='essay-all' catchtap='toInfos' wx:for='{{indexs}}' wx:key='{{index}}'>
+                <view class='all-images'>
+                  <image src='../../images/3.jpg' class='topic-img'></image>
+                  <view class='images-info'>
+                    <image src='../../images/looknum.png'></image>
+                    <text>3</text>
+                  </view>
+                </view>
+                <view class='topic-info'>
+                  <view class='business-titlle'>全友家居</view>
+                  <view class='user-info'>
+                    <image src='../../images/2.jpg' class='user-img'></image>
+                    <text>王涛</text>
+                  </view>
+                  <view class='business-time'>
+                    <view>2018-5-26 13:22</view>
+                    <view>
+                      <image src='../../images/message.png' class='user-message'></image>
+                      <text>10</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!-- <video id="myVideo" controls initial-time='60' show-center-play-btn='false' src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video> -->
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
           <view class="page__hd">
           </view>
           <view class="page__bd">
+
             <view class="weui-search-bar">
               <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
                   <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                  <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                  <input type="text" class="weui-search-bar__input" placeholder="搜索文章" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
                   <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
                     <icon type="clear" size="14"></icon>
                   </view>
                 </view>
                 <label class="weui-search-bar__label" hidden="{{inputShowed}}" catchtap="showInput">
                   <icon class="weui-icon-search" type="search" size="14"></icon>
-                  <view class="weui-search-bar__text">搜索</view>
+                  <view class="weui-search-bar__text">搜索文章</view>
                 </label>
               </view>
               <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
             </view>
-            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+
+            <!-- <swsiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{12332asasinterval}}" duration="{{duration}}" circular="true">
               <block wx:for="{{imgUrls}}" wx:key='*this'>
                 <swiper-item>
                   <image src="{{item}}" class="slide-image" width="355" height="150" />
                 </swiper-item>
               </block>
-            </swiper>
+            </swiper> -->
             <view class='blank20'></view>
-            <view class='more'>
+            <view wx:for='{{indexs}}' wx:key='{{index}}' class='findAll'>
+              <view class='more' catchtap='goDetails'>
                 <text>装修攻略</text>
                 <text>更多 ></text>
-            </view>
-            <view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
-              <view class='user-image'>
-                <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" />
-                <view class='user-watch'>
-                  <image src='../../images/eye.png' />
-                  <span>123</span>
-                </view>
               </view>
-              <view class='user-say'>给一张图，大家感受一下..</view>
-              <view style="width: 100%;height: 24px;">
-                <view class='use-label'>#get新玩法#</view>
-                <view class='user-interactive'>
-                  <view class='user-comment' catchtap='openMessageInfo'>
-                    <image src='../../images/message.png' />
-                    <span>255</span>
+              <view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
+                <view class='user-image'>
+                  <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" />
+                  <view class='user-watch'>
+                    <image src='../../images/eye.png' />
+                    <span>123</span>
                   </view>
-                  <span>|</span>
-                  <view class='user-laud' catchtap='laudOrCancel'>
-                    <image src='../../images/laud00.png' />
-                    <span>255</span>
+                </view>
+                <view class='user-say'>给一张图，大家感受一下..</view>
+                <view style="width: 100%;height: 24px;">
+                  <view class='use-label'>#get新玩法#</view>
+                  <view class='user-interactive'>
+                    <view class='user-comment' catchtap='openMessageInfo'>
+                      <image src='../../images/message.png' />
+                      <span>255</span>
+                    </view>
+                    <span>|</span>
+                    <view class='user-laud' catchtap='laudOrCancel'>
+                      <image src='../../images/laud00.png' />
+                      <span>255</span>
+                    </view>
                   </view>
                 </view>
               </view>
@@ -146,6 +177,22 @@
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索圈子" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+                </view>
+              </view>
+              <label class="weui-search-bar__label" hidden="{{inputShowed}}" catchtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索圈子</view>
+              </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
+          </view>
           <scroll-view scroll-y class='all-circle'>
             <view>
               <view class='my-circle'>我的圈子</view>
@@ -178,17 +225,17 @@
       </view>
       <view class='botoom-nav'>
         <view>
-            <image src='../../images/home.png'></image>
-            <view class='home'>友友之家</view>
+          <image src='../../images/home.png'></image>
+          <view class='home'>友友之家</view>
         </view>
         <!-- <view>创意中心</view> -->
         <view>
-            <image src='../../images/shop2.png'></image>
-            <view class='shop'>商城</view>
+          <image src='../../images/shop2.png'></image>
+          <view class='shop'>商城</view>
         </view>
-        <view>
-            <image src='../../images/self2.png'></image>
-            <view class='self'>我的</view>
+        <view catchtap='goSelf'>
+          <image src='../../images/self2.png'></image>
+          <view class='self'>我的</view>
         </view>
       </view>
     </view>

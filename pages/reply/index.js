@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index: ['1', '2', '3','4','5','6','7'],
+    index: ['1'],
     elWidth: '670rpx',
     elMargin: '16rpx 0rpx 0rpx 30rpx',
     isDisplay: 'none',
@@ -15,7 +15,8 @@ Page({
     nums: 0,
     urls: [],
     marBot: '120rpx',
-    scrollWidth: ''
+    scrollWidth: '',
+    replyUsers: '稳得起' //回复的人昵称
   },
 
   /**
@@ -75,7 +76,7 @@ Page({
   },
   getFocus: function (e) {
     var _this = this
-    this.setData({ elWidth: '500rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
+    this.setData({ elWidth: '560rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
   },
   getBlur: function () {
     var _this = this
@@ -150,5 +151,10 @@ Page({
     } else if (_this.data.urls.length <= 5) {
       _this.setData({ scrollWidth: '' })
     }
+  },
+  goOther: function () {
+    wx.navigateTo({
+      url: '/pages/my_others/my_others?id=1'
+    })
   }
 })

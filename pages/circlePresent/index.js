@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trueOrfalse: null
+    trueOrfalse: null,//是否加入圈子状态
+    inputShowed: false,
+    inputVal: "",
+    opacitys: 0,
+    indexs: [1,2,3,4,5]
   },
 
   /**
@@ -92,5 +96,32 @@ Page({
     wx.navigateTo({
       url: '/pages/issue/index'
     })
+  },
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    console.log(1)
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+  watchScroll: function(e) {
+    var opacitys = e.detail.scrollTop < 10 ? 0 : e.detail.scrollTop / 40
+    this.setData({ opacitys: opacitys})
+    console.log(e.detail.scrollTop)
   }
 })

@@ -6,7 +6,7 @@
   <view class='top-label'>#时尚时尚最时尚#</view>
   <view class='contaner'>文章内容</view>
 </view>
-<view class='article-recommend'>
+<!-- <view class='article-recommend'>
   <view class='article-title'>相关文章</view>
   <scroll-view scroll-x class='content-scorll'>
     <view class='content' wx:for='{{index}}' wx:key='*this'>
@@ -16,7 +16,7 @@
       <view class='content-title'>很好的一篇文章，吐血推荐，吐血推荐</view>
     </view>
   </scroll-view>
-</view>
+</view> -->
 <view class='commodity-recommend' style="padding-bottom: 40rpx;">
     <view class='commodity-title'>相关商品</view>
     <scroll-view scroll-x class='commodity-scorll'>
@@ -38,6 +38,8 @@
     <view>
       <image src='../../images/icon_share.png'></image>
       <text>88</text>
+      <button open-type="share" class='ShareAppMessage'>
+      </button>
     </view>
     <view>
       <image src='../../images/icon_like.png'></image>

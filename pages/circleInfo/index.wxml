@@ -1,13 +1,13 @@
 <!--pages/circleInfo/index.wxml-->
 <scroll-view class='top-info' scroll-y style="margin-bottom: {{marBot}}">
-  <view class='head-info'>
+  <view class='head-info' wx:if='{{ids == 1}}'>
     <image class='head-img' src='../../images/5.jpg'></image>
     <view class='circle-info'>
       <view class='circle-name'>全友家居</view>
       <view class='circle-num'>1500+成员</view>
     </view>
   </view>
-  <view class='article-info'>
+  <view class='article-info' wx:if='{{ids == 1}}'>
     <view class='article-auth'>
       <image src='../../images/5.jpg'></image>
       <view class='auth-info'>
@@ -26,8 +26,11 @@
       <view class='comment-right-info'>
         <view class='comment-name'>王涛</view>
         <view class='comment-content'>我发表了一条评论，内容是这样的，哈哈哈哈哈...等等还没换行，再笑一次~哈哈哈哈哈哈~~~</view>
+        <view class='replyImage'>
+             <image wx:for='{{showUrls}}' wx:key='{{index}}' src='{{item}}'></image> 
+        </view>
         <view class='comment-reply'>
-          <text class='other-user'>另一个王涛</text>:
+          <text class='other-user' catchtap='goOther'>另一个王涛：</text>
           <text>等人 </text>
           <text class='more' catchtap='goReply'>共100条回复 ></text>
         </view>
@@ -67,7 +70,7 @@
   </view>
 </scroll-view>
 <view class='write-comment'>
-  <view class='chooseImage' wx:if='{{urls.length > 0}}'>
+  <view class='chooseImage' wx:if='{{urls.length > 0}}' style='width:{{scrollWidth}}'>
     <view wx:for='{{urls}}' wx:key='{{index}}' catchtap='previewImage' data-id='{{index}}'>
       <image src='../../images/redDele.png' class='redDele' catchtap='redDele' data-id='{{index}}'></image>
       <image src='{{item}}' class='isImage'></image>

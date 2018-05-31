@@ -14,7 +14,7 @@
           <span>26</span>
         </view>
         <view class='reply'>
-          <image src='../../images/message.png' class='clear'></image>
+          <image src='../../images/message.png' class='clear' catchtap='getFocus'></image>
         </view>
       </view>
     </view>
@@ -41,8 +41,12 @@
         </view>
       </view>
     </view>
-    <view class='commnent-bot2' catchtap='getFocuss' data-name='真的帅'>帅惨了！帅惨了！真的帅惨了！！！</view>
-    <!-- <view></view> -->
+    <view class='commnent-bot2' catchtap='getFocuss' data-name='真的帅'>
+    <view class='isReply'>
+      回复 <text class='replyUsers' catchtap='goOther'>@{{replyUsers}}：</text>
+    </view>  
+    <text>
+      </text> 帅惨了！帅惨了！真的帅惨了！！！</view>
   </view>
 </view>
 </view>
@@ -59,7 +63,7 @@
       <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
     </view>
   </view>
-  <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image>
+  <!-- <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image> -->
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0 && urls.length == 0}}' data-id='0'>取消</text>
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:else data-id='1'>发表</text>
 </view>

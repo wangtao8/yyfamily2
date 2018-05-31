@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
@@ -24,8 +25,25 @@ Page({
     curIndex: 0,
     isJion: '+ 加入'
   },
+  onReady: function (res) {
+    
+  },
   onLoad: function () {
     var that = this;
+    // console.log(api)
+    // wx.request({
+    //   url: api + '/mockjsdata/5/spellapi/spell/joinTeam',
+    //   data: {
+    //     x: '',
+    //     y: ''
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -34,6 +52,9 @@ Page({
         });
       }
     });
+  },
+  onShow: function () {
+    console.log(1)
   },
   tabClick: function (e) {
     this.setData({
@@ -110,6 +131,21 @@ Page({
   articleInfo: function(){
     wx.navigateTo({
       url: '/pages/articleDetails/index'
+    })
+  },
+  toInfos: function () {
+    wx.navigateTo({
+      url: '/pages/circleInfo/index?id=1'
+    })
+  },
+  goDetails: function () {
+    wx.navigateTo({
+      url: '/pages/details/index?id=1'
+    })
+  },
+  goSelf: function () {
+    wx.navigateTo({
+      url: '/pages/my_profile/my_profile?id=1'
     })
   }
 });

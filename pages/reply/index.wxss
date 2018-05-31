@@ -110,7 +110,12 @@ page {
   margin-left: 100rpx;
   padding-bottom: 12rpx;
 }
-
+.isReply{
+  display: inline-block;
+}
+.replyUsers{
+  color: #11aaf2;
+}
 .avatar-img {
   width: 74rpx;
   height: 74rpx;
@@ -138,7 +143,7 @@ page {
   width: 48rpx;
   height: 48rpx;
   position: absolute;
-  right:228rpx;
+  right:170rpx;
   bottom:22rpx;
   box-sizing: border-box;
   padding-left: 10rpx;
@@ -149,21 +154,21 @@ page {
 height:30rpx;
 position:absolute;
 right:164rpx;
-top:30rpx;
+top:26rpx;
 }
 .chooseImage{
   /* width: 96%; */
   height: 155rpx;
   /* background: red; */
   position: absolute;
-  top: -155rpx;
+  top: -156rpx;
   right: 40rpx;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space:nowrap;
   background-color: #eeeeee;
   box-sizing: border-box;
-  padding: 10rpx 0rpx 10rpx 14rpx;
+  padding: 14rpx 0rpx 14rpx 14rpx;
 }
 .chooseImage>view{
   width: 135rpx;
@@ -206,5 +211,5 @@ top:30rpx;
   color: #098d3b;
   position: absolute;
   right: 80rpx;
-  bottom: 22rpx;
+  bottom: 26rpx;
 }

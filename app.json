@@ -1,12 +1,13 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/circlePresent/index",
+    "pages/circleInfo/index",
+    "pages/articleDetails/index",
+    "pages/details/index",
     "pages/my_profile/my_profile",
 	  "pages/reply/index",
-    "pages/index/index",
-    "pages/circleInfo/index",
     "pages/issue/index",
-    "pages/circlePresent/index",
-    "pages/articleDetails/index" ,
     "pages/my_pages/my_pages",
     "pages/my_points/my_points",
     "pages/my_favorite/my_favorite",

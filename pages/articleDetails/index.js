@@ -56,16 +56,19 @@ Page({
   onReachBottom: function () {
   
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-  openMessageInfo: function () {
+  openMessageInfo: function () { // 跳转到评论详情页
     wx.navigateTo({
-      url: '/pages/reply/index?id=1'
+      url: '/pages/circleInfo/index?id=0'
     })
+  },
+  onShareAppMessage: function (res) { // 页面的转发
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '好文章来看看',
+      path: '/pages/articleDetails/index?id=123'
+    }
   }
 })

@@ -1,4 +1,11 @@
 /* pages/circlePresent/index.wxss */
+.weui-search-bar{
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 0rpx;
+  left: 0rpx; 
+}
 page{
   padding: 30rpx 20rpx 0rpx 20rpx;
   box-sizing: border-box;

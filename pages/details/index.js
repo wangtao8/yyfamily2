@@ -1,11 +1,12 @@
-// pages/circle/index.js
+// pages/index/details.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    index: ['1', '2', '3', '4', '5']
+    indexs: [1,2,3,4],
+    curIndex: 0
   },
 
   /**
@@ -63,14 +64,37 @@ Page({
   onShareAppMessage: function () {
   
   },
-  toInfo: function () {
+  openMessageInfo: function () {
     wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1' //跳转到评论详情
+      url: '/pages/circleInfo/index?id=1'
     })
   },
-  goInfo: function () {
+  checkHeart: function (e) {
+    var _this = this
+    if (_this.data.curIndex == 0) {
+      _this.setData({ curIndex: 1 })
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'success',
+        duration: 1000
+      })
+    } else {
+      _this.setData({ curIndex: 0 })
+      wx.showToast({
+        title: '取消收藏',
+        icon: 'success',
+        duration: 1000
+      })
+    }
+  },
+  articleInfo: function () {
     wx.navigateTo({
-      url: '/pages/circlePresent/index' //跳转到圈子详情
+      url: '/pages/articleDetails/index'
+    })
+  },
+  toInfos: function () {
+    wx.navigateTo({
+      url: '/pages/circleInfo/index?id=1'
     })
   }
 })
