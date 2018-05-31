@@ -9,11 +9,13 @@ Page({
    listData:[{
      photo:'',
      title:'爱吃萝卜',
+     id:'1',
      date:'5-18 11:58',
      content:'哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈'
    },{
        photo: '',
        title: '爱吃萝卜',
+       id:'2',
        date: '5-18 11:58',
        content: '哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈啊哈哈哈'
    }]
@@ -51,5 +53,11 @@ Page({
       url: '../my_drafts/my_drafts'
     })
   },
- 
+  circleInfo:function(message){
+    var data_id = message.currentTarget.dataset.message
+    console.log("id是：", data_id)
+    wx.navigateTo({
+      url: '../circleInfo/index?data=' + JSON.stringify(data_id)
+    })
+  }
 })
