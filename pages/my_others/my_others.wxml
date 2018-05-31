@@ -14,8 +14,8 @@
 </view>
 </view>
 
-<view wx:for='{{listData}}'>
-<view style='width:90%; margin:0 auto;'>
+<view wx:for='{{listData}}'  wx:key="index" wx:for-index="index">
+<view style='width:90%; margin:0 auto;' data-id='{{index}}' bindtap='circleInfo'  data-message='{{item.id}}'>
 <view class='list_photo'></view>
 <view class='list_title'>
 <view style='font-size:36rpx;'>{{item.title}}</view>
@@ -25,7 +25,7 @@
 <view style='margin-top:20rpx;'>{{item.content}}</view>
 
 </view>
-<view style='width:95%;height:100%;margin:0 auto;'>
+<view style='width:95%;height:100%;margin:0 auto;' data-id='{{index}}' bindtap='circleInfo'  data-message='{{item.id}}'>
  <view style=' flex-wrap: wrap;margin-top:20rpx;'>
             <view class="weui-flex__item"><view class="placeholder">weui</view></view>
             <view class="weui-flex__item"><view class="placeholder">weui</view></view>
@@ -40,7 +40,7 @@
 
 </view>
 <view class='fiexd_bottom'>
-<view class='bottom_text'>关 注</view>
+<view class='bottom_text' bindtap='attention'>关 注</view>
 </view>
 <view style='height:200rpx;'></view>
 </view>

@@ -36,7 +36,7 @@
 </view>
 <view class="home_list" bindtap='click_message'>
  <view class='list_text' > 我的消息</view>
- <view class='xiaoxi' hidden="{{hidden}}">{{xiaoxi}}</view>
+ <view class='xiaoxi'>{{xiaoxi}}</view>
 </view>
 <view class='list_line'></view>
 <view class="home_list"  bindtap='click_circle'>

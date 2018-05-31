@@ -1,28 +1,43 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var datas;
 Page({
   data: {
-  hidden:'',
+  // hidden:'',
   name:'woshiyizheng',
   xiaoxi:'2',
  
   },
+  datas:function(){
+    console.log("111")
+  //   wx.request({
+  //   url: 'test.php', //仅为示例，并非真实的接口地址
+  //   data: {
+  //     x: '',
+  //     y: ''
+  //   },
+  //   header: {
+  //     'content-type': 'application/json' // 默认值
+  //   },
+  //   success: function (res) {
+  //     console.log(res.data)
+  //   }
+  // })
+  },
   //事件处理函数
   onLoad: function (res) {
-    // var getdata = JSON.parse(res.data)
-    // console.log("数据类型：",typeof(getdata))
-    // console.log("获取数据成功：", getdata)
-      // wx.setNavigationBarColor({
-    //   frontColor: '#ffffff',
-    //   backgroundColor: '#000000',
-    //    animation: {
-    //      duration: 400,
-    //      timingFunc: 'easeIn'
-    //    }
-    // })
+    // this.datas()
 
+    // var getdata = JSON.parse(res.data)
+
+
+  },
+  onReady:function(){
+    this.datas()
+  },
+  onShow:function(){
+    // this.datas()
   },
   focus:function(){
     wx.navigateTo({
@@ -41,10 +56,10 @@ Page({
   },
   // 点击跳转至我的消息页面
   click_message:function (){
-    this.setData({
-      hidden:'true'
+    // this.setData({
+    //   hidden:'true'
      
-    })
+    // })
     wx.navigateTo({
       url: '../my_message/my_message'
     })
