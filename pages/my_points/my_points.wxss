@@ -42,6 +42,8 @@ page,
   width: 100%;
   height: 100%;
   margin: 0 auto;
+   /* position: relative;  */
+ 
    /* display: flex;
   justify-content: space-between;
   border-bottom:1px solid #ccc;
@@ -57,7 +59,7 @@ page,
 }
 
 .weui-navbar{
-  /* background-color: palegoldenrod; */
+  background-color: #FFFFFF; 
   border: none;
 }
 .weui-navbar__slider{
@@ -133,17 +135,16 @@ page,
   margin-bottom: 20rpx;
 } */
 .jfdh{
-  width: 200rpx;
-  height: 80rpx;
+  width: 212rpx;
+  height: 60rpx;
   float: right;
-  margin-top:40rpx;
+  /* margin-top:40rpx; */
   color:#7E7E7E;
   text-align: right;
-   /* background-color: palegoldenrod;  */
 }
 .left_img{
   width: 200rpx;
-  height:120rpx;
+  height:144rpx;
   background-color: #009944;
   float: left;
   margin: 20rpx 20rpx;
@@ -152,8 +153,8 @@ page,
 .jfbz{
   width: 160rpx;
   height: 50rpx;
-   margin-top:s 20rpx; 
   display: inline-block;
+  color: #4d4d4d;
   background-color: #bfbfbf; 
   border-radius: 30rpx;
   text-align: center;
@@ -164,7 +165,6 @@ page,
 .ljdh{
   width: 160rpx;
   height: 50rpx;
-   margin-top:s 20rpx; 
   display: inline-block;
   background-color: #00bf8e; 
   color: #FFFFFF;
@@ -173,6 +173,17 @@ page,
   line-height: 50rpx;
   font-size: 24rpx;
   margin-right: 20rpx;
+  
+}
+.jifen_title{
+  width: 300rpx;
+  font-size:32rpx;
+  margin-bottom:10rpx;
+  margin-top:10rpx; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* background-color: palegoldenrod; */
 }
 /* 弹窗 */
 

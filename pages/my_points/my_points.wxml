@@ -21,24 +21,30 @@
                 <view  class="weui-tab__content" hidden="{{activeIndex != 0}}">
                 <!-- 积分兑换 -->
                 <view class='box_list' wx:for='{{conmment}}'>
-                <view  class='left_img'></view>
-                <view style='width: 100rpx;float: left;margin-left: 60rpx;margin-top:20rpx;'>
-                <view style='font-size:32rpx;'>{{item.name}}</view>
-                <view style='font-size:24rpx;color:#7E7E7E;margin-bottom:20rpx;'>{{item.content}}</view>
-                </view>
-                <!-- <view class='jfdh'>
-                <text class='jfbz'>积分不足</text>
-                </view> -->
+                <view  class='left_img' bindtap='gifdetails' data-message='{{item.data}}'></view>
+                <view style='width:420rpx; float: right;'>
+                <view class='jifen_title'>{{item.content}}</view>
+                <view style='width:420rpx;'>
+                 <view style='font-size:28rpx;float: left;color:#7E7E7E;width:200rpx;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>所需积分：{{item.name}}</view>
                  <view class='jfdh'>
                  <text wx:if='{{item.data=="积分不足"}}' class='jfbz'>{{item.data}}</text>
                  <text wx:else='{{item.data=="立即兑换"}}' class='ljdh' bindtap='showDialogBtns'>{{item.data}}</text>
                 </view>
+                </view>
+               <view style='clear:both;'></view>
+                <view style='font-size:28rpx;float: left;color:#7E7E7E;margin-top:0rpx;' class='jifen_title'>库存：{{item.name}}</view>
+                </view>
+                <!-- <view class='jfdh'>
+                <text class='jfbz'>积分不足</text>
+                </view> -->
+                 
                 <view style='clear:both;'></view>
-                
+                 
                 </view>
                 </view>
                 <!-- 兑换记录 -->
                 <view  class="weui-tab__content " hidden="{{activeIndex != 1}}">  
+               
                 <!-- <view >
                 <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
                   <view class="content">{{item.content}}
@@ -58,12 +64,13 @@
                 <text>{{item.date}}</text>
                 </view>
                 <view style='clear:both;'></view>
-                 
+                  
                 </view>
                 <view style='height:40rpx;'></view>
+              
             </view> 
-            </view>
-        </view>
+            </view>            
+        </view>       
     </view>
 
 <!--弹窗-->
@@ -91,14 +98,14 @@
  <view class='list_textaction' > 
  <text class='text'>积分：</text>
  <view class='text_input'>
-    <input placeholder-class="input-holder"  name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入积分"></input>
+    <input placeholder-class="input-holder"  name='jifen' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入积分"></input>
  </view>
 
  </view>
   <view class='list_textaction' > 
  <text class='text'>姓名：</text>
  <view class='text_input'>
-    <input placeholder-class="input-holder" name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入姓名"></input>
+    <input placeholder-class="input-holder" name='name' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入姓名"></input>
  </view>
 
  </view>
@@ -114,7 +121,7 @@
  <view class='list_textaction' > 
  <text class='text'>地址：</text>
  <view class='text_input' >
-    <input placeholder-class="input-holder"  name='tel' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入地址"></input>
+    <input placeholder-class="input-holder"  name='adree' maxlength="10" bindinput="inputChange" class="input" placeholder="请输入地址"></input>
  </view>
  </view>
 <view class='list_line' style='margin-bottom:25rpx;margin-top: 80rpx;'></view>

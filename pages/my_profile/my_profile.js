@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+  hidden:'',
   name:'woshiyizheng',
   xiaoxi:'2',
  
@@ -40,6 +41,10 @@ Page({
   },
   // 点击跳转至我的消息页面
   click_message:function (){
+    this.setData({
+      hidden:'true'
+     
+    })
     wx.navigateTo({
       url: '../my_message/my_message'
     })
