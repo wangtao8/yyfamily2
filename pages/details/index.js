@@ -96,5 +96,11 @@ Page({
     wx.navigateTo({
       url: '/pages/circleInfo/index?id=1'
     })
+  },
+  onPullDownRefresh: function () {
+    console.log(11)
+  },
+  onReachBottom: function () {
+    console.log(22)
   }
 })

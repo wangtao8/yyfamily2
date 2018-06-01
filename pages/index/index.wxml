@@ -180,27 +180,27 @@
           <view class="weui-search-bar">
             <view class="weui-search-bar__form">
               <view class="weui-search-bar__box">
-                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                <input type="text" class="weui-search-bar__input" placeholder="搜索圈子" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <icon class="weui-icon-search_in-box" type="search" size="14" catchtap='searchList'></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
                 <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
                   <icon type="clear" size="14"></icon>
                 </view>
               </view>
               <label class="weui-search-bar__label" hidden="{{inputShowed}}" catchtap="showInput">
                 <icon class="weui-icon-search" type="search" size="14"></icon>
-                <view class="weui-search-bar__text">搜索圈子</view>
+                <view class="weui-search-bar__text">搜索</view>
               </label>
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
           </view>
           <scroll-view scroll-y class='all-circle'>
             <view>
-              <view class='my-circle'>我的圈子</view>
-              <view class='circle' wx:for="{{indexs}}" catchtap='toInfo' wx:key='*this'>
-                <image src='../../images/1.jpg' class='circle-img'></image>
+              <view class='my-circle'>我的圈子 <text class='findMore' catchtap='toMyCircle'>更多 ></text></view>
+              <view class='circle' wx:for="{{circleInfo}}" catchtap='toInfo' wx:key='*this'>
+                <image src='{{item.circlePhotoUrl}}' class='circle-img'></image>
                 <view class='circle-info'>
-                  <view class='circle-title'>全友家居</view>
-                  <view class='circle-updated'>3条最近更新
+                  <view class='circle-title'>{{item.circleName}}</view>
+                  <view class='circle-updated'>{{item.newMessageNum}}条最近更新
                     <image src='../../images/loading.png'></image>
                   </view>
                 </view>
@@ -210,10 +210,10 @@
               <view class='hot-circle'>热门圈子</view>
               <!-- <scroll-view scroll-x class='hot-scroll'> -->
               <view class='hot-scroll'>
-                <view class='hot-info' wx:for="{{indexs}}" wx:key='*this' catchtap='goInfo'>
-                  <image src='../../images/2.jpg' class='hot-img'></image>
+                <view class='hot-info' wx:for="{{hotCircleInfo}}" wx:key='*this' catchtap='goInfo'>
+                  <image src='{{item.circlePhotoUrl}}' class='hot-img'></image>
                   <view class='hot-cont-info'>
-                    <view class='hot-title'>火爆圈子</view>
+                    <view class='hot-title'>{{item.circleName}}</view>
                     <text class='hot-join' catchtap='jion'>{{isJion}}</text>
                   </view>
                 </view>

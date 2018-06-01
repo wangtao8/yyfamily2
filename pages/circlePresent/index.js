@@ -1,4 +1,6 @@
 // pages/circlePresent/index.js
+const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
 Page({
 
   /**
@@ -9,15 +11,46 @@ Page({
     inputShowed: false,
     inputVal: "",
     opacitys: 0,
-    indexs: [1,2,3,4,5]
+    circleInfo: {},
+    moreCircleInfo: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({ trueOrfalse: options.isJion })
+    // console.log(options)
+    var _this = this
+    // _this.setData({ trueOrfalse: options.isJion })
+    wx.request({// 查询圈子详情
+      url: api + '/mockjsdata/6/circle/circleInfo', //仅为示例，并非真实的接口地址
+      data: {
+        circleId: '123',
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        _this.setData({ circleInfo: res.data.data})
+      }
+    })
+    wx.request({// 查询圈子话题
+      url: api + '/mockjsdata/6/circle/searchCircleTopics', //仅为示例，并非真实的接口地址
+      data: {
+        circleId: '123',
+        pageIndex: 1,
+        pageSize: 2,
+        userId: '234'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        // console.log(res.data.data.content)
+        _this.setData({ moreCircleInfo: res.data.data.content})
+      }
+    })
   },
 
   /**
@@ -70,7 +103,7 @@ Page({
   },
   openToast: function (e) {
     var id = e.target.dataset.id
-    console.log(id)
+    // console.log(id)
     if (id == 0) {
       this.setData({ trueOrfalse: 1 })
       wx.showToast({
@@ -87,9 +120,12 @@ Page({
       });
     }
   },
-  toInfo: function () {
+  toInfo: function (e) {
+    var id = e.currentTarget.dataset.id
+    var data = this.data.moreCircleInfo[id]
+    // console.log(data)
     wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1'
+      url: '/pages/circleInfo/index?id=1&data=' + JSON.stringify(data)
     })
   },
   goIssue: function () {
@@ -109,7 +145,7 @@ Page({
     });
   },
   clearInput: function () {
-    console.log(1)
+    // console.log(1)
     this.setData({
       inputVal: ""
     });
@@ -122,6 +158,6 @@ Page({
   watchScroll: function(e) {
     var opacitys = e.detail.scrollTop < 10 ? 0 : e.detail.scrollTop / 40
     this.setData({ opacitys: opacitys})
-    console.log(e.detail.scrollTop)
+    // console.log(e.detail.scrollTop)
   }
 })

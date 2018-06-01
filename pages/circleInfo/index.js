@@ -1,4 +1,7 @@
 // pages/circleInfo/index.js
+const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
+const getTime = require('../../utils/getTime.js')
 Page({
 
   /**
@@ -15,15 +18,66 @@ Page({
     message: '关注',//关注 或者 已关注
     urls: [],//图片预览后展示图片的url
     marBot: '120rpx',// 一个样式
-    showUrls: [], //模拟用户评论时发表图片的url 
-    ids: 1 //是否显示圈子信息
+    ids: 1, //是否显示圈子信息,
+    topicInfo: {},//话题详情
+    circleInfo: {},//圈子信息
+    replyInfo: [],//回复信息
+    commentThis: [],//回复指定的人
+    isReply: 1, //1为自己回复  0为回复他人
+    elRight: '',//输入框清空按钮的位置
+    isHidden: 'none',//评论别人的话是否显示，第一次进来默认隐藏，包括别人的评论
+    userInfo: {},//用户信息
+    elValues: [],//回复他人内容
+    curentId: '',//当前回复人的id
+    imageUrls: []//储存上传的图片
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({ ids: options.id }) // 页面加载时接收其他页面带来的参数 为0不显示圈子信息
+    var _this = this
+    _this.setData({ circleInfo: JSON.parse(options.data)})
+    var topicId = JSON.parse(options.data).topicId
+    wx.request({// 查询话题详情
+      url: api + '/mockjsdata/6/circle/topicDetail', //仅为示例，并非真实的接口地址
+      data: {
+        topicId: topicId,
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        _this.setData({ topicInfo: res.data.data})
+        // console.log(res.data.data)
+      }
+    })
+    wx.request({// 查询话题回复
+      url: api + '/mockjsdata/6/circle/getTopicResponse', //仅为示例，并非真实的接口地址
+      data: {
+        pageIndex: 1,
+        pageSize: 2,
+        topicId: topicId,
+        userId: '1234'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        _this.setData({ replyInfo: res.data.data.content})
+      }
+    })
+    wx.getUserInfo({//获得用户信息
+      success: res => {
+        var _this = this
+        var userInfo = res.userInfo
+        console.log(userInfo)
+        _this.setData({ userInfo: userInfo })
+      }
+    })
+    _this.setData({ ids: options.id }) // 页面加载时接收其他页面带来的参数 为0不显示圈子信息
+
   },
 
   /**
@@ -76,7 +130,12 @@ Page({
   },
   getFocus: function (e) {// 获得焦点的事件
     var _this = this
-    this.setData({ elWidth: '500rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
+    var placeholders = _this.data.placeholders
+    if (placeholders == '发表你的评论吧') {
+      _this.setData({ isReply: 1, elWidth: '500rpx', elRight: '228rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
+    } else {
+      _this.setData({ isReply: 0, elWidth: '560rpx', elRight: '170rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block'})
+    }
   },
   getBlur: function () {// 失去焦点的事件
     var _this = this
@@ -90,21 +149,64 @@ Page({
     this.setData({ elValue: e.detail.value })
   },
   clearInput: function (e) {// 清除输入框值 
-    console.log(2)
     this.setData({ elValue: '' })
   },
-  cancel: function (e) {// 点击确定或者取消操作
-    console.log(e.currentTarget.dataset.id)
+  cancel: function (e) {// 点击发表或者取消操作
+    // console.log(e)
     var _this = this
     var id = e.currentTarget.dataset.id
-    var urls = _this.data.urls
-    _this.setData({ showUrls: urls, urls: [], elValue: '', marBot: '120rpx'})
-    if (id == 0) {// 暂没有操作
+    var curentId = _this.data.curentId //当前回复评论的id 下标
+    var commentThis = _this.data.commentThis//当前回复评论的信息
+    var topicDcsRespondNum = _this.data.commentThis.topicDcsRespondNum + 1//当前评论数
+    var replyInfo = _this.data.replyInfo //当前总共回复详情
+    var placeholders = _this.data.placeholders
+    var userInfo = _this.data.userInfo
+    var getValue = _this.data.elValue
+    var imageUrls = _this.data.urls
+    // console.log(imageUrls)
+    if (id == 0) {// 取消操作
+       
+    } else {// 发表操作
+      if (placeholders == '发表你的评论吧') {//回复文章
+      var addReply = {}
+      var times = new Date().Format("yyyy-MM-dd hh:mm:ss")
+      // console.log(replyInfo[0])
+      // var nameArr = []
+      // var valueArr = []
+      // for (var i in replyInfo[0]) {
+      //   valueArr.push(replyInfo[0][i]); //属性
+      //   nameArr.push(i); //值
+      // }
+      // console.log(nameArr, valueArr);
+      addReply.userPhoto = userInfo.avatarUrl
+      addReply.wxNickName = userInfo.nickName
+      addReply.topicDcsContent = getValue
+      addReply.topicDcsPics = imageUrls
+      addReply.topicDcsLikeNum = 0
+      addReply.topicDcsRespondNum = 0
+      addReply.firstResponseName = "null"
+      addReply.createTime = times
+      replyInfo.push(addReply)
+      // console.log('replyInfo:', replyInfo)
+      _this.setData({ replyInfo: replyInfo })
+      } else {// 回复他人
+        if (replyInfo[curentId].elValues == undefined) {
+          console.log(1)
+          var elValues = []
+        } else {
+          console.log(2)
+          var elValues = replyInfo[curentId].elValues
+        }
+        elValues.push(_this.data.elValue)
 
-    } else {
-
+        commentThis.topicDcsRespondNum = topicDcsRespondNum
+        commentThis.elValues = elValues
+        replyInfo[curentId] = commentThis
+        console.log(replyInfo)
+        _this.setData({ isHidden: 'block', replyInfo: replyInfo })
+      } 
     }
-    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
+    _this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', imageUrls: imageUrls, urls: [],content: '发表', marBot: '120rpx', elValue:''})
   },
   goReply: function () {// 评论详情页面
     wx.navigateTo({
@@ -175,6 +277,29 @@ Page({
   goOther: function () {// 跳转到他人个人页面
     wx.navigateTo({
       url: '/pages/my_others/my_others?id=1'
+    })
+  },
+  comment: function (e) {//回复指定人
+    var _this = this
+    var id = e.currentTarget.dataset.id
+    var commentThis = _this.data.replyInfo[id]// 当前回复评论的所有信息，方便之后改动
+    var placeholders = '回复:' + commentThis.wxNickName
+    _this.setData({ commentThis: commentThis, curentId: id, placeholders: placeholders, isfocus: true })
+  },
+  laudNums: function() {//点赞 取消点赞
+    wx.request({
+      url: api + '/mockjsdata/6/circle/topicLike', //仅为示例，并非真实的接口地址
+      data: {
+        optType: 1,
+        topicId: '123',//话题id
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log('222:', res.data)
+      }
     })
   }
 })

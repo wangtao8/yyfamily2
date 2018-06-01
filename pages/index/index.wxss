@@ -16,6 +16,10 @@ page,
 .weui-tab__content:nth-child(3){
   padding:0rpx 20rpx 20rpx 20rpx;
 }
+.weui-tab__content:nth-child(3)>.weui-search-bar{
+  width:calc(100% + 40rpx);
+  margin-left:-20rpx;
+}
 .weui-navbar{
   background-color: #fff;
 }
@@ -219,10 +223,11 @@ swiper{
 
 .all-circle{
   height: 100%;
+  padding-top: 20rpx;
 }
 .my-circle{
   color: #070707;
-  margin-bottom: 32rpx;
+  margin-bottom: 20rpx;
   font-size: 34rpx;
 }
 .my-circle::before, .hot-circle::before{
@@ -271,7 +276,7 @@ swiper{
   position: absolute;
   top: 0;
   left: 178rpx;
-  width: 300rpx;
+  width: 500rpx;
 }
 .circle-updated{
   position: absolute;
@@ -361,6 +366,9 @@ swiper{
   color: #999;
 }
 
+.findMore{
+  float: right;
+}
 .hot-topic{
   padding: 0rpx 20rpx;
   margin-bottom: 20rpx;

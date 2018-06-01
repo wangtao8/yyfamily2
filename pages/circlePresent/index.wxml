@@ -17,36 +17,36 @@
   <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" catchtap="hideInput">取消</view>
 </view>
   <view class='head-info'>
-    <image class='head-img' src='../../images/5.jpg'></image>
+    <image class='head-img' src='{{circleInfo.circlePhotoUrl}}'></image>
     <view class='circle-info'>
-      <view class='circle-name'>全友家居</view>
-      <view class='circle-num'>1500+成员</view>
+      <view class='circle-name'>{{circleInfo.circleName}}</view>
+      <view class='circle-num'>{{circleInfo.circleUserNum}}+成员</view>
     </view>
     <text class='jion-cirlces' bindtap="openToast" style='text-align: center;' wx:if="{{trueOrfalse == 1}}" data-id='{{trueOrfalse}}'>已加入</text>
   </view>
   <view>
     <view class='essay-title'>简介</view>
-    <view class='essay-content'>我是圈子的详细介绍，看我就等于看到了圈子的未来，我可以给大家带来实惠，不信就算了，反正我说了就会做到，而且内幕雄厚，便宜到没朋友，只允许有钱人家人，加入前自爆家底，非富误入！！！</view>
+    <view class='essay-content'>{{circleInfo.circleDesc}}</view>
     <view class='essay-title2'>话题</view>
-    <view class='essay-all' catchtap='toInfo' wx:for='{{indexs}}' wx:key='{{index}}'>
+    <view class='essay-all' catchtap='toInfo' wx:for='{{moreCircleInfo}}' wx:key='{{index}}' data-id='{{index}}'>
       <view class='all-images'>
-        <image src='../../images/3.jpg' class='topic-img'></image>
+        <image src='{{item.topicCoverUrl}}' class='topic-img'></image>
         <view class='images-info'>
           <image src='../../images/looknum.png'></image>
           <text>3</text>
         </view>
       </view>
       <view class='topic-info'>
-        <view class='business-titlle'>全友家居</view>
+        <view class='business-titlle'>{{item.topicTitle}}</view>
         <view class='user-info'>
-          <image src='../../images/2.jpg' class='user-img'></image>
-          <text>王涛</text>
+          <image src='{{item.userPhoto}}' class='user-img'></image>
+          <text>{{item.userName}}</text>
         </view>
         <view class='business-time'>
-          <view>2018-5-26 13:22</view>
+          <view>{{item.createTime}}</view>
           <view>
             <image src='../../images/message.png' class='user-message'></image>
-            <text>10</text>
+            <text>{{item.topicRespondNum}}</text>
           </view>
         </view>
       </view>

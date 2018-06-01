@@ -8,7 +8,7 @@ Page({
   data: {
     indexs:['1','2'],
     tabs: ["热门", "发现", "圈子"],
-    activeIndex: 0,
+    activeIndex: 2,
     sliderOffset: 0,
     sliderLeft: 0,
     inputShowed: false,
@@ -23,38 +23,53 @@ Page({
     interval: 5000,
     duration: 1000,
     curIndex: 0,
-    isJion: '+ 加入'
+    isJion: '+ 加入',
+    circleInfo: [],// 我的圈子详情
+    hotCircleInfo: []// 热门圈子详情
   },
   onReady: function (res) {
     
   },
   onLoad: function () {
-    var that = this;
-    // console.log(api)
-    // wx.request({
-    //   url: api + '/mockjsdata/5/spellapi/spell/joinTeam',
-    //   data: {
-    //     x: '',
-    //     y: ''
-    //   },
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // })
-    wx.getSystemInfo({
+    var _this = this;
+    wx.request({//获得我的圈子
+      url: api + '/mockjsdata/6/circle/myCircle',
+      data: {
+        pageIndex: 1,
+        pageSize: 2,
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
       success: function (res) {
-        that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        _this.setData({ circleInfo: res.data.data.content })
+        // console.log(res.data.data)
+      }
+    })
+    wx.request({
+      url: api + '/mockjsdata/6/circle/hotCircle', //仅为示例，并非真实的接口地址
+      data: {
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        _this.setData({ hotCircleInfo: res.data.data})
+      }
+    })
+    wx.getSystemInfo({// 控制顶部tab切换
+      success: function (res) {
+        _this.setData({
+          sliderLeft: (res.windowWidth / _this.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / _this.data.tabs.length * _this.data.activeIndex
         });
       }
     });
   },
   onShow: function () {
-    console.log(1)
+    // console.log(1)
   },
   tabClick: function (e) {
     this.setData({
@@ -74,7 +89,7 @@ Page({
     });
   },
   clearInput: function () {
-    console.log(1)
+    // console.log(1)
     this.setData({
       inputVal: ""
     });
@@ -104,7 +119,7 @@ Page({
   },
   openMessageInfo: function () {
     wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1'
+      url: '/pages/circleInfo/index?id=0'
     })
   },
   laudOrCancel: function () {
@@ -147,5 +162,59 @@ Page({
     wx.navigateTo({
       url: '/pages/my_profile/my_profile?id=1'
     })
+  },
+  searchList: function () {// 跳转到搜索结果页面
+    // wx.request({// 查询圈子
+    //   url: 'http://172.30.3.40:9086/mockjsdata/6/circle/searchTopic', //仅为示例，并非真实的接口地址
+    //   data: {
+    //     circleIdx: '123',
+    //     pageIndex: 1,
+    //     pageSize: 2,
+    //     searchStr: '呵呵',
+    //     userId: '123'
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data.data)
+    //     var circle = res.data.data.content
+    //     if (res.data.state) {
+    //       wx.request({// 查询话题
+    //         url: 'http://172.30.3.40:9086/mockjsdata/6/circle/searchTopic', //仅为示例，并非真实的接口地址
+    //         data: {
+    //           circleIdx: '123',
+    //           pageIndex: 1,
+    //           pageSize: 2,
+    //           searchStr: '呵呵',
+    //           userId: '123'
+    //         },
+    //         header: {
+    //           'content-type': 'application/json' // 默认值
+    //         },
+    //         success: function (res) {
+    //           console.log(res.data)
+    //           wx.navigateTo({
+    //             url: '/pages/searchInfo/index?circle=' + circle + '&topic=' + topic
+    //           })
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    wx.navigateTo({
+      url: '/pages/searchInfo/index'
+    })
+  },
+  toMyCircle: function () { // 查看更多我的圈子
+    wx.navigateTo({
+      url: '/pages/searchList-circle/index'
+    })
+  },
+  onPullDownRefresh: function () {
+    console.log(11)
+  },
+  onReachBottom: function () {
+    console.log(22)
   }
 });

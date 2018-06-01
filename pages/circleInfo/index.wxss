@@ -157,7 +157,7 @@ page{
   font-size: 28rpx;
   margin-top: 8rpx;
 }
-.other-user{
+.other-user, .self-user{
   color: #11aaf2;
 }
 .more{

@@ -1,54 +1,59 @@
 <!--pages/circleInfo/index.wxml-->
 <scroll-view class='top-info' scroll-y style="margin-bottom: {{marBot}}">
   <view class='head-info' wx:if='{{ids == 1}}'>
-    <image class='head-img' src='../../images/5.jpg'></image>
+    <image class='head-img' src='{{circleInfo.topicCoverUrl}}'></image>
     <view class='circle-info'>
-      <view class='circle-name'>全友家居</view>
-      <view class='circle-num'>1500+成员</view>
+      <view class='circle-name'>{{circleInfo.topicTitle}}</view>
+      <view class='circle-num'>{{circleInfo.topicRespondNum}}+成员</view>
     </view>
   </view>
   <view class='article-info' wx:if='{{ids == 1}}'>
     <view class='article-auth'>
-      <image src='../../images/5.jpg'></image>
+      <image src='{{topicInfo.userPhoto}}'></image>
       <view class='auth-info'>
-        <text class='write-auth'>王涛</text>
-        <text class='write-time'>5-13 11:11</text>
+        <text class='write-auth'>{{topicInfo.userName}}</text>
+        <text class='write-time'>{{topicInfo.createTime}}</text>
       </view>
       <view class='attention-auth' catchtap='attention'>{{message}}</view>
-      <view class='article-title'>我是一段标题</view>
+      <view class='article-title'>{{topicInfo.topicTitle}}</view>
     </view>
-    <view class='article-content'>于是我就在下面打了很多字，很多字，很多字，，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字，很多字。。。</view>
+    <view class='article-content'>{{topicInfo.topicContent}}</view>
   </view>
   <view class='comment-info'>
     <view class='comment-icon'>评论</view>
-    <view class='comment-all clear'>
-      <image class='comment-left-img' src='../../images/4.jpg'></image>
+    <view class='comment-all clear' wx:for='{{replyInfo}}' wx:key='*this'>
+      <image class='comment-left-img' src='{{item.userPhoto}}'></image>
       <view class='comment-right-info'>
-        <view class='comment-name'>王涛</view>
-        <view class='comment-content'>我发表了一条评论，内容是这样的，哈哈哈哈哈...等等还没换行，再笑一次~哈哈哈哈哈哈~~~</view>
+        <view class='comment-name'>{{item.wxNickName}}</view>
+        <view class='comment-content'>{{item.topicDcsContent}}</view>
         <view class='replyImage'>
-             <image wx:for='{{showUrls}}' wx:key='{{index}}' src='{{item}}'></image> 
+            <!--wx:for-item 嵌套循环命名 以便取值 而不是重复item造成混乱 -->
+           <image src='{{urlsInfo}}' wx:for='{{item.topicDcsPics}}' wx:for-item="urlsInfo" wx:key='{{*this}}'></image>
         </view>
-        <view class='comment-reply'>
-          <text class='other-user' catchtap='goOther'>另一个王涛：</text>
-          <text>等人 </text>
-          <text class='more' catchtap='goReply'>共100条回复 ></text>
+        <view class='comment-reply' wx:if='{{item.topicDcsRespondNum > 0}}'>
+          <view style="padding-right: 20rpx;display:{{isHidden}}" wx:for='{{item.elValues}}' wx:if='{{item.elValues !== "null"}}' wx:key='{{*this}}'>
+            <text class='self-user'>{{userInfo.nickName}}: </text>{{item}}</view>
+          <view wx:if='{{item.firstResponseName !== "null" && item.firstResponseName !== "undefined"}}'>
+            <text class='other-user' catchtap='goOther'>{{item.firstResponseName}}：</text>
+            <text>等人 </text>
+            <text class='more' catchtap='goReply'>共{{item.topicDcsRespondNum}}条回复 ></text>
+          </view>
         </view>
         <view class='comment-user-info'>
-          <text>5-13 13:43</text>
+          <text>{{item.createTime}}</text>
           <span class='comment-infos'>
-            <span>
+            <span catchtap='comment' data-id='{{index}}'>
               <image src='../../images/message.png' class='leave_message'></image>
             </span>
-            <span>
+            <span catchtap='laudNums'>
               <image src='../../images/laud00.png' class='luads'></image>
-              <text>123</text>
+              <text>{{item.topicDcsLikeNum}}</text>
             </span>
           </span>
         </view>
       </view>
     </view>
-    <view class='comment-all clear'>
+    <!-- <view class='comment-all clear'>
       <image class='comment-left-img' src='../../images/4.jpg'></image>
       <view class='comment-right-info'>
         <view class='comment-name'>王涛</view>
@@ -66,7 +71,7 @@
           </span>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 </scroll-view>
 <view class='write-comment'>
@@ -78,11 +83,11 @@
   </view>
   <view style='width:{{elWidth}}; margin:{{elMargin}}' class='submitInput'>
     <input type='text' placeholder='{{placeholders}}' catchfocus='getFocus' cursor-spacing='8' value="{{elValue}}" focus='{{isfocus}}' bindinput='changeValue' />
-    <view catchtap="clearInput" class='clearContent'>
+    <view catchtap="clearInput" class='clearContent' style='right:{{elRight}}'>
       <icon type="clear" size="14" wx:if='{{elValue.length>0}}'></icon>
     </view>
   </view>
-  <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image>
+  <image src='../../images/uploadImage.png' class='post-image' wx:if='{{urls.length < 6 && isReply == 1}}' style='display:{{isDisplay}}' catchtap='uploadImage'></image>
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:if='{{elValue.length==0 && urls.length == 0}}' data-id='0'>取消</text>
   <text style='display:{{isDisplay}}' class='submitBtn' catchtap='cancel' wx:else data-id='1'>发表</text>
 </view>
