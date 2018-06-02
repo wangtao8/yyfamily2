@@ -1,0 +1,27 @@
+<!--pages/searchList-topic/index.wxml-->
+<view class='hot-topic'>
+  <view class='essay-title2'>话题</view>
+  <view class='essay-all' catchtap='toInfos' wx:for='{{indexs}}' wx:key='{{index}}'>
+    <view class='all-images'>
+      <image src='../../images/3.jpg' class='topic-img'></image>
+      <view class='images-info'>
+        <image src='../../images/looknum.png'></image>
+        <text>3</text>
+      </view>
+    </view>
+    <view class='topic-info'>
+      <view class='business-titlle'>全友家居</view>
+      <view class='user-info'>
+        <image src='../../images/2.jpg' class='user-img'></image>
+        <text>王涛</text>
+      </view>
+      <view class='business-time'>
+        <view>2018-5-26 13:22</view>
+        <view>
+          <image src='../../images/message.png' class='user-message'></image>
+          <text>10</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/searchList/index.wxml-->
+<view class='my-circles'>
+  <view class='my-circle'>圈子</view>
+  <view class='circle' wx:for="{{circleInfo}}" catchtap='toInfo' wx:key='*this'>
+    <image src='{{item.circlePhotoUrl}}' class='circle-img'></image>
+    <view class='circle-info'>
+      <view class='circle-title'>{{item.circleName}}</view>
+      <view class='circle-updated'>{{item.newMessageNum}}条最近更新
+        <image src='../../images/loading.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
