@@ -21,7 +21,7 @@ Page({
   onLoad: function (options) {
     // console.log(options)
     var _this = this
-    // _this.setData({ trueOrfalse: options.isJion })
+    _this.setData({ trueOrfalse: options.isJion })
     wx.request({// 查询圈子详情
       url: api + '/mockjsdata/6/circle/circleInfo', //仅为示例，并非真实的接口地址
       data: {

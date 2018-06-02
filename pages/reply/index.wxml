@@ -1,54 +1,58 @@
 <!--pages/reply/index.wxml-->
 <view class='content' style='margin-bottom:{{marBot}}'>
-<view class='comment'>
-  <view class='comment-top'>
-    <image class='avatar-main' src='../../images/3.jpg'></image>
-    <view>
-      <view class='user-info'>
-        <view class='user-name'>帅得很</view>
-        <view class='user-time'>08-08 11:11</view>
-      </view>
-      <view class='get-info'>
-        <view class='get-laud'>
-          <image src='../../images/laud00.png'></image>
-          <span>26</span>
-        </view>
-        <view class='reply'>
-          <image src='../../images/message.png' class='clear' catchtap='getFocus'></image>
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class='commnent-bot'>我发表了一个很有意义的发言，蛀牙是这样写的，哈哈哈哈，呵呵呵呵，嘿嘿嘿，额，完了！</view>
-</view>
-<view class='other-user'>
-  <view class='reply-comment' wx:for='{{index}}' wx:key='*this'>
-    <view class='avatar-vice'>
-      <image src='../../images/4.jpg' class='avatar-img'></image>
-      <view class='avatar-user'>
+  <view class='comment'>
+    <view class='comment-top'>
+      <image class='avatar-main' src='{{replyInfo.userPhoto}}'></image>
+      <view>
         <view class='user-info'>
-          <view class='user-name'>真的帅</view>
-          <view class='user-time'>08-08 18:18</view>
+          <view class='user-name'>{{replyInfo.wxNickName}}</view>
+          <view class='user-time'>{{replyInfo.createTime}}</view>
         </view>
         <view class='get-info'>
-          <view class='get-laud2' catchtap='addNums'>
+          <view class='get-laud'>
             <image src='../../images/laud00.png'></image>
-            <span>{{nums}}</span>
+            <span>{{replyInfo.topicDcsLikeNum}}</span>
           </view>
-          <!-- <view class='reply'>
-            <image src='../../images/message.png'></image>
-          </view> -->
+          <view class='reply2'>
+            <image src='../../images/message.png' class='clear' catchtap='getFocus'></image>
+          </view>
         </view>
       </view>
     </view>
-    <view class='commnent-bot2' catchtap='getFocuss' data-name='真的帅'>
-    <view class='isReply'>
-      回复 <text class='replyUsers' catchtap='goOther'>@{{replyUsers}}：</text>
-    </view>  
-    <text>
-      </text> 帅惨了！帅惨了！真的帅惨了！！！</view>
+    <view class='commnent-bot'>{{replyInfo.topicDcsContent}}</view>
+    <view class='replyImage'>
+      <image src='{{item}}' wx:for='{{replyInfo.topicDcsPics}}' wx:key='{{*this}}'></image>
+    </view>
   </view>
-</view>
+  <view class='other-user'>
+    <view class='reply-comment' wx:for='{{secondaryReplyInfo}}' wx:key='*this'>
+      <view class='avatar-vice'>
+        <image src='{{item.userPhoto}}' class='avatar-img'></image>
+        <view class='avatar-user'>
+          <view class='user-info'>
+            <view class='user-name'>{{item.wxNickName}}</view>
+            <view class='user-time'>{{item.createTime}}</view>
+          </view>
+          <view class='get-info'>
+            <view class='get-laud2' catchtap='addNums'>
+              <image src='../../images/laud00.png'></image>
+              <span>{{item.topicDcsLikeNum}}</span>
+            </view>
+            <view class='reply' catchtap='getFocuss' data-name='{{item.wxNickName}}' data-id='{{index}}'>
+              <image src='../../images/message.png'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='commnent-bot2' catchtap='getFocuss' data-name='{{item.wxNickName}}' data-id='{{index}}'>
+        <view class='isReply' wx:if='{{item.topicDcsParentId !== item.topId}}'>
+          回复
+          <text class='replyUsers' catchtap='goOther'>@{{item.parentNickName}}：</text>
+        </view>
+        <text>
+      </text>{{item.topicDcsContent}}</view>
+    </view>
+  </view>
 </view>
 <view class='write-comment'>
   <view class='chooseImage' wx:if='{{urls.length > 0}}' style='width:{{scrollWidth}}'>

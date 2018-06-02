@@ -1,6 +1,8 @@
 // pages/reply/index.js
+const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
+const getTime = require('../../utils/getTime.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,18 +14,52 @@ Page({
     elValue: '',
     placeholders: '发表你的评论吧',
     isfocus: false,
-    nums: 0,
     urls: [],
     marBot: '120rpx',
     scrollWidth: '',
-    replyUsers: '稳得起' //回复的人昵称
+    secondaryReplyInfo: [], //次级回复详细数据
+    replyInfo: {},// 上级评论的详细数据
+    userInfo: {},
+    ids: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('xxo:', options)
+    var _this = this
+    // console.log(JSON.parse(options.replyInfo))
+    var replyInfo = JSON.parse(options.replyInfo)
+    var topicDcsId = JSON.parse(options.replyInfo).topicDcsId
+    var topicID = JSON.parse(options.replyInfo).topicId
+    _this.setData({ replyInfo: replyInfo})
+    wx.request({ // 查询回复详情
+      url: api + '/mockjsdata/6/circle/getResponseMore', 
+      data: {
+        pageIndex: 1,
+        pageSize: 2,
+        topicDcsId: topicDcsId,
+        topicID: topicID,
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        var secondaryReplyInfo = res.data.data.content
+        _this.setData({ secondaryReplyInfo: secondaryReplyInfo})
+        console.log('xx:', secondaryReplyInfo)
+      }
+    })
+
+    wx.getUserInfo({//获得用户信息
+      success: res => {
+        var _this = this
+        var userInfo = res.userInfo
+        // console.log(userInfo)
+        _this.setData({ userInfo: userInfo })
+      }
+    })
   },
 
   /**
@@ -76,15 +112,17 @@ Page({
   },
   getFocus: function (e) {
     var _this = this
-    this.setData({ elWidth: '560rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block' })
+    // console.log(e)
+    this.setData({ elWidth: '560rpx', elMargin: '16rpx 0rpx 0rpx 44rpx;', isDisplay: 'inline-block', isfocus: true })
   },
   getBlur: function () {
     var _this = this
     this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', elValue: '', placeholders: '发表你的评论吧', content: '发表' })
   },
   getFocuss: function (e) {
+    var id = e.currentTarget.dataset.id
     var placeholders = '回复：' + e.currentTarget.dataset.name
-    this.setData({ placeholders: placeholders, isfocus: true, content: '回复' })
+    this.setData({ placeholders: placeholders, isfocus: true, ids: id})
   },
   addNums: function () {
     var nums = this.data.nums + 1
@@ -97,16 +135,57 @@ Page({
     this.setData({ elValue: '' })
   },
   cancel: function (e) {// 点击确定或者取消操作
-    console.log(e.currentTarget.dataset.id)
+    // console.log(e.currentTarget.dataset.id)
     var _this = this
     var id = e.currentTarget.dataset.id
+    /*
+    *  以下内容为模拟发送后返回的数据内容
+    * */
+    var ids = _this.data.ids //当前回复评论的下标
+    var secondaryReplyInfo = _this.data.secondaryReplyInfo//次级回复所有内容
+    var dataSet = {}
+    var userInfo = _this.data.userInfo
+    var wxNickName = userInfo.nickName
+    var userPhoto = userInfo.avatarUrl
+    var circleId = "ctd001"
+    var topicDcsContent = _this.data.elValue
+    console.log('12312312312:', _this.data.elValue)
+    var topicId = _this.data.replyInfo.topicId
+    var topicDcsLikeNum = 0
+    var createTime = new Date().Format("yyyy-MM-dd hh:mm:ss")
+    // var topId = secondaryReplyInfo[ids].topId  顶级评论id
+    // var topicDcsParentId = secondaryReplyInfo[ids].topicDcsParentId  父级评论id
+    // var parentNickName = secondaryReplyInfo[ids].wxNickName  父级评论人昵称
+    dataSet.wxNickName = wxNickName
+    dataSet.userPhoto = userPhoto
+    dataSet.circleId = circleId
+    dataSet.topicDcsContent = topicDcsContent
+    dataSet.topicId = topicId
+    dataSet.topicDcsLikeNum = topicDcsLikeNum
+    // dataSet.topId = topId
+    // dataSet.topicDcsParentId = topicDcsParentId
+    // dataSet.parentNickName = parentNickName
+    dataSet.createTime = createTime
     _this.setData({ urls: [], elValue: '', marBot: '120rpx'})
-    if (id == 0) {// 暂没有操作
-
+    if (id == 0) {
+      // 取消评论
     } else {
-
+      if (_this.data.placeholders == '发表你的评论吧') {
+        // 发表评论
+        dataSet.topId = secondaryReplyInfo[0].topId
+        dataSet.topicDcsParentId = secondaryReplyInfo[0].topId
+        secondaryReplyInfo.push(dataSet)
+        _this.setData({ secondaryReplyInfo: secondaryReplyInfo })
+      } else {
+        // @他人 回复评论
+        dataSet.topId = 'ctd006'
+        dataSet.topicDcsParentId = secondaryReplyInfo[ids].topicDcsParentId
+        dataSet.parentNickName = secondaryReplyInfo[ids].wxNickName
+        secondaryReplyInfo.push(dataSet)
+        _this.setData({ secondaryReplyInfo: secondaryReplyInfo })
+      }
     }
-    this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
+    _this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', content: '发表' })
   },
   uploadImage: function () {
     var currentIndex = this.data.urls.length
