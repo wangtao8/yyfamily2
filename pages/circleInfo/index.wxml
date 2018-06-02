@@ -14,7 +14,7 @@
         <text class='write-auth'>{{topicInfo.userName}}</text>
         <text class='write-time'>{{topicInfo.createTime}}</text>
       </view>
-      <view class='attention-auth' catchtap='attention'>{{message}}</view>
+      <view class='attention-auth' catchtap='attention'>{{topicInfo.isAttention == 1 ? '已关注' : '关注'}}</view>
       <view class='article-title'>{{topicInfo.topicTitle}}</view>
     </view>
     <view class='article-content'>{{topicInfo.topicContent}}</view>
@@ -36,7 +36,7 @@
           <view wx:if='{{item.firstResponseName !== "null" && item.firstResponseName !== "undefined"}}'>
             <text class='other-user' catchtap='goOther'>{{item.firstResponseName}}：</text>
             <text>等人 </text>
-            <text class='more' catchtap='goReply'>共{{item.topicDcsRespondNum}}条回复 ></text>
+            <text class='more' data-id='{{index}}' catchtap='goReply'>共{{item.topicDcsRespondNum}}条回复 ></text>
           </view>
         </view>
         <view class='comment-user-info'>
@@ -45,33 +45,14 @@
             <span catchtap='comment' data-id='{{index}}'>
               <image src='../../images/message.png' class='leave_message'></image>
             </span>
-            <span catchtap='laudNums'>
-              <image src='../../images/laud00.png' class='luads'></image>
+            <span catchtap='laudNums' data-isLike = '{{item.isLike}}' data-id='{{index}}'>
+              <image src='../../images/laud0{{item.isLike == "0" ? 0 : 1}}.png' class='luads'></image>
               <text>{{item.topicDcsLikeNum}}</text>
             </span>
           </span>
         </view>
       </view>
     </view>
-    <!-- <view class='comment-all clear'>
-      <image class='comment-left-img' src='../../images/4.jpg'></image>
-      <view class='comment-right-info'>
-        <view class='comment-name'>王涛</view>
-        <view class='comment-content'>我发表了一条评论，内容是这样的，哈哈哈哈哈...等等还没换行，再笑一次~哈哈哈哈哈哈~~~</view>
-        <view class='comment-user-info'>
-          <text>5-13 13:43</text>
-          <span class='comment-infos'>
-            <span>
-              <image src='../../images/message.png' class='leave_message'></image>
-            </span>
-            <span>
-              <image src='../../images/laud00.png' class='luads'></image>
-              <text>123</text>
-            </span>
-          </span>
-        </view>
-      </view>
-    </view> -->
   </view>
 </scroll-view>
 <view class='write-comment'>

@@ -50,7 +50,7 @@ Page({
       },
       success: function (res) {
         _this.setData({ topicInfo: res.data.data})
-        // console.log(res.data.data)
+        // console.log('111:', res.data.data)
       }
     })
     wx.request({// 查询话题回复
@@ -68,14 +68,6 @@ Page({
         _this.setData({ replyInfo: res.data.data.content})
       }
     })
-    wx.getUserInfo({//获得用户信息
-      success: res => {
-        var _this = this
-        var userInfo = res.userInfo
-        console.log(userInfo)
-        _this.setData({ userInfo: userInfo })
-      }
-    })
     _this.setData({ ids: options.id }) // 页面加载时接收其他页面带来的参数 为0不显示圈子信息
 
   },
@@ -91,7 +83,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('xxxxxxxxxxxxxxxxxxxx')
+    wx.getUserInfo({//获得用户信息
+      success: res => {
+        var _this = this
+        console.log('232:')
+        var userInfo = res.userInfo
+        _this.setData({ userInfo: userInfo })
+      },
+      fail: res => {
+        console.log(res)
+      }
+    })
   },
 
   /**
@@ -187,7 +190,7 @@ Page({
       addReply.firstResponseName = "null"
       addReply.createTime = times
       replyInfo.push(addReply)
-      // console.log('replyInfo:', replyInfo)
+      console.log('replyInfo:', addReply.userPhoto)
       _this.setData({ replyInfo: replyInfo })
       } else {// 回复他人
         if (replyInfo[curentId].elValues == undefined) {
@@ -208,26 +211,62 @@ Page({
     }
     _this.setData({ elWidth: '670rpx', elMargin: '16rpx 0rpx 0rpx 30rpx', isDisplay: 'none', placeholders: '发表你的评论吧', imageUrls: imageUrls, urls: [],content: '发表', marBot: '120rpx', elValue:''})
   },
-  goReply: function () {// 评论详情页面
+  goReply: function (e) {// 评论详情页面
+    var id = e.currentTarget.dataset.id
+    var replyInfo = JSON.stringify(this.data.replyInfo[id])
     wx.navigateTo({
-      url: '/pages/reply/index?id=1'
+      url: '/pages/reply/index?replyInfo=' + replyInfo
     })
   },
   attention: function () {// 切换关注状态
-    if ( this.data.message == '关注' ) {
-      this.setData({ message: '已关注' })
-      wx.showToast({
-        title: '已关注',
-        icon: 'success',
-        duration: 2000
-      });
+    var _this = this
+    if (_this.data.topicInfo.isAttention == 0) {
+      wx.request({
+        url: api + '/mockjsdata/6/user/attention', //仅为示例，并非真实的接口地址
+        data: {
+          attentionUserId: _this.data.topicInfo.topicAuthorId,// 关注作者的id
+          optType: _this.data.topicInfo.isAttention,// 是否关注
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log('关注:', res.data)
+          var topicInfo = _this.data.topicInfo
+          topicInfo.isAttention = 1
+          _this.setData({topicInfo: topicInfo})
+          wx.showToast({
+            title: '已关注',
+            icon: 'success',
+            duration: 2000
+          });
+        }
+      })
     } else {
-      this.setData({ message: '关注' })
-      wx.showToast({
-        title: '取消关注',
-        icon: 'success',
-        duration: 2000
-      });
+      wx.request({
+        url: api + '/mockjsdata/6/user/attention', //仅为示例，并非真实的接口地址
+        data: {
+          attentionUserId: _this.data.topicInfo.topicAuthorId,// 关注作者的id
+          optType: _this.data.topicInfo.isAttention,// 是否关注
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log('取消关注：', res.data)
+          var topicInfo = _this.data.topicInfo
+          topicInfo.isAttention = 0
+          _this.setData({ topicInfo: topicInfo })
+          wx.showToast({
+            title: '取消关注',
+            icon: 'success',
+            duration: 2000
+          });
+        }
+      })
+      
     }
   },
   uploadImage: function () {// 上传评论图片
@@ -286,20 +325,46 @@ Page({
     var placeholders = '回复:' + commentThis.wxNickName
     _this.setData({ commentThis: commentThis, curentId: id, placeholders: placeholders, isfocus: true })
   },
-  laudNums: function() {//点赞 取消点赞
-    wx.request({
-      url: api + '/mockjsdata/6/circle/topicLike', //仅为示例，并非真实的接口地址
-      data: {
-        optType: 1,
-        topicId: '123',//话题id
-        userId: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log('222:', res.data)
-      }
-    })
+  laudNums: function(e) {//点赞 取消点赞
+    var _this = this
+    var id = e.currentTarget.dataset.id
+    var isLike = e.currentTarget.dataset.islike
+    if (isLike == 0) {
+      wx.request({
+      url: api + '/mockjsdata/6/circle/topicLike',
+        data: {
+          optType: 0,
+          topicId: '123',//话题id
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          var replyInfo = _this.data.replyInfo
+          replyInfo[id].isLike = 1
+          replyInfo[id].topicDcsLikeNum = replyInfo[id].topicDcsLikeNum + 1
+          _this.setData({ replyInfo, replyInfo})
+        }
+      })
+    } else {
+      wx.request({
+        url: api + '/mockjsdata/6/circle/topicLike',
+        data: {
+          optType: 1,
+          topicId: '123',//话题id
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          var replyInfo = _this.data.replyInfo
+          replyInfo[id].isLike = 0
+          replyInfo[id].topicDcsLikeNum = replyInfo[id].topicDcsLikeNum - 1
+          _this.setData({ replyInfo, replyInfo })
+        }
+      })
+    }
   }
 })
