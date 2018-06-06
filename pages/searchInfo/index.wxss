@@ -1,4 +1,8 @@
 /* pages/searchInfo/index.wxss */
+.weui-icon-search_in-box{
+  top:2px;
+  padding:10rpx;
+}
 .my-circles{
   padding: 0rpx 20rpx;
 }

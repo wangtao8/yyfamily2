@@ -1,10 +1,13 @@
 <!--pages/articleDetails/index.wxml-->
+<!--引入富文本模版-->
+<import src="../../wxParse/wxParse.wxml"/>
 <scroll-view scroll-y style='height: calc(100% - 88rpx);'>
-  <image src='../../images/4.jpg' class='banner'></image>
+  <image src='{{articleInfo.articleCoverUrl}}' class='banner'></image>
 <view style='padding: 0rpx 40rpx;'>
-  <view class='top-title'>我是一段标题，文章标题，文章标题！！！！！！！</view>
-  <view class='top-label'>#时尚时尚最时尚#</view>
-  <view class='contaner'>文章内容</view>
+  <view class='top-title'>{{articleInfo.articleTitle}}</view>
+  <view class='top-label'>#{{articleInfo.categoryName}}#</view>
+  <!--接收显示富文本-->
+  <template class='contaner' is="wxParse" data="{{wxParseData:article.nodes}}" />
 </view>
 <!-- <view class='article-recommend'>
   <view class='article-title'>相关文章</view>
@@ -20,13 +23,13 @@
 <view class='commodity-recommend' style="padding-bottom: 40rpx;">
     <view class='commodity-title'>相关商品</view>
     <scroll-view scroll-x class='commodity-scorll'>
-        <view class='commodity-content' wx:for='{{index}}' wx:key='*this'>
+        <view class='commodity-content' wx:for='{{relatedGoods}}' wx:key='*this' catchtap='toGoodsInfo' data-goodsInfo='{{item.goodsUrl}}'>
             <view class='commodity-image'>
                 <image src='../../images/3.jpg'></image>
             </view>
             <view class='commodity-info'>
                 <view class='description'>
-                    这是商品这是商品这是商品这是商品这是商品这是商品这是商品这是商品
+                    {{item.goodName}}
                 </view>
                 <view class='money'>￥888.00</view>
             </view>
@@ -41,16 +44,16 @@
       <button open-type="share" class='ShareAppMessage'>
       </button>
     </view>
-    <view>
-      <image src='../../images/icon_like.png'></image>
+    <view catchtap='isCollected'>
+      <image src='../../images/icon_like{{articleInfo.isCollected == 0 ? 0 : 1}}.png'></image>
       <text>8</text>
     </view>
     <view catchtap='openMessageInfo'>
       <image src='../../images/icon_comment.png'></image>
       <text>828</text>
     </view>
-    <view>
-      <image src='../../images/icon_Fabulous.png'></image>
+    <view catchtap='isLiked'>
+      <image src='../../images/icon_Fabulous{{articleInfo.isLiked == 0 ? 0 : 1}}.png'></image>
       <text>188</text>
     </view>
 </view>

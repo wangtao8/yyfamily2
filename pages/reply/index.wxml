@@ -10,7 +10,7 @@
         </view>
         <view class='get-info'>
           <view class='get-laud'>
-            <image src='../../images/laud00.png'></image>
+            <image src='../../images/laud0{{item.isLike == 0 ? 0 : 1}}.png'></image>
             <span>{{replyInfo.topicDcsLikeNum}}</span>
           </view>
           <view class='reply2'>
@@ -21,7 +21,8 @@
     </view>
     <view class='commnent-bot'>{{replyInfo.topicDcsContent}}</view>
     <view class='replyImage'>
-      <image src='{{item}}' wx:for='{{replyInfo.topicDcsPics}}' wx:key='{{*this}}'></image>
+      <image src='{{item}}' wx:if='{{replyInfo.topicDcsPics}}' wx:for='{{replyInfo.topicDcsPics}}' wx:key='{{*this}}'></image>
+      <image src='{{item}}' wx:for='{{replyInfo.dcvDcuPics}}' wx:key='{{*this}}'></image>
     </view>
   </view>
   <view class='other-user'>
@@ -34,8 +35,8 @@
             <view class='user-time'>{{item.createTime}}</view>
           </view>
           <view class='get-info'>
-            <view class='get-laud2' catchtap='addNums'>
-              <image src='../../images/laud00.png'></image>
+            <view class='get-laud2' catchtap='addNums' data-id='{{index}}'>
+              <image src='../../images/laud0{{item.isLike == 0 ? 0 : 1}}.png'></image>
               <span>{{item.topicDcsLikeNum}}</span>
             </view>
             <view class='reply' catchtap='getFocuss' data-name='{{item.wxNickName}}' data-id='{{index}}'>

@@ -18,6 +18,9 @@
       <view class='article-title'>{{topicInfo.topicTitle}}</view>
     </view>
     <view class='article-content'>{{topicInfo.topicContent}}</view>
+    <view class="articleImage">
+      <image wx:for='{{topicInfo.topicPics}}' src='{{item}}' wx:key='{{*this}}' bindtap='previewcircleImage' data-ids='{{index}}'></image>
+    </view>
   </view>
   <view class='comment-info'>
     <view class='comment-icon'>评论</view>
@@ -26,9 +29,10 @@
       <view class='comment-right-info'>
         <view class='comment-name'>{{item.wxNickName}}</view>
         <view class='comment-content'>{{item.topicDcsContent}}</view>
-        <view class='replyImage'>
-            <!--wx:for-item 嵌套循环命名 以便取值 而不是重复item造成混乱 -->
-           <image src='{{urlsInfo}}' wx:for='{{item.topicDcsPics}}' wx:for-item="urlsInfo" wx:key='{{*this}}'></image>
+        <view class='replyImage' bindtap='previews' data-id='{{index}}'>
+          <!--wx:for-item 嵌套循环命名 以便取值 而不是重复item造成混乱 -->
+          <image src='{{urlsInfo}}' wx:if='{{item.topicDcsPics}}' wx:for='{{item.topicDcsPics}}' wx:for-item="urlsInfo" wx:key='{{*this}}' bindtap='preview' data-ids='{{index}}'></image>
+          <image src='{{urlsInfo}}' wx:for='{{item.dcvDcuPics}}' wx:for-item="urlsInfo" wx:key='{{*this}}' bindtap='preview' data-ids='{{index}}'></image>
         </view>
         <view class='comment-reply' wx:if='{{item.topicDcsRespondNum > 0}}'>
           <view style="padding-right: 20rpx;display:{{isHidden}}" wx:for='{{item.elValues}}' wx:if='{{item.elValues !== "null"}}' wx:key='{{*this}}'>
@@ -45,7 +49,7 @@
             <span catchtap='comment' data-id='{{index}}'>
               <image src='../../images/message.png' class='leave_message'></image>
             </span>
-            <span catchtap='laudNums' data-isLike = '{{item.isLike}}' data-id='{{index}}'>
+            <span catchtap='laudNums' data-isLike='{{item.isLike}}' data-id='{{index}}'>
               <image src='../../images/laud0{{item.isLike == "0" ? 0 : 1}}.png' class='luads'></image>
               <text>{{item.topicDcsLikeNum}}</text>
             </span>

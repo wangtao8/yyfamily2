@@ -1,0 +1,2 @@
+<!--pages/goodsInfo/index.wxml-->
+<web-view src="{{urls}}"></web-view>

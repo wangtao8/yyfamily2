@@ -135,6 +135,7 @@ page {
   font-size: 24rpx;
   margin-left: 30rpx;
   position: relative;
+  top: -6rpx;
 }
 
 .write-comment {

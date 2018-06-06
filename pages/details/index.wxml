@@ -1,31 +1,26 @@
 <!--pages/index/details.wxml-->
-<view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
+<view class='user-share' wx:for="{{articleList}}" wx:key='*this' catchtap='articleInfo'>
   <view class='user-image'>
-    <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" />
+    <image src='{{item.articleCoverUrl}}' class='articleCoverUrl'></image>
+    <image src='../../images/heart0{{item.isCollected == "0" ? 0 : 1}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" />
     <view class='user-watch'>
       <image src='../../images/eye.png' />
-      <span>123</span>
+      <span>{{item.articleBrowseNm}}</span>
     </view>
   </view>
-  <view class='user-say'>给一张图，大家感受一下..</view>
+  <view class='user-say'>{{item.articleTitle}}</view>
   <view style="width: 100%;height: 48rpx;line-height:48rpx;">
-    <view class='use-label'>#get新玩法#</view>
+    <view class='use-label'>#{{item.categoryName}}#</view>
     <view class='user-interactive'>
-      <view class='user-comment' catchtap='openMessageInfo'>
+      <view class='user-comment' catchtap='openMessageInfo' data-id='{{index}}'>
         <image src='../../images/message.png' />
-        <span>255</span>
+        <span>{{item.articleDiscussNum}}</span>
       </view>
       <span>|</span>
-      <view class='user-laud' catchtap='laudOrCancel'>
-        <image src='../../images/laud00.png' />
-        <span>255</span>
+      <view class='user-laud' catchtap='laudOrCancel' data-id='{{index}}'>
+        <image src='../../images/laud0{{item.isLiked == 0 ? 0 : 1}}.png' />
+        <span>{{item.articleLikeNum}}</span>
       </view>
     </view>
   </view>
 </view>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>
-<video id='myVideo' src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' ></video>

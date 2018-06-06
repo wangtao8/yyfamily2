@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    api: 'http://172.30.3.40:9086'
+    api: 'https://emcs.quanyou.com.cn'
   }
 })

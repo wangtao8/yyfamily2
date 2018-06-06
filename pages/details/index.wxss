@@ -8,11 +8,15 @@ swiper{
 .user-image{
   width: 96%;
   height: 318rpx;
-   border-radius: 16rpx; 
-  background-image: url('http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg');
-  background-repeat: round;
+  /* background-image: url('http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg');
+  background-repeat: round; */
   margin: 20rpx auto;
   position: relative;
+}
+.articleCoverUrl{
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx; 
 }
 .user-heart{
   width: 36rpx;
@@ -63,9 +67,9 @@ swiper{
 }
 .user-interactive{
   /* background: red; */
-   width: 240rpx; 
+   /* width: 240rpx;  */
   float: right;
-  margin-right: -10rpx;
+  margin-right: 20rpx;
   font-size: 26rpx;
   color: #949494;
 }
@@ -75,10 +79,11 @@ swiper{
   display:inline-block;
   margin-right:20rpx;
   position: relative;
-  top: -16rpx;
+  top: -18rpx;
+  margin-left: 10rpx;
 }
 .user-comment{
-  width:100rpx;
+  /* width:100rpx; */
   height:48rpx;
   display: inline-block;
 }
@@ -89,14 +94,14 @@ swiper{
   margin-top:10rpx;
 }
 .user-comment>span{
-  width: 48rpx;
+  /* width: 48rpx; */
   height: 48rpx;
   float: left;
-  margin-left:8rpx;
+  margin-left:10rpx;
   text-align: center;
 }
 .user-laud{
-  width:120rpx;
+  /* width:120rpx; */
   height:48rpx;
   display: inline-block;
 }
@@ -107,7 +112,7 @@ swiper{
   margin-top:6rpx;
 }
 .user-laud>span{
-  width: 48rpx;
+  /* width: 48rpx; */
   height: 48rpx;
   float: left;
   margin-left: 8rpx;

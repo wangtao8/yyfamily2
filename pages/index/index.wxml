@@ -122,7 +122,7 @@
             <view class="weui-search-bar">
               <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
-                  <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                  <icon class="weui-icon-search_in-box" type="search" size="14" catchtap='searchArticle'></icon>
                   <input type="text" class="weui-search-bar__input" placeholder="搜索文章" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
                   <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" catchtap="clearInput">
                     <icon type="clear" size="14"></icon>
@@ -144,36 +144,40 @@
               </block>
             </swiper> -->
             <view class='blank20'></view>
-            <view wx:for='{{indexs}}' wx:key='{{index}}' class='findAll'>
-              <view class='more' catchtap='goDetails'>
-                <text>装修攻略</text>
-                <text>更多 ></text>
-              </view>
-              <view class='user-share' wx:for="{{indexs}}" wx:key='*this' catchtap='articleInfo'>
-                <view class='user-image'>
-                  <image src='../../images/heart0{{curIndex}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" />
-                  <view class='user-watch'>
-                    <image src='../../images/eye.png' />
-                    <span>123</span>
-                  </view>
+            <view class='findAll' wx:for='{{findList}}' wx:for-item='one' wx:key='one_key' wx:for-index='oneIndex'>
+             <view wx:for='{{one}}' wx:for-item='two' wx:key='two_key'> 
+                <view class='more' catchtap='goDetails' wx:if='{{index == 0}}' data-id='{{two.articleId}}' data-categoryId='{{two.categoryId}}'>
+                  <text>{{two.categoryName}}</text>
+                  <text>更多 ></text>
                 </view>
-                <view class='user-say'>给一张图，大家感受一下..</view>
-                <view style="width: 100%;height: 24px;">
-                  <view class='use-label'>#get新玩法#</view>
-                  <view class='user-interactive'>
-                    <view class='user-comment' catchtap='openMessageInfo'>
-                      <image src='../../images/message.png' />
-                      <span>255</span>
-                    </view>
-                    <span>|</span>
-                    <view class='user-laud' catchtap='laudOrCancel'>
-                      <image src='../../images/laud00.png' />
-                      <span>255</span>
+                <view class='user-share' catchtap='articleInfo' data-id='{{two.articleId}}'>
+                  <view class='user-image'>
+                    <image src='{{two.articleCoverUrl}}' class='articleCoverUrl'></image>
+                    <image src='../../images/heart0{{two.isCollected == 0 ? 0 : 1}}.png' class='user-heart' catchtap='checkHeart' data-id="{{index}}" data-upid='{{oneIndex}}'/>
+                    <view class='user-watch'>
+                      <image src='../../images/eye.png' />
+                      <span>{{two.articleBrowseNum}}</span>
                     </view>
                   </view>
+                  <view class='user-say'>{{two.articleTitle}}</view>
+                  <view style="width: 100%;height: 24px;">
+                    <view class='use-label'>#{{two.categoryName}}#</view>
+                    <view class='user-interactive'>
+                      <view class='user-comment' catchtap='openMessageInfo' data-id='{{two.articleId}}'>
+                        <image src='../../images/message.png' />
+                        <span>{{two.articleDiscussNum}}</span>
+                      </view>
+                      <span>|</span>
+                      <view class='user-laud' catchtap='laudOrCancel' data-id='{{index}}' data-upId='{{oneIndex}}'>
+                        <image src='../../images/laud0{{two.isLiked == 0 ? 0 : 1}}.png' />
+                        <span>{{two.articleLikeNum}}</span>
+                      </view>
+                    </view>
+                  </view>
                 </view>
               </view>
-            </view>
+             </view> 
+            
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
@@ -195,7 +199,9 @@
           </view>
           <scroll-view scroll-y class='all-circle'>
             <view>
-              <view class='my-circle'>我的圈子 <text class='findMore' catchtap='toMyCircle'>更多 ></text></view>
+              <view class='my-circle'>我的圈子
+                <text class='findMore' catchtap='toMyCircle'>更多 ></text>
+              </view>
               <view class='circle' wx:for="{{circleInfo}}" catchtap='toInfo' wx:key='*this'>
                 <image src='{{item.circlePhotoUrl}}' class='circle-img'></image>
                 <view class='circle-info'>
@@ -214,7 +220,7 @@
                   <image src='{{item.circlePhotoUrl}}' class='hot-img'></image>
                   <view class='hot-cont-info'>
                     <view class='hot-title'>{{item.circleName}}</view>
-                    <text class='hot-join' catchtap='jion'>{{isJion}}</text>
+                    <text class='hot-join' catchtap='jion' data-id='{{index}}'>{{item.isJoin == 0 ? '+ 加入' : '已加入'}}</text>
                   </view>
                 </view>
               </view>
@@ -229,7 +235,7 @@
           <view class='home'>友友之家</view>
         </view>
         <!-- <view>创意中心</view> -->
-        <view>
+        <view catchtap='goShop'>
           <image src='../../images/shop2.png'></image>
           <view class='shop'>商城</view>
         </view>

@@ -1,11 +1,11 @@
 <view class='issue-title clear'>
   <text>标题</text>
-  <textarea maxlength='30' bindinput='getChange'></textarea>
+  <textarea maxlength='30' bindinput='getChange' value='{{topicTitle}}'></textarea>
   <text class='lave'>{{writed}}/{{30 - writed}}</text>
 </view>
 <view class='issue-content clear'>
   <text>内容</text>
-  <textarea maxlength='2000'></textarea>
+  <textarea maxlength='2000' value='{{topicContent}}' bindinput='getChangeContValue'></textarea>
   <!-- <text class='lave'>{{writed}}/{{2000 - writed}}</text> -->
 </view>
 <view class='issue-add clear'>
@@ -15,4 +15,4 @@
   </view>
   <view class='chooseImg' bindtap='chooseImg' wx:if='{{urls.length < 6}}'>+</view>
 </view>
-<view class='issue'>发布</view>
+<view class='issue' catchtap='release'>发布</view>

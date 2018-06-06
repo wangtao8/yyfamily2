@@ -101,7 +101,21 @@ page{
   font-size: 30rpx;
   margin-top: 78rpx;
   color: #3c3c3c;
-  padding-bottom: 60rpx;
+}
+.articleImage{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  margin-top:10rpx;
+  width:100%;
+  padding-bottom: 30rpx;
+}
+.articleImage>image{
+  width:226rpx;
+  height:226rpx;
+  margin-right:10rpx;
+  margin-bottom:10rpx;
 }
 .article-content::after{
   content: '';

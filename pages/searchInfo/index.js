@@ -1,4 +1,7 @@
 // pages/searchInfo/index.js
+const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
+const getTime = require('../../utils/getTime.js')
 Page({
 
   /**
@@ -6,14 +9,18 @@ Page({
    */
   data: {
     indexs: [1,2],
-    
+    topicInfo:[],//话题详情
+    circleInfo:[]//圈子详情
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options.data)
+    var _this = this
+    var circleInfo = JSON.parse(options.circles)
+    var topicInfo = JSON.parse(options.topics)
+    _this.setData({ circleInfo: circleInfo, topicInfo: topicInfo})
   },
 
   /**
@@ -69,19 +76,24 @@ Page({
       url: '/pages/circlePresent/index?isJion=1'
     })
   },
-  toInfos: function () {
+  toInfos: function (e) {
+    var id = e.currentTarget.dataset.id
+    var data = this.data.topicInfo[id]
+    // console.log(data)
     wx.navigateTo({
-      url: '/pages/circleInfo/index?id=1'
+      url: '/pages/circleInfo/index?id=1&data=' + JSON.stringify(data)
     })
   },
   toCircleList: function () {
+    var circles = this.data.circleInfo
     wx.navigateTo({
-      url: '/pages/searchList-circle/index?id=1'
+      url: '/pages/searchList-circle/index?circles=' + JSON.stringify(circles)
     })
   },
   toTopicList: function () {
+    var topics = this.data.topicInfo    
     wx.navigateTo({
-      url: '/pages/searchList-topic/index?id=1'
+      url: '/pages/searchList-topic/index?topics=' + JSON.stringify(topics)
     })
   }
 })

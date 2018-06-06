@@ -22,35 +22,6 @@ Page({
     // console.log(options)
     var _this = this
     _this.setData({ trueOrfalse: options.isJion })
-    wx.request({// 查询圈子详情
-      url: api + '/mockjsdata/6/circle/circleInfo', //仅为示例，并非真实的接口地址
-      data: {
-        circleId: '123',
-        userId: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        _this.setData({ circleInfo: res.data.data})
-      }
-    })
-    wx.request({// 查询圈子话题
-      url: api + '/mockjsdata/6/circle/searchCircleTopics', //仅为示例，并非真实的接口地址
-      data: {
-        circleId: '123',
-        pageIndex: 1,
-        pageSize: 2,
-        userId: '234'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        // console.log(res.data.data.content)
-        _this.setData({ moreCircleInfo: res.data.data.content})
-      }
-    })
   },
 
   /**
@@ -64,7 +35,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var _this = this
+    wx.request({// 查询圈子详情
+      url: api + '/mockjsdata/6/circle/circleInfo',
+      data: {
+        circleId: '123',
+        userId: '123'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        _this.setData({ circleInfo: res.data.data })
+      }
+    })
+    wx.request({// 查询圈子话题
+      url: api + '/mockjsdata/6/circle/searchCircleTopics',
+      data: {
+        circleId: '123',
+        pageIndex: 1,
+        pageSize: 2,
+        userId: '234'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        // console.log(res.data.data.content)
+        _this.setData({ moreCircleInfo: res.data.data.content })
+      }
+    })
   },
 
   /**
@@ -101,36 +101,72 @@ Page({
   onShareAppMessage: function () {
   
   },
-  openToast: function (e) {
+  openToast: function (e) {//加入圈子或退出圈子操作
+    var _this = this
     var id = e.target.dataset.id
-    // console.log(id)
+    var circleId = _this.data.circleInfo.circleId
     if (id == 0) {
-      this.setData({ trueOrfalse: 1 })
-      wx.showToast({
-        title: '已加入该圈子',
-        icon: 'success',
-        duration: 2000
-      });
+      wx.request({
+        url: api + '/mockjsdata/6/circle/joinCircle',
+        data: {
+          circleId: circleId,
+          optType: 1,
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          // console.log('加入圈子:', res.data)
+          if (res.data.state == 1) {
+            _this.setData({ trueOrfalse: 1 })
+            wx.showToast({
+              title: '已加入该圈子',
+              icon: 'success',
+              duration: 2000
+            });
+          }
+        }
+      })
     } else {
-      this.setData({ trueOrfalse: 0 })
-      wx.showToast({
-        title: '已退出该圈子',
-        icon: 'success',
-        duration: 2000
-      });
+      wx.request({
+        url: api + '/mockjsdata/6/circle/joinCircle',
+        data: {
+          circleId: circleId,
+          optType: 0,
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          // console.log('退出圈子:', res.data)
+          if (res.data.state == 1) {
+            _this.setData({ trueOrfalse: 0 })
+            wx.showToast({
+              title: '已退出该圈子',
+              icon: 'success',
+              duration: 2000
+            });
+          }
+        }
+      })
     }
   },
   toInfo: function (e) {
     var id = e.currentTarget.dataset.id
     var data = this.data.moreCircleInfo[id]
-    // console.log(data)
+    console.log(data)
     wx.navigateTo({
       url: '/pages/circleInfo/index?id=1&data=' + JSON.stringify(data)
     })
   },
   goIssue: function () {
+    var _this = this
+    var circleId = _this.data.circleInfo.circleId
+    // console.log(circleId)
     wx.navigateTo({
-      url: '/pages/issue/index'
+      url: '/pages/issue/index?circleId=' + circleId
     })
   },
   showInput: function () {

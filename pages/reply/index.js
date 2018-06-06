@@ -31,26 +31,49 @@ Page({
     // console.log(JSON.parse(options.replyInfo))
     var replyInfo = JSON.parse(options.replyInfo)
     var topicDcsId = JSON.parse(options.replyInfo).topicDcsId
+    var topicDcsPics = JSON.parse(options.replyInfo).topicDcsPics
     var topicID = JSON.parse(options.replyInfo).topicId
-    _this.setData({ replyInfo: replyInfo})
-    wx.request({ // 查询回复详情
-      url: api + '/mockjsdata/6/circle/getResponseMore', 
-      data: {
-        pageIndex: 1,
-        pageSize: 2,
-        topicDcsId: topicDcsId,
-        topicID: topicID,
-        userId: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        var secondaryReplyInfo = res.data.data.content
-        _this.setData({ secondaryReplyInfo: secondaryReplyInfo})
-        console.log('xx:', secondaryReplyInfo)
-      }
-    })
+    _this.setData({ replyInfo: replyInfo })
+    if (topicDcsPics) {
+      wx.request({ // 查询回复详情
+        url: api + '/mockjsdata/6/circle/getResponseMore',
+        data: {
+          pageIndex: 1,
+          pageSize: 2,
+          topicDcsId: topicDcsId,
+          topicID: topicID,
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          var secondaryReplyInfo = res.data.data.content
+          _this.setData({ secondaryReplyInfo: secondaryReplyInfo })
+          // console.log('xx:', secondaryReplyInfo)
+        }
+      })
+    } else {
+      wx.request({
+        url: api + '/mockjsdata/6/discovery/replyArticleResponse',
+        data: {
+          pageIndex: 1,
+          pageSize: 2,
+          topicDcsId: topicDcsId,
+          topicID: topicID,
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          var secondaryReplyInfo = res.data.data.content
+          _this.setData({ secondaryReplyInfo: secondaryReplyInfo })
+        }
+      })
+    }
+   
+    
 
     wx.getUserInfo({//获得用户信息
       success: res => {
@@ -124,9 +147,21 @@ Page({
     var placeholders = '回复：' + e.currentTarget.dataset.name
     this.setData({ placeholders: placeholders, isfocus: true, ids: id})
   },
-  addNums: function () {
-    var nums = this.data.nums + 1
-    this.setData({ nums: nums })
+  addNums: function (e) {
+    var _this = this
+    var secondaryReplyInfo = _this.data.secondaryReplyInfo
+    var id = e.currentTarget.dataset.id
+    var islike = secondaryReplyInfo[id].isLike
+    if (islike == 1) {
+      secondaryReplyInfo[id].isLike = 0
+      secondaryReplyInfo[id].topicDcsLikeNum = secondaryReplyInfo[id].topicDcsLikeNum - 1
+      _this.setData({ secondaryReplyInfo: secondaryReplyInfo})
+    } else {
+      secondaryReplyInfo[id].isLike = 1
+      secondaryReplyInfo[id].topicDcsLikeNum = secondaryReplyInfo[id].topicDcsLikeNum + 1
+      _this.setData({ secondaryReplyInfo: secondaryReplyInfo })
+    }
+    // this.setData({ nums: nums })
   },
   changeValue: function(e) {
     this.setData({ elValue: e.detail.value })
@@ -149,7 +184,7 @@ Page({
     var userPhoto = userInfo.avatarUrl
     var circleId = "ctd001"
     var topicDcsContent = _this.data.elValue
-    console.log('12312312312:', _this.data.elValue)
+    // console.log('12312312312:', _this.data.elValue)
     var topicId = _this.data.replyInfo.topicId
     var topicDcsLikeNum = 0
     var createTime = new Date().Format("yyyy-MM-dd hh:mm:ss")
@@ -162,6 +197,7 @@ Page({
     dataSet.topicDcsContent = topicDcsContent
     dataSet.topicId = topicId
     dataSet.topicDcsLikeNum = topicDcsLikeNum
+    dataSet.isLike = 0
     // dataSet.topId = topId
     // dataSet.topicDcsParentId = topicDcsParentId
     // dataSet.parentNickName = parentNickName

@@ -1,4 +1,6 @@
 // pages/circle/index.js
+const app = getApp()
+const api = app.globalData.api // 引入公共请求域名
 Page({
 
   /**

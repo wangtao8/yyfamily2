@@ -16,21 +16,23 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    wx.request({//获得我的圈子
-      url: api + '/mockjsdata/6/circle/myCircle',
-      data: {
-        pageIndex: 1,
-        pageSize: 2,
-        userId: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        _this.setData({ circleInfo: res.data.data.content })
-        // console.log(res.data.data)
-      }
-    })
+    var circleInfo = JSON.parse(options.circles)
+    _this.setData({ circleInfo: circleInfo})
+    // wx.request({//获得我的圈子
+    //   url: api + '/mockjsdata/6/circle/myCircle',
+    //   data: {
+    //     pageIndex: 1,
+    //     pageSize: 2,
+    //     userId: '123'
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success: function (res) {
+    //     _this.setData({ circleInfo: res.data.data.content })
+    //     // console.log(res.data.data)
+    //   }
+    // })
   },
 
   /**

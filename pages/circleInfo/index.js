@@ -29,7 +29,8 @@ Page({
     userInfo: {},//用户信息
     elValues: [],//回复他人内容
     curentId: '',//当前回复人的id
-    imageUrls: []//储存上传的图片
+    imageUrls: [],//储存上传的图片
+    testId: null//包裹图片的大盒子id
   },
 
   /**
@@ -37,37 +38,47 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
-    _this.setData({ circleInfo: JSON.parse(options.data)})
-    var topicId = JSON.parse(options.data).topicId
-    wx.request({// 查询话题详情
-      url: api + '/mockjsdata/6/circle/topicDetail', //仅为示例，并非真实的接口地址
-      data: {
-        topicId: topicId,
-        userId: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        _this.setData({ topicInfo: res.data.data})
-        // console.log('111:', res.data.data)
-      }
-    })
-    wx.request({// 查询话题回复
-      url: api + '/mockjsdata/6/circle/getTopicResponse', //仅为示例，并非真实的接口地址
-      data: {
-        pageIndex: 1,
-        pageSize: 2,
-        topicId: topicId,
-        userId: '1234'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        _this.setData({ replyInfo: res.data.data.content})
-      }
-    })
+    var ids = options.id
+    if (options.data) {
+      _this.setData({ circleInfo: JSON.parse(options.data), ids: ids })
+      var topicId = JSON.parse(options.data).topicId
+      wx.request({// 查询话题详情
+        url: api + '/mockjsdata/6/circle/topicDetail',
+        data: {
+          topicId: topicId,
+          userId: '123'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          _this.setData({ topicInfo: res.data.data })
+          // console.log('111:', res.data.data)
+        }
+      })
+      wx.request({// 查询话题回复
+        url: api + '/mockjsdata/6/circle/getTopicResponse',
+        data: {
+          pageIndex: 1,
+          pageSize: 2,
+          topicId: topicId,
+          userId: '1234'
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          _this.setData({ replyInfo: res.data.data.content })
+        }
+      })
+    } else {
+      var replyInfo = JSON.parse(options.replyInfo)
+      console.log(options)
+      _this.setData({ ids: ids, replyInfo: replyInfo })
+      
+    }
+    
+    
     _this.setData({ ids: options.id }) // 页面加载时接收其他页面带来的参数 为0不显示圈子信息
 
   },
@@ -83,11 +94,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('xxxxxxxxxxxxxxxxxxxx')
+    // console.log('xxxxxxxxxxxxxxxxxxxx')
     wx.getUserInfo({//获得用户信息
       success: res => {
         var _this = this
-        console.log('232:')
+        // console.log('232:')
         var userInfo = res.userInfo
         _this.setData({ userInfo: userInfo })
       },
@@ -189,15 +200,16 @@ Page({
       addReply.topicDcsRespondNum = 0
       addReply.firstResponseName = "null"
       addReply.createTime = times
+      addReply.isLike = 0
       replyInfo.push(addReply)
-      console.log('replyInfo:', addReply.userPhoto)
+      // console.log('replyInfo:', addReply.userPhoto)
       _this.setData({ replyInfo: replyInfo })
       } else {// 回复他人
         if (replyInfo[curentId].elValues == undefined) {
-          console.log(1)
+          // console.log(1)
           var elValues = []
         } else {
-          console.log(2)
+          // console.log(2)
           var elValues = replyInfo[curentId].elValues
         }
         elValues.push(_this.data.elValue)
@@ -205,7 +217,7 @@ Page({
         commentThis.topicDcsRespondNum = topicDcsRespondNum
         commentThis.elValues = elValues
         replyInfo[curentId] = commentThis
-        console.log(replyInfo)
+        // console.log(replyInfo)
         _this.setData({ isHidden: 'block', replyInfo: replyInfo })
       } 
     }
@@ -222,7 +234,7 @@ Page({
     var _this = this
     if (_this.data.topicInfo.isAttention == 0) {
       wx.request({
-        url: api + '/mockjsdata/6/user/attention', //仅为示例，并非真实的接口地址
+        url: api + '/mockjsdata/6/user/attention',
         data: {
           attentionUserId: _this.data.topicInfo.topicAuthorId,// 关注作者的id
           optType: _this.data.topicInfo.isAttention,// 是否关注
@@ -232,7 +244,7 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
-          console.log('关注:', res.data)
+          // console.log('关注:', res.data)
           var topicInfo = _this.data.topicInfo
           topicInfo.isAttention = 1
           _this.setData({topicInfo: topicInfo})
@@ -245,7 +257,7 @@ Page({
       })
     } else {
       wx.request({
-        url: api + '/mockjsdata/6/user/attention', //仅为示例，并非真实的接口地址
+        url: api + '/mockjsdata/6/user/attention',
         data: {
           attentionUserId: _this.data.topicInfo.topicAuthorId,// 关注作者的id
           optType: _this.data.topicInfo.isAttention,// 是否关注
@@ -255,7 +267,7 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
-          console.log('取消关注：', res.data)
+          // console.log('取消关注：', res.data)
           var topicInfo = _this.data.topicInfo
           topicInfo.isAttention = 0
           _this.setData({ topicInfo: topicInfo })
@@ -298,8 +310,35 @@ Page({
     var id = e.currentTarget.dataset.id
     var ulrs = this.data.urls
     wx.previewImage({
-      current: id, // 当前显示图片的http链接
+      current: id, // 当前显示图片的索引
       urls: ulrs // 需要预览的图片http链接列表
+    })
+  },
+  previews: function(e) {// 获得包裹图片的大盒子id
+    var id = e.currentTarget.dataset.id
+    this.setData({ testId: id })
+    // console.log(id)
+  },
+  preview: function(e) {// 展示评论图片预览
+    var _this = this
+    var ids = e.currentTarget.dataset.ids
+    setTimeout(function(){
+      var id = _this.data.testId
+      console.log(id, ids)
+      var urls = _this.data.replyInfo[id].topicDcsPics
+      wx.previewImage({
+        current: ids, // 当前显示图片的索引
+        urls: urls // 需要预览的图片http链接列表
+      })
+    },0)
+  },
+  previewcircleImage: function(e){//预览话题图片
+    var _this = this
+    var ids = e.currentTarget.dataset.ids
+    var urls = _this.data.topicInfo.topicPics
+    wx.previewImage({
+      current: ids, // 当前显示图片的索引
+      urls: urls // 需要预览的图片http链接列表
     })
   },
   redDele: function (e) {// 删除预览图片
